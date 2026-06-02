@@ -75,13 +75,15 @@ async function fetchPlayerRank(player) {
 
   // Scan ALL returned battles and pick the highest rank seen.
   // One API call returns the full page of battles; we scan in memory — no extra calls.
-  // We only care about rank/power here; character comes from players.json (main_character).
+  // character is taken from whichever battle achieved the best rank — if they later
+  // hit a higher rank on a different character, that character gets shown instead.
   let best = null
   for (const battle of battles) {
     const isP1 = battle.p1_tekken_id === player.tekken_id
     const entry = {
       rank_name: isP1 ? battle.p1_dan_rank : battle.p2_dan_rank,
       tekken_power: isP1 ? battle.p1_tekken_power : battle.p2_tekken_power,
+      current_character: isP1 ? battle.p1_char : battle.p2_char,
       last_updated: battle.battle_at,
     }
     if (
@@ -167,6 +169,7 @@ async function main() {
           main_character: player.main_character,
           rank_name: rankData.rank_name,
           tekken_power: rankData.tekken_power,
+          current_character: rankData.current_character,
           last_updated: rankData.last_updated,
           source: 'api',
         })

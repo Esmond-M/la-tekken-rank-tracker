@@ -182,7 +182,7 @@ export default function App() {
                   {formatPower(player.tekken_power)}
                 </td>
                 <td className="character">
-                  {player.main_character ?? '—'}
+                  {player.current_character ?? player.main_character ?? '—'}
                 </td>
                 <td>
                   <PlatformBadge platform={player.platform} />
