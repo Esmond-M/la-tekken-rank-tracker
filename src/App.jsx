@@ -48,6 +48,23 @@ function formatPower(power) {
   return power.toLocaleString()
 }
 
+function formatRelativeTime(iso) {
+  if (!iso) return '—'
+  const then = new Date(iso).getTime()
+  if (Number.isNaN(then)) return '—'
+  const diffMs = Date.now() - then
+  const minutes = Math.floor(diffMs / 60000)
+  if (minutes < 1) return 'just now'
+  if (minutes < 60) return `${minutes}m ago`
+  const hours = Math.floor(minutes / 60)
+  if (hours < 24) return `${hours}h ago`
+  const days = Math.floor(hours / 24)
+  if (days < 30) return `${days}d ago`
+  const months = Math.floor(days / 30)
+  if (months < 12) return `${months}mo ago`
+  return `${Math.floor(months / 12)}y ago`
+}
+
 function PlatformBadge({ platform }) {
   if (!platform) return null
   const key = platform.toLowerCase()
@@ -65,6 +82,8 @@ export default function App() {
   const [error, setError] = useState(null)
   const [sortKey, setSortKey] = useState('rank')
   const [sortDir, setSortDir] = useState('asc')
+  const [search, setSearch] = useState('')
+  const [characterFilter, setCharacterFilter] = useState('all')
 
   function handleSort(key) {
     if (sortKey === key) {
@@ -93,7 +112,27 @@ export default function App() {
     return <div className="state-message">Error: {error}</div>
   }
 
-  const players = [...(data.players ?? [])].sort((a, b) => {
+  const allPlayers = data.players ?? []
+
+  // Unique character list for the filter dropdown (sorted alphabetically)
+  const characters = [...new Set(
+    allPlayers
+      .map(p => p.current_character ?? p.main_character)
+      .filter(Boolean)
+  )].sort()
+
+  const filtered = allPlayers.filter(p => {
+    if (characterFilter !== 'all') {
+      const char = p.current_character ?? p.main_character
+      if (char !== characterFilter) return false
+    }
+    if (search.trim()) {
+      return p.player_tag.toLowerCase().includes(search.trim().toLowerCase())
+    }
+    return true
+  })
+
+  const players = [...filtered].sort((a, b) => {
     if (sortKey === 'player') {
       const cmp = a.player_tag.localeCompare(b.player_tag)
       return sortDir === 'asc' ? cmp : -cmp
@@ -127,13 +166,40 @@ export default function App() {
 
       <div className="stats-bar">
         <div className="stat">
-          <span className="stat-value">{players.length}</span>
+          <span className="stat-value">{allPlayers.length}</span>
           Players tracked
         </div>
         <div className="stat">
           <span className="stat-value">GoD+</span>
           Minimum rank
         </div>
+      </div>
+
+      <div className="filters">
+        <input
+          type="text"
+          placeholder="Search player name..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+        />
+        <select
+          value={characterFilter}
+          onChange={e => setCharacterFilter(e.target.value)}
+        >
+          <option value="all">All characters</option>
+          {characters.map(char => (
+            <option key={char} value={char}>{char}</option>
+          ))}
+        </select>
+        {(search || characterFilter !== 'all') && (
+          <button
+            type="button"
+            className="clear-btn"
+            onClick={() => { setSearch(''); setCharacterFilter('all') }}
+          >
+            Clear
+          </button>
+        )}
       </div>
 
       <div className="table-wrap">
@@ -161,16 +227,33 @@ export default function App() {
               </th>
               <th>Character</th>
               <th>Platform</th>
+              <th>Last Seen</th>
             </tr>
           </thead>
           <tbody>
+            {players.length === 0 && (
+              <tr>
+                <td colSpan={7} className="no-results">No players match your filters.</td>
+              </tr>
+            )}
             {players.map((player, index) => (
               <tr key={player.tekken_id ?? player.player_tag}>
                 <td className={`rank-position ${index < 3 ? 'top-3' : ''}`}>
                   {index + 1}
                 </td>
                 <td className="player-tag">
-                  {player.player_tag}
+                  {player.tekken_id ? (
+                    <a
+                      href={`https://ewgf.gg/player/${player.tekken_id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="player-link"
+                    >
+                      {player.player_tag}
+                    </a>
+                  ) : (
+                    player.player_tag
+                  )}
                 </td>
                 <td
                   className="rank-name"
@@ -186,6 +269,9 @@ export default function App() {
                 </td>
                 <td>
                   <PlatformBadge platform={player.platform} />
+                </td>
+                <td className="last-seen">
+                  {formatRelativeTime(player.last_updated)}
                 </td>
               </tr>
             ))}

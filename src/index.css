@@ -13,6 +13,8 @@
   --text-muted: #888;
   --accent: #c8a84b;
 
+  --god-8: #ffe98a;
+  --god-7: #ffe070;
   --god-6: #ffd700;
   --god-5: #f0c030;
   --god-4: #e8922a;
@@ -28,7 +30,7 @@
 html, body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   min-height: 100vh;
 }
 
@@ -216,16 +218,76 @@ tbody td {
 .platform-badge.playstation { color: #0070f3; border-color: #0070f333; }
 .platform-badge.xbox { color: #52b043; border-color: #52b04333; }
 
-.source-badge {
-  display: inline-block;
-  font-size: 0.7rem;
-  padding: 0.15rem 0.45rem;
-  border-radius: 4px;
-  background: var(--surface-2);
+.player-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted transparent;
+  transition: border-color 0.15s;
+}
+
+.player-link:hover {
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+}
+
+.last-seen {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Filters bar */
+.filters {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.filters input,
+.filters select {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.55rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: var(--accent);
+}
+
+.filters input {
+  flex: 1;
+  min-width: 180px;
+}
+
+.filters .clear-btn {
+  background: var(--surface);
   border: 1px solid var(--border);
   color: var(--text-muted);
-  margin-left: 0.4rem;
-  vertical-align: middle;
+  padding: 0.55rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.filters .clear-btn:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+.no-results {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
 /* Loading / Error */
