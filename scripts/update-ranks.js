@@ -13,8 +13,10 @@ const BASE_URL = 'https://api.ewgf.gg'
 let lastRateLimitMeta = null
 let apiCallsThisRun = 0
 
-// Rank order for sorting players without API data (highest first = index 0)
+// Rank order for sorting players (highest first = index 0)
 const RANK_ORDER = [
+  'God of Destruction VIII',
+  'God of Destruction VII',
   'God of Destruction VI',
   'God of Destruction V',
   'God of Destruction IV',
@@ -197,12 +199,11 @@ async function main() {
     }
   }
 
-  // Sort: API results by tekken_power desc, then manual by rank order
+  // Sort: by rank tier first, then by tekken_power desc within the same tier
   results.sort((a, b) => {
-    if (a.tekken_power && b.tekken_power) return b.tekken_power - a.tekken_power
-    if (a.tekken_power) return -1
-    if (b.tekken_power) return 1
-    return rankSortValue(a.rank_name) - rankSortValue(b.rank_name)
+    const tierDiff = rankSortValue(a.rank_name) - rankSortValue(b.rank_name)
+    if (tierDiff !== 0) return tierDiff
+    return (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
   })
 
   const output = {

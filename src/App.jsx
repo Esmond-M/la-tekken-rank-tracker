@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 
 const RANK_COLORS = {
+  'God of Destruction VIII':  'var(--god-8)',
+  'God of Destruction VII':   'var(--god-7)',
   'God of Destruction VI':    'var(--god-6)',
   'God of Destruction V':     'var(--god-5)',
   'God of Destruction IV':    'var(--god-4)',
@@ -10,6 +12,31 @@ const RANK_COLORS = {
   'God of Destruction':       'var(--god-base)',
   'Tekken God Supreme':       'var(--tekken-god-supreme)',
   'Tekken God':               'var(--tekken-god)',
+}
+
+const RANK_TIER_ORDER = [
+  'God of Destruction VIII',
+  'God of Destruction VII',
+  'God of Destruction VI',
+  'God of Destruction V',
+  'God of Destruction IV',
+  'God of Destruction III',
+  'God of Destruction II',
+  'God of Destruction I',
+  'God of Destruction',
+  'Tekken God Supreme',
+  'Tekken God',
+  'Tekken King',
+  'Tekken Emperor',
+  'Bushin',
+  'Kishin',
+  'Raijin',
+  'Fujin',
+]
+
+function rankTierValue(rankName) {
+  const idx = RANK_TIER_ORDER.indexOf(rankName)
+  return idx === -1 ? RANK_TIER_ORDER.length : idx
 }
 
 function getRankColor(rankName) {
@@ -50,8 +77,11 @@ export default function App() {
     return <div className="state-message">Error: {error}</div>
   }
 
-  const players = data.players ?? []
-  const apiCount = players.filter(p => p.source === 'api').length
+  const players = [...(data.players ?? [])].sort((a, b) => {
+    const tierDiff = rankTierValue(a.rank_name) - rankTierValue(b.rank_name)
+    if (tierDiff !== 0) return tierDiff
+    return (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
+  })
   const lastUpdated = data.updated_at
     ? new Date(data.updated_at).toLocaleString('en-US', {
         month: 'short', day: 'numeric', year: 'numeric',
@@ -65,14 +95,6 @@ export default function App() {
         <h1>Louisiana <span>Tekken 8</span> Rank Tracker</h1>
         <div className="header-meta">
           <span>Updated {lastUpdated}</span>
-          <span>{apiCount} of {players.length} players live from API</span>
-          <a
-            href="https://github.com/Esmond-M/la-tekken-rank-tracker/actions/workflows/update-ranks.yml"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Trigger manual update ↗
-          </a>
         </div>
       </header>
 
@@ -84,10 +106,6 @@ export default function App() {
         <div className="stat">
           <span className="stat-value">GoD+</span>
           Minimum rank
-        </div>
-        <div className="stat">
-          <span className="stat-value">Daily</span>
-          Auto-update
         </div>
       </div>
 
@@ -111,11 +129,6 @@ export default function App() {
                 </td>
                 <td className="player-tag">
                   {player.player_tag}
-                  {player.source === 'manual' && (
-                    <span className="source-badge" title="Rank from roster, not yet fetched from API">
-                      manual
-                    </span>
-                  )}
                 </td>
                 <td
                   className="rank-name"
