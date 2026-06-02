@@ -8,6 +8,11 @@ const ROOT = join(__dirname, '..')
 const API_KEY = process.env.EWGF_API_KEY
 const BASE_URL = 'https://api.ewgf.gg'
 
+// Tracks API usage. Updated after every call so we always know the latest
+// rate-limit info, even if the script is interrupted.
+let lastRateLimitMeta = null
+let apiCallsThisRun = 0
+
 // Rank order for sorting players without API data (highest first = index 0)
 const RANK_ORDER = [
   'God of Destruction VI',
@@ -41,6 +46,8 @@ async function fetchPlayerRank(player) {
     headers: { Authorization: `Bearer ${API_KEY}` },
   })
 
+  apiCallsThisRun++
+
   if (res.status === 429) {
     const retryAfter = res.headers.get('Retry-After') ?? '60'
     throw new Error(`RATE_LIMIT:${retryAfter}`)
@@ -56,6 +63,7 @@ async function fetchPlayerRank(player) {
   }
 
   const body = await res.json()
+  if (body._metadata) lastRateLimitMeta = body._metadata
   const battles = body.data
 
   if (!battles || battles.length === 0) {
@@ -206,7 +214,31 @@ async function main() {
   mkdirSync(join(ROOT, 'public/data'), { recursive: true })
   writeFileSync(join(ROOT, 'public/data/ranks.json'), JSON.stringify(output, null, 2))
 
+  // Write a private rate-limit log (gitignored) so you can keep an eye on usage.
+  const logPath = join(ROOT, '.rate-limit-log.json')
+  let logEntries = []
+  try {
+    logEntries = JSON.parse(readFileSync(logPath, 'utf8'))
+  } catch {
+    // first run — empty log
+  }
+  logEntries.push({
+    ran_at: new Date().toISOString(),
+    api_calls_this_run: apiCallsThisRun,
+    rate_limit_remaining: lastRateLimitMeta?.rate_limit_remaining ?? null,
+    rate_limit_reset: lastRateLimitMeta?.rate_limit_reset ?? null,
+    tier: lastRateLimitMeta?.tier ?? null,
+    successful, failed, skipped,
+  })
+  // Keep only the last 30 entries
+  logEntries = logEntries.slice(-30)
+  writeFileSync(logPath, JSON.stringify(logEntries, null, 2))
+
   console.log(`\nDone. Updated: ${successful}, Failed: ${failed}, Skipped: ${skipped}`)
+  console.log(`API calls this run: ${apiCallsThisRun}`)
+  if (lastRateLimitMeta) {
+    console.log(`Rate limit remaining: ${lastRateLimitMeta.rate_limit_remaining} (resets ${lastRateLimitMeta.rate_limit_reset})`)
+  }
   if (rateLimitHit) {
     console.warn('Rate limit was hit — some players used manual data. Consider Pro tier if this is frequent.')
   }

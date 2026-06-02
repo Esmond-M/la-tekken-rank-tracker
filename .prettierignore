@@ -1,0 +1,4 @@
+dist
+node_modules
+public/data/ranks.json
+package-lock.json

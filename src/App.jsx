@@ -16,12 +16,6 @@ function getRankColor(rankName) {
   return RANK_COLORS[rankName] ?? 'var(--default-rank)'
 }
 
-function formatUpdated(isoString) {
-  if (!isoString) return null
-  const date = new Date(isoString)
-  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-}
-
 function formatPower(power) {
   if (!power) return '—'
   return power.toLocaleString()
