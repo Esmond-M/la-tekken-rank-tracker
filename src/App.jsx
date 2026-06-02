@@ -54,10 +54,26 @@ function PlatformBadge({ platform }) {
   return <span className={`platform-badge ${key}`}>{platform}</span>
 }
 
+function SortIndicator({ active, dir }) {
+  if (!active) return <span className="sort-arrow sort-arrow--inactive">↕</span>
+  return <span className="sort-arrow">{dir === 'asc' ? '↑' : '↓'}</span>
+}
+
 export default function App() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [sortKey, setSortKey] = useState('rank')
+  const [sortDir, setSortDir] = useState('asc')
+
+  function handleSort(key) {
+    if (sortKey === key) {
+      setSortDir(d => d === 'asc' ? 'desc' : 'asc')
+    } else {
+      setSortKey(key)
+      setSortDir(key === 'power' ? 'desc' : 'asc')
+    }
+  }
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}data/ranks.json`)
@@ -78,9 +94,20 @@ export default function App() {
   }
 
   const players = [...(data.players ?? [])].sort((a, b) => {
-    const tierDiff = rankTierValue(a.rank_name) - rankTierValue(b.rank_name)
-    if (tierDiff !== 0) return tierDiff
-    return (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
+    if (sortKey === 'player') {
+      const cmp = a.player_tag.localeCompare(b.player_tag)
+      return sortDir === 'asc' ? cmp : -cmp
+    }
+    if (sortKey === 'rank') {
+      const tierDiff = rankTierValue(a.rank_name) - rankTierValue(b.rank_name)
+      if (tierDiff !== 0) return sortDir === 'asc' ? tierDiff : -tierDiff
+      return (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
+    }
+    if (sortKey === 'power') {
+      const cmp = (a.tekken_power ?? 0) - (b.tekken_power ?? 0)
+      return sortDir === 'asc' ? cmp : -cmp
+    }
+    return 0
   })
   const lastUpdated = data.updated_at
     ? new Date(data.updated_at).toLocaleString('en-US', {
@@ -114,9 +141,24 @@ export default function App() {
           <thead>
             <tr>
               <th>#</th>
-              <th>Player</th>
-              <th>Rank</th>
-              <th>Power</th>
+              <th
+                className={`sortable${sortKey === 'player' ? ' sort-active' : ''}`}
+                onClick={() => handleSort('player')}
+              >
+                Player <SortIndicator active={sortKey === 'player'} dir={sortDir} />
+              </th>
+              <th
+                className={`sortable${sortKey === 'rank' ? ' sort-active' : ''}`}
+                onClick={() => handleSort('rank')}
+              >
+                Rank <SortIndicator active={sortKey === 'rank'} dir={sortDir} />
+              </th>
+              <th
+                className={`sortable${sortKey === 'power' ? ' sort-active' : ''}`}
+                onClick={() => handleSort('power')}
+              >
+                Power <SortIndicator active={sortKey === 'power'} dir={sortDir} />
+              </th>
               <th>Character</th>
               <th>Platform</th>
             </tr>
