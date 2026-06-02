@@ -57,7 +57,7 @@ async function fetchPlayerRank(player) {
 
   if (res.status === 404) {
     console.warn(`  [404] ${player.player_tag} — not found in EWGF database`)
-    return null
+    return { rankData: null, rawBattles: [] }
   }
 
   if (!res.ok) {
@@ -70,18 +70,31 @@ async function fetchPlayerRank(player) {
 
   if (!battles || battles.length === 0) {
     console.warn(`  [empty] ${player.player_tag} — no battles found`)
-    return null
+    return { rankData: null, rawBattles: [] }
   }
 
-  const latest = battles[0]
-  const isP1 = latest.p1_tekken_id === player.tekken_id
-
-  return {
-    rank_name: isP1 ? latest.p1_dan_rank : latest.p2_dan_rank,
-    tekken_power: isP1 ? latest.p1_tekken_power : latest.p2_tekken_power,
-    current_character: isP1 ? latest.p1_char : latest.p2_char,
-    last_updated: latest.battle_at,
+  // Scan ALL returned battles and pick the highest rank seen.
+  // One API call returns the full page of battles; we scan in memory — no extra calls.
+  // We only care about rank/power here; character comes from players.json (main_character).
+  let best = null
+  for (const battle of battles) {
+    const isP1 = battle.p1_tekken_id === player.tekken_id
+    const entry = {
+      rank_name: isP1 ? battle.p1_dan_rank : battle.p2_dan_rank,
+      tekken_power: isP1 ? battle.p1_tekken_power : battle.p2_tekken_power,
+      last_updated: battle.battle_at,
+    }
+    if (
+      !best ||
+      rankSortValue(entry.rank_name) < rankSortValue(best.rank_name) ||
+      (rankSortValue(entry.rank_name) === rankSortValue(best.rank_name) &&
+        (entry.tekken_power ?? 0) > (best.tekken_power ?? 0))
+    ) {
+      best = entry
+    }
   }
+
+  return { rankData: best, rawBattles: battles }
 }
 
 async function main() {
@@ -92,6 +105,7 @@ async function main() {
 
   const players = JSON.parse(readFileSync(join(ROOT, 'data/players.json'), 'utf8'))
   const results = []
+  const apiCache = []   // raw battle data saved for offline reuse
   let successful = 0
   let failed = 0
   let skipped = 0
@@ -134,7 +148,16 @@ async function main() {
     }
 
     try {
-      const rankData = await fetchPlayerRank(player)
+      const { rankData, rawBattles } = await fetchPlayerRank(player)
+
+      if (rawBattles.length > 0) {
+        apiCache.push({
+          tekken_id: player.tekken_id,
+          player_tag: player.player_tag,
+          fetched_at: new Date().toISOString(),
+          battles: rawBattles,
+        })
+      }
 
       if (rankData) {
         results.push({
@@ -142,7 +165,9 @@ async function main() {
           player_tag: player.player_tag,
           platform: player.platform,
           main_character: player.main_character,
-          ...rankData,
+          rank_name: rankData.rank_name,
+          tekken_power: rankData.tekken_power,
+          last_updated: rankData.last_updated,
           source: 'api',
         })
         console.log(`  [ok] ${player.player_tag} — ${rankData.rank_name} (${rankData.tekken_power?.toLocaleString()})`)
@@ -214,6 +239,17 @@ async function main() {
 
   mkdirSync(join(ROOT, 'public/data'), { recursive: true })
   writeFileSync(join(ROOT, 'public/data/ranks.json'), JSON.stringify(output, null, 2))
+
+  // Save raw API battle data so ranks can be reprocessed later without new API calls.
+  // Useful for debugging, re-sorting, or AI analysis offline.
+  const cachePath = join(ROOT, 'data/api-cache.json')
+  const cacheOutput = {
+    generated_at: new Date().toISOString(),
+    note: 'Raw battle data from EWGF API. Do not commit sensitive info. Re-run update-ranks.js to refresh.',
+    players: apiCache,
+  }
+  writeFileSync(cachePath, JSON.stringify(cacheOutput, null, 2))
+  console.log(`API cache written to data/api-cache.json (${apiCache.length} players)`)
 
   // Write a private rate-limit log (gitignored) so you can keep an eye on usage.
   const logPath = join(ROOT, '.rate-limit-log.json')
