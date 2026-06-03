@@ -57,6 +57,11 @@ function buildRosterIndex(rosterPlayers) {
   return idx
 }
 
+function SortIndicator({ active, dir }) {
+  if (!active) return <span className="sort-arrow sort-arrow--inactive">↕</span>
+  return <span className="sort-arrow">{dir === 'asc' ? '↑' : '↓'}</span>
+}
+
 function findEwgfMatch(braacketTag, rosterIndex) {
   // One-off manual aliases for tags that differ too much to fuzzy-match.
   // braacket name (lowercased/stripped) -> ewgf roster name (as-is)
@@ -79,6 +84,17 @@ export default function BraacketPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError]     = useState(null)
   const [search, setSearch]   = useState('')
+  const [sortKey, setSortKey] = useState('rank')
+  const [sortDir, setSortDir] = useState('asc')
+
+  function handleSort(key) {
+    if (sortKey === key) {
+      setSortDir(d => d === 'asc' ? 'desc' : 'asc')
+    } else {
+      setSortKey(key)
+      setSortDir(key === 'points' ? 'desc' : 'asc')
+    }
+  }
 
   useEffect(() => {
     const base = import.meta.env.BASE_URL
@@ -115,11 +131,21 @@ export default function BraacketPage() {
     gapByTag[p.player_tag] = p.points - above.points // negative number
   })
 
-  const players = search.trim()
+  const filtered = search.trim()
     ? allPlayers.filter(p =>
         p.player_tag.toLowerCase().includes(search.trim().toLowerCase())
       )
     : allPlayers
+
+  const players = [...filtered].sort((a, b) => {
+    let cmp = 0
+    if (sortKey === 'points') {
+      cmp = (a.points ?? 0) - (b.points ?? 0)
+    } else {
+      cmp = a.rank - b.rank
+    }
+    return sortDir === 'asc' ? cmp : -cmp
+  })
 
   const updatedAt = data.updated_at
     ? new Date(data.updated_at).toLocaleString('en-US', {
@@ -204,10 +230,20 @@ export default function BraacketPage() {
         <table>
           <thead>
             <tr>
-              <th>#</th>
+              <th
+                className={`sortable${sortKey === 'rank' ? ' sort-active' : ''}`}
+                onClick={() => handleSort('rank')}
+              >
+                # <SortIndicator active={sortKey === 'rank'} dir={sortDir} />
+              </th>
               <th>Player</th>
               <th>Character</th>
-              <th>Points</th>
+              <th
+                className={`sortable${sortKey === 'points' ? ' sort-active' : ''}`}
+                onClick={() => handleSort('points')}
+              >
+                Points <SortIndicator active={sortKey === 'points'} dir={sortDir} />
+              </th>
               <th>Gap</th>
               <th>EWGF</th>
             </tr>
