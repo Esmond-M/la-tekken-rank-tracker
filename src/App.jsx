@@ -267,7 +267,7 @@ export default function App() {
                 <td className="character">
                   {player.current_character ?? player.main_character ?? '—'}
                 </td>
-                <td>
+                <td className="platform-cell">
                   <PlatformBadge platform={player.platform} />
                 </td>
                 <td className="last-seen">
