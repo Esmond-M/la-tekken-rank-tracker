@@ -59,3 +59,37 @@ Sorting: rank tier first, then `tekken_power` desc as tiebreaker within the same
 - The Actions `Commit updated ranks.json` step must `git add` BOTH `public/data/ranks.json` AND `data/api-cache.json`. Easy to forget.
 - `--god-7` and `--god-8` CSS variables exist in `:root` for future high-rank players.
 - The `Inter` font reference was removed — uses a system font stack now. Don't add Inter back without also loading it from Google Fonts.
+
+---
+
+## Braacket Integration — Status & Open Items
+
+See `BRAACKET.md` for the full integration writeup. Summary of current state:
+
+### What exists
+- `scripts/fetch-braacket.js` — HTML scraper for the LATK8 rankings page. **Not wired into any workflow yet.** Run manually only.
+- `public/data/braacket-rankings.json` — current data, populated by hand from a CSV export.
+- `public/data/braacket_league-ranking_*.csv` — reference CSV export from the site (Allocution + 19 others, page 1 only).
+- `src/BraacketPage.jsx` + Tournament Rankings tab in `App.jsx`.
+
+### ⚠️ Important: Braacket ToS prohibits scraping
+> "You must not conduct any systematic or automated data collection activities … without our express written consent."
+
+The scraper is built but should NOT be cron-scheduled until permission is obtained from braacket.com. CSV-based imports (manual export → drop in repo) are fine — that's just using their provided Export feature.
+
+### Known bugs (not yet fixed)
+1. **Braacket tab unreachable on EWGF failure.** `App.jsx` early-returns on EWGF `loading`/`error` before tab nav renders. Move tab nav above the early-return guards, OR render `BraacketPage` directly when `view === 'braacket'` before EWGF state checks.
+2. **Header "Updated" timestamp is misleading on Braacket tab.** Always shows EWGF `data.updated_at`. Should swap to the active tab's timestamp.
+3. **JSX cosmetic glitch in `BraacketPage.jsx`** — character `<td>` is on same line as previous `</td>`. Renders fine, fails prettier.
+
+### Open decisions (waiting on community contact)
+- All 409 league players, or only the curated ~46 roster from `players.json`?
+- Replace EWGF view, or keep both tabs side-by-side?
+- Update cadence — daily / weekly / after-each-tournament?
+- Which season — current S3 only, or include All-Time / S2?
+
+### Not yet built
+- `scripts/import-braacket-csv.js` — parse a CSV from `public/data/braacket_*.csv` and write JSON. Currently done by hand.
+- Player tag → braacket profile linking. CSV export does not include the player UUID, so links require either a one-time scrape of `/league/LATK8/player` OR linking to braacket's search URL (less direct but no UUID needed).
+- Cross-reference braacket player tags with `players.json` `tekken_id` to deep-link to ewgf.gg profiles from the Braacket tab.
+
