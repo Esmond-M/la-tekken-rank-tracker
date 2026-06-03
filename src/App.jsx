@@ -90,7 +90,7 @@ export default function App() {
       setSortDir(d => d === 'asc' ? 'desc' : 'asc')
     } else {
       setSortKey(key)
-      setSortDir(key === 'power' ? 'desc' : 'asc')
+      setSortDir(key === 'power' || key === 'lastseen' ? 'desc' : 'asc')
     }
   }
 
@@ -144,6 +144,12 @@ export default function App() {
     }
     if (sortKey === 'power') {
       const cmp = (a.tekken_power ?? 0) - (b.tekken_power ?? 0)
+      return sortDir === 'asc' ? cmp : -cmp
+    }
+    if (sortKey === 'lastseen') {
+      const aT = a.last_seen ? new Date(a.last_seen).getTime() : 0
+      const bT = b.last_seen ? new Date(b.last_seen).getTime() : 0
+      const cmp = aT - bT
       return sortDir === 'asc' ? cmp : -cmp
     }
     return 0
@@ -231,7 +237,12 @@ export default function App() {
               </th>
               <th>Character</th>
               <th>Platform</th>
-              <th>Last Seen</th>
+              <th
+                className={`sortable${sortKey === 'lastseen' ? ' sort-active' : ''}`}
+                onClick={() => handleSort('lastseen')}
+              >
+                Last Seen <SortIndicator active={sortKey === 'lastseen'} dir={sortDir} />
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -278,7 +289,7 @@ export default function App() {
                   <PlatformBadge platform={player.platform} />
                 </td>
                 <td className="last-seen">
-                  {formatRelativeTime(player.last_updated)}
+                  {formatRelativeTime(player.last_seen ?? player.last_updated)}
                 </td>
               </tr>
             ))}

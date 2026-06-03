@@ -76,8 +76,14 @@ async function fetchPlayerRank(player) {
   // Scan ALL returned battles and track the best rank per character.
   // One API call returns the full page of battles; we scan in memory — no extra calls.
   const bestPerChar = new Map() // character -> best entry for that character
+  let mostRecentBattleAt = null // timestamp of the most recent battle (true "last seen")
 
   for (const battle of battles) {
+    if (battle.battle_at) {
+      if (!mostRecentBattleAt || battle.battle_at > mostRecentBattleAt) {
+        mostRecentBattleAt = battle.battle_at
+      }
+    }
     const isP1 = battle.p1_tekken_id === player.tekken_id
     const entry = {
       rank_name: isP1 ? battle.p1_dan_rank : battle.p2_dan_rank,
@@ -135,7 +141,7 @@ async function fetchPlayerRank(player) {
   }
 
   return {
-    rankData: best ? { ...best, secondary_character: secondary?.current_character ?? null } : null,
+    rankData: best ? { ...best, secondary_character: secondary?.current_character ?? null, last_seen: mostRecentBattleAt } : null,
     rawBattles: battles,
   }
 }
@@ -218,7 +224,9 @@ async function main() {
           rank_name: rankData.rank_name,
           tekken_power: rankData.tekken_power,
           current_character: rankData.current_character,
+          secondary_character: rankData.secondary_character,
           last_updated: rankData.last_updated,
+          last_seen: rankData.last_seen ?? null,
           source: 'api',
         })
         console.log(`  [ok] ${player.player_tag} — ${rankData.rank_name} (${rankData.tekken_power?.toLocaleString()})`)
