@@ -391,6 +391,49 @@ tbody td {
     border: 1px solid var(--border);
     border-radius: 8px;
   }
+
+  /* ── Braacket tab table on mobile ──────────────────────────
+     The Braacket table has 6 columns (#, Player, Character, Points, Gap, EWGF).
+     Reuse the same card grid: # | Player | Points on row 1, then a single
+     row 2 with character on the left and EWGF link on the right.
+     The "Gap" column is hidden on mobile (low info-per-pixel). */
+
+  tbody td.braacket-points {
+    grid-column: 3;
+    grid-row: 1;
+    align-self: center;
+    text-align: right;
+    font-size: 0.85rem;
+    padding: 0;
+  }
+
+  tbody td.character:not(:has(+ .braacket-points)) {
+    /* Online ranks tab: already styled above. No-op. */
+  }
+
+  /* Character cell on the Braacket card: row 2, left */
+  tbody tr:has(.braacket-points) td.character {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 0;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    align-self: center;
+  }
+
+  /* Hide the Gap column on mobile — visible on desktop only */
+  tbody td.point-gap {
+    display: none;
+  }
+
+  /* EWGF link: row 2, right */
+  tbody td.ewgf-cell {
+    grid-column: 3;
+    grid-row: 2;
+    padding: 0;
+    text-align: right;
+    align-self: center;
+  }
 }
 
 /* Loading / Error */
