@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-03T14:43:10.727Z",
+  "updated_at": "2026-06-03T15:04:53.795Z",
   "stats": {
     "successful": 46,
     "failed": 0,
@@ -293,19 +293,6 @@
       "source": "api"
     },
     {
-      "tekken_id": "23EgNYiq8MBf",
-      "player_tag": "BBxstaunch",
-      "platform": "Xbox",
-      "main_character": "Armor King",
-      "rank_name": "God of Destruction II",
-      "tekken_power": 365636,
-      "current_character": "Armor King",
-      "secondary_character": "Raven",
-      "last_updated": "2026-05-31T18:00:13Z",
-      "last_seen": "2026-06-02T00:32:57Z",
-      "source": "api"
-    },
-    {
       "tekken_id": "45BYtinY394j",
       "player_tag": "Raw Potential",
       "platform": "Playstation",
@@ -342,6 +329,19 @@
       "secondary_character": "Kunimitsu",
       "last_updated": "2026-06-01T07:01:02Z",
       "last_seen": "2026-06-02T07:40:58Z",
+      "source": "api"
+    },
+    {
+      "tekken_id": "23EgNYiq8MBf",
+      "player_tag": "BBxstaunch",
+      "platform": "Xbox",
+      "main_character": "Armor King",
+      "rank_name": "God of Destruction I",
+      "tekken_power": 365636,
+      "current_character": "Armor King",
+      "secondary_character": "Raven",
+      "last_updated": "2026-05-31T18:00:13Z",
+      "last_seen": "2026-06-02T00:32:57Z",
       "source": "api"
     },
     {
@@ -583,7 +583,7 @@
       "player_tag": "KavemanFGC",
       "platform": "Playstation",
       "main_character": "Claudio",
-      "rank_name": "God of Destruction",
+      "rank_name": "Tekken God Supreme",
       "tekken_power": 251210,
       "current_character": "Claudio",
       "secondary_character": null,
@@ -596,7 +596,7 @@
       "player_tag": "Lemon and Lime",
       "platform": "Steam",
       "main_character": "Jun",
-      "rank_name": "God of Destruction",
+      "rank_name": "Tekken King",
       "tekken_power": 226838,
       "current_character": "Jun",
       "secondary_character": null,
