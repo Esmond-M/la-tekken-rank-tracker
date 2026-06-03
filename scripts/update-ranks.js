@@ -174,7 +174,167 @@ async function fetchPlayerRank(player) {
   }
 }
 
+// Reprocess existing data/api-cache.json through the current rank logic.
+// Zero API calls — useful for testing logic changes without burning daily quota.
+function buildRankDataFromBattles(player, battles) {
+  const bestPerChar = new Map()
+  let mostRecentBattleAt = null
+  for (const battle of battles) {
+    if (battle.battle_at) {
+      if (!mostRecentBattleAt || battle.battle_at > mostRecentBattleAt) {
+        mostRecentBattleAt = battle.battle_at
+      }
+    }
+    const isP1 = battle.p1_tekken_id === player.tekken_id
+    const entry = {
+      rank_name: isP1 ? battle.p1_dan_rank : battle.p2_dan_rank,
+      tekken_power: isP1 ? battle.p1_tekken_power : battle.p2_tekken_power,
+      current_character: isP1 ? battle.p1_char : battle.p2_char,
+      last_updated: battle.battle_at,
+    }
+    const char = entry.current_character
+    if (!char) continue
+    const existing = bestPerChar.get(char)
+    if (
+      !existing ||
+      rankSortValue(entry.rank_name) < rankSortValue(existing.rank_name) ||
+      (rankSortValue(entry.rank_name) === rankSortValue(existing.rank_name) &&
+        (entry.tekken_power ?? 0) > (existing.tekken_power ?? 0))
+    ) {
+      bestPerChar.set(char, entry)
+    }
+  }
+
+  let best = null
+  for (const entry of bestPerChar.values()) {
+    if (
+      !best ||
+      rankSortValue(entry.rank_name) < rankSortValue(best.rank_name) ||
+      (rankSortValue(entry.rank_name) === rankSortValue(best.rank_name) &&
+        (entry.tekken_power ?? 0) > (best.tekken_power ?? 0))
+    ) {
+      best = entry
+    }
+  }
+
+  let primary = null
+  if (player.main_character) {
+    const mainEntry = bestPerChar.get(player.main_character)
+    if (mainEntry) {
+      const apiTier = rankSortValue(mainEntry.rank_name)
+      const peakTier = rankSortValue(player.peak_rank)
+      primary = {
+        ...mainEntry,
+        rank_name: peakTier < apiTier ? player.peak_rank : mainEntry.rank_name,
+      }
+    } else {
+      primary = {
+        rank_name: player.peak_rank,
+        tekken_power: null,
+        current_character: player.main_character,
+        last_updated: null,
+      }
+    }
+  } else {
+    primary = best
+  }
+
+  let secondary = null
+  if (primary) {
+    const primaryTier = rankSortValue(primary.rank_name)
+    const godBaseTier = rankSortValue('God of Destruction')
+    for (const [char, entry] of bestPerChar.entries()) {
+      if (char === primary.current_character) continue
+      const tier = rankSortValue(entry.rank_name)
+      if (tier <= primaryTier + 2 && tier <= godBaseTier) {
+        if (
+          !secondary ||
+          tier < rankSortValue(secondary.rank_name) ||
+          (tier === rankSortValue(secondary.rank_name) &&
+            (entry.tekken_power ?? 0) > (secondary.tekken_power ?? 0))
+        ) {
+          secondary = entry
+        }
+      }
+    }
+  }
+
+  return primary
+    ? { ...primary, secondary_character: secondary?.current_character ?? null, last_seen: mostRecentBattleAt }
+    : null
+}
+
+async function reprocessFromCache() {
+  console.log('Reprocessing from data/api-cache.json (no API calls)...')
+  const players = JSON.parse(readFileSync(join(ROOT, 'data/players.json'), 'utf8'))
+  const cache = JSON.parse(readFileSync(join(ROOT, 'data/api-cache.json'), 'utf8'))
+  const battlesByPlayer = new Map(cache.players.map(p => [p.tekken_id, p.battles]))
+
+  const results = []
+  let successful = 0
+  let skipped = 0
+
+  for (const player of players) {
+    if (!player.tekken_id || !battlesByPlayer.has(player.tekken_id)) {
+      results.push({
+        tekken_id: player.tekken_id ?? null,
+        player_tag: player.player_tag,
+        platform: player.platform,
+        main_character: player.main_character,
+        rank_name: player.peak_rank,
+        tekken_power: null,
+        current_character: null,
+        last_updated: null,
+        source: 'manual',
+      })
+      skipped++
+      continue
+    }
+
+    const battles = battlesByPlayer.get(player.tekken_id)
+    const rankData = buildRankDataFromBattles(player, battles)
+    if (rankData) {
+      results.push({
+        tekken_id: player.tekken_id,
+        player_tag: player.player_tag,
+        platform: player.platform,
+        main_character: player.main_character,
+        rank_name: rankData.rank_name,
+        tekken_power: rankData.tekken_power,
+        current_character: rankData.current_character,
+        secondary_character: rankData.secondary_character,
+        last_updated: rankData.last_updated,
+        last_seen: rankData.last_seen ?? null,
+        source: 'api',
+      })
+      console.log(`  [ok] ${player.player_tag} — ${rankData.rank_name} on ${rankData.current_character}`)
+      successful++
+    } else {
+      skipped++
+    }
+  }
+
+  results.sort((a, b) => {
+    const tierDiff = rankSortValue(a.rank_name) - rankSortValue(b.rank_name)
+    if (tierDiff !== 0) return tierDiff
+    return (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
+  })
+
+  const output = {
+    updated_at: new Date().toISOString(),
+    stats: { successful, failed: 0, skipped },
+    players: results,
+  }
+  writeFileSync(join(ROOT, 'public/data/ranks.json'), JSON.stringify(output, null, 2))
+  console.log(`\nWrote public/data/ranks.json — ${successful} from cache, ${skipped} fallback to manual.`)
+}
+
 async function main() {
+  if (process.argv.includes('--from-cache')) {
+    await reprocessFromCache()
+    return
+  }
+
   if (!API_KEY) {
     console.error('EWGF_API_KEY environment variable is required')
     process.exit(1)
