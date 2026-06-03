@@ -69,6 +69,8 @@ npm run update-ranks
 
 The free EWGF tier allows **100 requests/day**. The roster currently uses ~45 requests per update, leaving headroom for one manual run per day. If the roster grows past 100 players or needs multiple daily updates, the [$10/mo Pro tier](https://ewgf.gg/support) raises the cap to 1,000 requests/day.
 
+The daily limit **resets at midnight UTC** (7 PM Central during CDT / 6 PM Central during CST). The scheduled run fires at **8 AM UTC (3 AM Central)** — 8 hours after the reset, so there's always a full quota available.
+
 When the rate limit is hit mid-run, remaining players keep their last known peak rank.
 
 ## Project structure
