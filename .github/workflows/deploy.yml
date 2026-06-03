@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - 'public/data/ranks.json'
       - 'data/api-cache.json'
+      - '.rate-limit-log.json'
 
 permissions:
   contents: read

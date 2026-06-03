@@ -34,7 +34,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           # Add each data file independently so a missing file doesn't block the others.
-          for f in public/data/ranks.json data/api-cache.json; do
+          for f in public/data/ranks.json data/api-cache.json .rate-limit-log.json; do
             if [ -f "$f" ]; then
               git add "$f"
               echo "Staged: $f"

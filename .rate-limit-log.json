@@ -1,0 +1,10 @@
+[
+  {
+    "ran_at": "2026-06-02T22:00:00Z",
+    "note": "Initial setup — count is approximate, seeded manually",
+    "api_calls_this_run": 43,
+    "estimated_pre_run_remaining": 95,
+    "estimated_post_run_remaining": 52,
+    "tier": "free"
+  }
+]
