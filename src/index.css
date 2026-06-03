@@ -502,13 +502,13 @@ tbody td {
   padding: 0;
   font: inherit;
   cursor: pointer;
-  color: inherit;
-  border-bottom: 1px dotted transparent;
-  transition: border-color 0.15s, color 0.15s;
+  color: var(--accent);
+  border-bottom: 1px dotted color-mix(in srgb, var(--accent) 45%, transparent);
+  transition: border-color 0.15s, opacity 0.15s;
 }
 .player-link--button:hover {
   border-bottom-color: var(--accent);
-  color: var(--accent);
+  opacity: 0.8;
 }
 
 .player-card-backdrop {
@@ -616,6 +616,29 @@ tbody td {
   font-size: 0.9rem;
   margin: 0;
   font-style: italic;
+}
+
+/* External profile links inside the player card — styled as small accent buttons */
+.player-card-section .player-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+  padding: 0.3rem 0.65rem;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: 5px;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.player-card-section .player-link:hover {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  color: var(--accent);
 }
 
 /* Braacket page meta row */
