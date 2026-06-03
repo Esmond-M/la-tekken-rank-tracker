@@ -299,6 +299,7 @@ async function main() {
     note: 'Raw battle data from EWGF API. Do not commit sensitive info. Re-run update-ranks.js to refresh.',
     players: apiCache,
   }
+  mkdirSync(join(ROOT, 'data'), { recursive: true })
   writeFileSync(cachePath, JSON.stringify(cacheOutput, null, 2))
   console.log(`API cache written to data/api-cache.json (${apiCache.length} players)`)
 
