@@ -77,8 +77,35 @@ function SortIndicator({ active, dir }) {
   return <span className="sort-arrow">{dir === 'asc' ? '↑' : '↓'}</span>
 }
 
+// URL <-> view sync. Uses ?tab=tournament for the Braacket tab; default tab
+// has no query param so the canonical URL stays clean.
+function viewFromUrl() {
+  if (typeof window === 'undefined') return 'ranked'
+  const tab = new URLSearchParams(window.location.search).get('tab')
+  return tab === 'tournament' ? 'braacket' : 'ranked'
+}
+
 export default function App() {
-  const [view, setView] = useState('ranked') // 'ranked' | 'braacket'
+  const [view, setView] = useState(viewFromUrl) // 'ranked' | 'braacket'
+
+  // Keep URL in sync with view (and respond to back/forward navigation).
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (view === 'braacket') params.set('tab', 'tournament')
+    else params.delete('tab')
+    const qs = params.toString()
+    const newUrl = window.location.pathname + (qs ? `?${qs}` : '') + window.location.hash
+    if (newUrl !== window.location.pathname + window.location.search + window.location.hash) {
+      window.history.replaceState(null, '', newUrl)
+    }
+  }, [view])
+
+  useEffect(() => {
+    const onPop = () => setView(viewFromUrl())
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
+
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
