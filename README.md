@@ -7,7 +7,7 @@ A community-maintained leaderboard for Louisiana Tekken 8 players ranked **God o
 ## How it works
 
 1. The player roster lives in [`data/players.json`](data/players.json).
-2. A scheduled GitHub Action runs `scripts/update-ranks.js` once a day. The script calls the EWGF battles endpoint for each player, reads their most recent match, and writes the result to `public/data/ranks.json`.
+2. A scheduled GitHub Action runs `scripts/update-ranks.js` once a day. The script calls the EWGF battles endpoint for each player, scans the returned battles for the player's **highest achieved rank**, and writes the result to `public/data/ranks.json`.
 3. The static React site (built with Vite) reads `ranks.json` at load time and renders the table.
 4. GitHub Pages serves the built site.
 
@@ -47,7 +47,7 @@ Edit [`data/players.json`](data/players.json) and open a PR (or push directly if
 }
 ```
 
-- `tekken_id` — Polaris ID from the player's Tekken profile. Use `null` if unknown (will show with `manual` badge).
+- `tekken_id` — Polaris ID from the player's Tekken profile. Use `null` if unknown (will fall back to `peak_rank`).
 - `platform` — `Steam`, `Playstation`, or `Xbox`.
 - `peak_rank` — Fallback rank shown when no API data is available.
 
@@ -69,7 +69,7 @@ npm run update-ranks
 
 The free EWGF tier allows **100 requests/day**. The roster currently uses ~45 requests per update, leaving headroom for one manual run per day. If the roster grows past 100 players or needs multiple daily updates, the [$10/mo Pro tier](https://ewgf.gg/support) raises the cap to 1,000 requests/day.
 
-When the rate limit is hit mid-run, remaining players keep their last known peak rank with the `manual` badge.
+When the rate limit is hit mid-run, remaining players keep their last known peak rank.
 
 ## Project structure
 
@@ -79,6 +79,7 @@ When the rate limit is hit mid-run, remaining players keep their last known peak
   deploy.yml          Rebuilds the site on any code change
 data/
   players.json        Roster (edit this to add/remove players)
+  api-cache.json      Raw battle data from last API run (for offline analysis)
 public/data/
   ranks.json          Generated leaderboard data (committed by the workflow)
 scripts/
