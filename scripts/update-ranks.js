@@ -73,11 +73,10 @@ async function fetchPlayerRank(player) {
     return { rankData: null, rawBattles: [] }
   }
 
-  // Scan ALL returned battles and pick the highest rank seen.
+  // Scan ALL returned battles and track the best rank per character.
   // One API call returns the full page of battles; we scan in memory — no extra calls.
-  // character is taken from whichever battle achieved the best rank — if they later
-  // hit a higher rank on a different character, that character gets shown instead.
-  let best = null
+  const bestPerChar = new Map() // character -> best entry for that character
+
   for (const battle of battles) {
     const isP1 = battle.p1_tekken_id === player.tekken_id
     const entry = {
@@ -86,6 +85,22 @@ async function fetchPlayerRank(player) {
       current_character: isP1 ? battle.p1_char : battle.p2_char,
       last_updated: battle.battle_at,
     }
+    const char = entry.current_character
+    if (!char) continue
+    const existing = bestPerChar.get(char)
+    if (
+      !existing ||
+      rankSortValue(entry.rank_name) < rankSortValue(existing.rank_name) ||
+      (rankSortValue(entry.rank_name) === rankSortValue(existing.rank_name) &&
+        (entry.tekken_power ?? 0) > (existing.tekken_power ?? 0))
+    ) {
+      bestPerChar.set(char, entry)
+    }
+  }
+
+  // Find the single best entry overall (primary character)
+  let best = null
+  for (const entry of bestPerChar.values()) {
     if (
       !best ||
       rankSortValue(entry.rank_name) < rankSortValue(best.rank_name) ||
@@ -96,7 +111,33 @@ async function fetchPlayerRank(player) {
     }
   }
 
-  return { rankData: best, rawBattles: battles }
+  // Find secondary: best-ranked other character that is within 2 tiers of primary.
+  // Tier indices go 0 (highest) → N (lowest), so "within 2 tiers worse" = tier <= primaryTier + 2.
+  let secondary = null
+  if (best) {
+    const primaryTier = rankSortValue(best.rank_name)
+    for (const [char, entry] of bestPerChar.entries()) {
+      if (char === best.current_character) continue
+      const tier = rankSortValue(entry.rank_name)
+      // Must be within 2 tiers of primary AND at least God of Destruction (base, index 8)
+      const godBaseTier = rankSortValue('God of Destruction')
+      if (tier <= primaryTier + 2 && tier <= godBaseTier) {
+        if (
+          !secondary ||
+          tier < rankSortValue(secondary.rank_name) ||
+          (tier === rankSortValue(secondary.rank_name) &&
+            (entry.tekken_power ?? 0) > (secondary.tekken_power ?? 0))
+        ) {
+          secondary = entry
+        }
+      }
+    }
+  }
+
+  return {
+    rankData: best ? { ...best, secondary_character: secondary?.current_character ?? null } : null,
+    rawBattles: battles,
+  }
 }
 
 async function main() {

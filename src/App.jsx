@@ -270,6 +270,9 @@ export default function App() {
                 </td>
                 <td className="character">
                   {player.current_character ?? player.main_character ?? '—'}
+                  {player.secondary_character && (
+                    <span className="secondary-char"> / {player.secondary_character}</span>
+                  )}
                 </td>
                 <td className="platform-cell">
                   <PlatformBadge platform={player.platform} />

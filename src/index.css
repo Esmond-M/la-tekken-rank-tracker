@@ -230,6 +230,11 @@ tbody td {
   color: var(--accent);
 }
 
+.secondary-char {
+  color: var(--text-muted);
+  font-size: 0.85em;
+}
+
 .last-seen {
   font-size: 0.78rem;
   color: var(--text-muted);
