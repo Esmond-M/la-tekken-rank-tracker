@@ -147,8 +147,8 @@ export default function App() {
       return sortDir === 'asc' ? cmp : -cmp
     }
     if (sortKey === 'lastseen') {
-      const aT = a.last_seen ? new Date(a.last_seen).getTime() : 0
-      const bT = b.last_seen ? new Date(b.last_seen).getTime() : 0
+      const aT = new Date(a.last_seen ?? a.last_updated ?? 0).getTime()
+      const bT = new Date(b.last_seen ?? b.last_updated ?? 0).getTime()
       const cmp = aT - bT
       return sortDir === 'asc' ? cmp : -cmp
     }
