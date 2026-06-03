@@ -6,7 +6,7 @@
   { "tekken_id": "5fHfbDA2BAEQ", "player_tag": "Beware IIlusion", "platform": "Steam",       "main_character": "Law",         "peak_rank": "God of Destruction V"   },
   { "tekken_id": "5BiLay7M68ja", "player_tag": "Lyvesauce",       "platform": "Steam",       "main_character": "Shaheen",     "peak_rank": "God of Destruction IV"  },
   { "tekken_id": "34aDeFQimJgn", "player_tag": "TWKO",            "platform": "Playstation", "main_character": "Paul",        "peak_rank": "God of Destruction IV"  },
-  { "tekken_id": null,           "player_tag": "Tombstone",        "platform": "Steam",       "main_character": "Armor King",  "peak_rank": "God of Destruction IV"  },
+  { "tekken_id": "4BHtJmgQAGfM",  "player_tag": "Tombstone",        "platform": "Steam",       "main_character": "Armor King",  "peak_rank": "God of Destruction IV"  },
   { "tekken_id": "5j2gTqJrEbyr", "player_tag": "Sneak47",         "platform": "Steam",       "main_character": "Lars",        "peak_rank": "God of Destruction III" },
   { "tekken_id": "2mmdJn74QDFd", "player_tag": "Smoking_Hot_BBQ", "platform": "Steam",       "main_character": "Steve",       "peak_rank": "God of Destruction III" },
   { "tekken_id": "3Y4GdfdL9HB6", "player_tag": "NicoFasho",       "platform": "Steam",       "main_character": "Kazuya",      "peak_rank": "God of Destruction III" },
@@ -42,7 +42,7 @@
   { "tekken_id": "5yNji7nR6Yh4", "player_tag": "Doza",            "platform": "Steam",       "main_character": "Jin",         "peak_rank": "God of Destruction"     },
   { "tekken_id": "5nmeN2g8hRyE", "player_tag": "Lemon and Lime",  "platform": "Steam",       "main_character": "Jun",         "peak_rank": "God of Destruction"     },
   { "tekken_id": "5b9JdQ3m5YQr", "player_tag": "28Gramz",         "platform": "Steam",       "main_character": "Lili",        "peak_rank": "God of Destruction"     },
-  { "tekken_id": null,           "player_tag": "Isaac Washington", "platform": "Playstation", "main_character": "Victor",      "peak_rank": "God of Destruction"     },
+  { "tekken_id": "36Ejd6YQbeeM",  "player_tag": "Isaac Washington", "platform": "Playstation", "main_character": "Victor",      "peak_rank": "God of Destruction"     },
   { "tekken_id": "5RH84JBeJTrJ", "player_tag": "KayLay",          "platform": "Steam",       "main_character": "Lidia",       "peak_rank": "God of Destruction"     },
   { "tekken_id": "4LH7yjnhmi8a", "player_tag": "Juroh",           "platform": "Steam",       "main_character": "Miary Zo",    "peak_rank": "God of Destruction"     }
 ]
