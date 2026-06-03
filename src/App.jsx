@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import BraacketPage from './BraacketPage.jsx'
 
 const RANK_COLORS = {
   'God of Destruction VIII':  'var(--god-8)',
@@ -77,6 +78,7 @@ function SortIndicator({ active, dir }) {
 }
 
 export default function App() {
+  const [view, setView] = useState('ranked') // 'ranked' | 'braacket'
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -170,6 +172,24 @@ export default function App() {
         </div>
       </header>
 
+      <nav className="tab-nav">
+        <button
+          type="button"
+          className={`tab-btn${view === 'ranked' ? ' active' : ''}`}
+          onClick={() => setView('ranked')}
+        >
+          Online Ranks
+        </button>
+        <button
+          type="button"
+          className={`tab-btn${view === 'braacket' ? ' active' : ''}`}
+          onClick={() => setView('braacket')}
+        >
+          Tournament Rankings
+        </button>
+      </nav>
+
+      {view === 'braacket' ? <BraacketPage /> : (<>
       <div className="stats-bar">
         <div className="stat">
           <span className="stat-value">
@@ -302,6 +322,7 @@ export default function App() {
           Not affiliated with Bandai Namco
         </p>
       </footer>
+      </>)}
     </>
   )
 }
