@@ -117,16 +117,44 @@ async function fetchPlayerRank(player) {
     }
   }
 
-  // Find secondary: best-ranked other character that is within 2 tiers of primary.
-  // Tier indices go 0 (highest) → N (lowest), so "within 2 tiers worse" = tier <= primaryTier + 2.
+  // Lock the primary slot to the player's main_character from players.json.
+  // The API only refreshes tekken_power / rank for that character; the displayed
+  // character itself never gets overridden by whoever they've been grinding lately.
+  // If main_character appears in recent battles, use that entry. Otherwise fall back
+  // to a minimal entry built from players.json (peak_rank, no power, no timestamp).
+  let primary = null
+  if (player.main_character) {
+    const mainEntry = bestPerChar.get(player.main_character)
+    if (mainEntry) {
+      // Use the higher of peak_rank (from players.json) and what the API found.
+      const apiTier = rankSortValue(mainEntry.rank_name)
+      const peakTier = rankSortValue(player.peak_rank)
+      primary = {
+        ...mainEntry,
+        rank_name: peakTier < apiTier ? player.peak_rank : mainEntry.rank_name,
+      }
+    } else {
+      primary = {
+        rank_name: player.peak_rank,
+        tekken_power: null,
+        current_character: player.main_character,
+        last_updated: null,
+      }
+    }
+  } else {
+    // No main_character set — fall back to the old "highest-ranked character" pick.
+    primary = best
+  }
+
+  // Find secondary: best-ranked OTHER character (not the primary) that is within
+  // 2 tiers of primary AND at least God of Destruction (base, index 8).
   let secondary = null
-  if (best) {
-    const primaryTier = rankSortValue(best.rank_name)
+  if (primary) {
+    const primaryTier = rankSortValue(primary.rank_name)
+    const godBaseTier = rankSortValue('God of Destruction')
     for (const [char, entry] of bestPerChar.entries()) {
-      if (char === best.current_character) continue
+      if (char === primary.current_character) continue
       const tier = rankSortValue(entry.rank_name)
-      // Must be within 2 tiers of primary AND at least God of Destruction (base, index 8)
-      const godBaseTier = rankSortValue('God of Destruction')
       if (tier <= primaryTier + 2 && tier <= godBaseTier) {
         if (
           !secondary ||
@@ -141,7 +169,7 @@ async function fetchPlayerRank(player) {
   }
 
   return {
-    rankData: best ? { ...best, secondary_character: secondary?.current_character ?? null, last_seen: mostRecentBattleAt } : null,
+    rankData: primary ? { ...primary, secondary_character: secondary?.current_character ?? null, last_seen: mostRecentBattleAt } : null,
     rawBattles: battles,
   }
 }
