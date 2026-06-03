@@ -5,6 +5,17 @@ function formatPoints(pts) {
   return pts.toLocaleString()
 }
 
+/**
+ * If we don't have an explicit braacket_url (i.e. UUID), fall back to the
+ * league search URL. Less direct than a profile link, but works for every
+ * player without needing to scrape UUIDs.
+ */
+function profileUrlFor(player, league) {
+  if (player.braacket_url) return player.braacket_url
+  if (!league) return null
+  return `https://braacket.com/league/${league}/player?name=${encodeURIComponent(player.player_tag)}`
+}
+
 export default function BraacketPage() {
   const [data, setData]       = useState(null)
   const [loading, setLoading] = useState(true)
@@ -25,6 +36,17 @@ export default function BraacketPage() {
   if (error)   return <div className="state-message">Error: {error}</div>
 
   const allPlayers = data.players ?? []
+
+  // Compute the point gap to the next-higher-ranked player (rank N-1).
+  // Always computed against the FULL list so the gap reflects true ladder
+  // position, not whatever the search filter is currently showing.
+  const sortedByRank = [...allPlayers].sort((a, b) => a.rank - b.rank)
+  const gapByTag = {}
+  sortedByRank.forEach((p, i) => {
+    if (i === 0) { gapByTag[p.player_tag] = null; return }
+    const above = sortedByRank[i - 1]
+    gapByTag[p.player_tag] = p.points - above.points // negative number
+  })
 
   const players = search.trim()
     ? allPlayers.filter(p =>
@@ -98,39 +120,50 @@ export default function BraacketPage() {
               <th>Player</th>
               <th>Character</th>
               <th>Points</th>
+              <th>Gap</th>
             </tr>
           </thead>
           <tbody>
             {players.length === 0 && (
               <tr>
-                <td colSpan={4} className="no-results">No players match your search.</td>
+                <td colSpan={5} className="no-results">No players match your search.</td>
               </tr>
             )}
-            {players.map(player => (
-              <tr key={player.player_tag}>
-                <td className={`rank-position ${player.rank <= 3 ? 'top-3' : ''}`}>
-                  {player.rank}
-                </td>
-                <td className="player-tag">
-                  {player.braacket_url ? (
-                    <a
-                      href={player.braacket_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="player-link"
-                    >
-                      {player.player_tag}
-                    </a>
-                  ) : (
-                    player.player_tag
-                  )}
-                </td>                <td className="character">
-                  {player.character ?? <span style={{ color: 'var(--text-muted)' }}>—</span>}
-                </td>                <td className="braacket-points">
-                  {formatPoints(player.points)}
-                </td>
-              </tr>
-            ))}
+            {players.map(player => {
+              const url = profileUrlFor(player, data.league)
+              const gap = gapByTag[player.player_tag]
+              return (
+                <tr key={player.player_tag}>
+                  <td className={`rank-position ${player.rank <= 3 ? 'top-3' : ''}`}>
+                    {player.rank}
+                  </td>
+                  <td className="player-tag">
+                    {url ? (
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="player-link"
+                        title={player.braacket_url ? 'View profile on braacket.com' : 'Search this player on braacket.com'}
+                      >
+                        {player.player_tag}
+                      </a>
+                    ) : (
+                      player.player_tag
+                    )}
+                  </td>
+                  <td className="character">
+                    {player.character ?? <span style={{ color: 'var(--text-muted)' }}>—</span>}
+                  </td>
+                  <td className="braacket-points">
+                    {formatPoints(player.points)}
+                  </td>
+                  <td className="point-gap">
+                    {gap == null ? <span className="point-gap--leader">—</span> : gap}
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>
