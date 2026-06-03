@@ -69,8 +69,9 @@ function parseRankings(html) {
     const rankNum = parseInt(stripTags(cellsHtml[0]), 10)
     if (isNaN(rankNum) || rankNum < 1) continue
 
-    // Cell [2]: player name — prefer the anchor tag text for cleanliness
-    const nameLinkMatch = cellsHtml[2]?.match(/<a[^>]+href="([^"]*\/player\/[^"]*)"[^>]*>([\s\S]*?)<\/a>/)
+    // Cell [2]: player name — prefer the anchor tag text for cleanliness.
+    // Braacket uses single-quoted href attributes, so allow either.
+    const nameLinkMatch = cellsHtml[2]?.match(/<a[^>]+href=["']([^"']*\/player\/[^"']*)["'][^>]*>([\s\S]*?)<\/a>/)
     const playerTag  = nameLinkMatch ? stripTags(nameLinkMatch[2]) : stripTags(cellsHtml[2] ?? '')
     const profilePath = nameLinkMatch ? nameLinkMatch[1] : null
 
