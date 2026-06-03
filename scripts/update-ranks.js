@@ -134,9 +134,15 @@ async function fetchPlayerRank(player) {
         rank_name: peakTier < apiTier ? player.peak_rank : mainEntry.rank_name,
       }
     } else {
+      // main_character not in recent battles — use peak_rank but borrow the best
+      // tekken_power from any character (power is account-wide, not character-specific).
+      let bestPower = null
+      for (const entry of bestPerChar.values()) {
+        if ((entry.tekken_power ?? 0) > (bestPower ?? 0)) bestPower = entry.tekken_power
+      }
       primary = {
         rank_name: player.peak_rank,
-        tekken_power: null,
+        tekken_power: bestPower,
         current_character: player.main_character,
         last_updated: null,
       }
@@ -228,9 +234,13 @@ function buildRankDataFromBattles(player, battles) {
         rank_name: peakTier < apiTier ? player.peak_rank : mainEntry.rank_name,
       }
     } else {
+      let bestPower = null
+      for (const entry of bestPerChar.values()) {
+        if ((entry.tekken_power ?? 0) > (bestPower ?? 0)) bestPower = entry.tekken_power
+      }
       primary = {
         rank_name: player.peak_rank,
-        tekken_power: null,
+        tekken_power: bestPower,
         current_character: player.main_character,
         last_updated: null,
       }
