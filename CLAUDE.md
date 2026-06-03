@@ -24,9 +24,18 @@
 - `src/App.jsx` fetches `ranks.json` at runtime.
 
 ## Rank Logic
-- For each player, `fetchPlayerRank` calls the API **once** and scans the entire returned page of battles, picking the battle where rank is highest (ties broken by `tekken_power` desc).
-- `current_character` is taken from that best-rank battle — so if a player's highest rank is on Dragunov, Dragunov shows even if their last match was on Yoshimitsu.
-- Falls back to `main_character` from `players.json` if API didn't return.
+- For each player, `fetchPlayerRank` calls the API **once** and scans the entire returned page of battles, tracking the best rank per character.
+- **Primary slot is LOCKED to `main_character` from `players.json`.** The displayed character never drifts based on who they've been grinding lately. Rank shown for the primary = max(`peak_rank` from players.json, API-found rank on that character).
+  - If `main_character` doesn't appear in recent battles, fall back to a minimal entry from players.json (peak_rank, null power/timestamp).
+  - If `main_character` is missing in players.json (shouldn't happen), fall back to the old "highest-ranked character" pick.
+- **Secondary character** = best-ranked OTHER character within 2 tiers of primary AND at least God of Destruction base. Excluded if same as primary.
+- `last_seen` = most recent `battle_at` across all returned battles (true "last played"). `last_updated` = timestamp of the best-rank battle for the displayed character.
+- Falls back to peak_rank from `players.json` if API didn't return battles or player has no Tekken ID.
+
+## Reprocessing Without API Calls (`--from-cache`)
+- `node scripts/update-ranks.js --from-cache` reprocesses `data/api-cache.json` through the current rank logic and rewrites `public/data/ranks.json`. **Zero API calls used.**
+- Use this when changing rank-picking logic and you want to test the result without waiting for the next daily run (and without burning the 100/day quota).
+- Only works if `data/api-cache.json` exists locally (it does — committed to repo each run).
 
 ## Rank Tier Order (highest → lowest)
 God of Destruction VIII → VII → VI → V → IV → III → II → I → God of Destruction (base) → Tekken God Supreme → Tekken God → Tekken King → Tekken Emperor → Bushin → Kishin → Raijin → Fujin
