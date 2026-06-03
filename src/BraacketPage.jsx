@@ -16,19 +16,85 @@ function profileUrlFor(player, league) {
   return `https://braacket.com/league/${league}/player?name=${encodeURIComponent(player.player_tag)}`
 }
 
+/**
+ * Normalize a player tag for fuzzy matching across the two data sources.
+ * Lowercases, strips ALL non-alphanumeric characters. So:
+ *   "DJSymphix" === "DJ Symphix" === "dj_symphix"
+ *   "UDG_Tye"   === "UDG_TYE"
+ */
+function normalizeTag(s) {
+  return s.toLowerCase().replace(/[^a-z0-9]/g, '')
+}
+
+/**
+ * Many braacket tags include a team prefix separated by "|", e.g.
+ *   "LND| | NK30"  -> last segment is "NK30"
+ *   "Dojo337 | Drago" -> last segment is "Drago"
+ * Returns an array of normalized candidates to try matching against the
+ * roster (in order of preference): full string, then each |-segment.
+ */
+function matchCandidates(tag) {
+  const out = [normalizeTag(tag)]
+  if (tag.includes('|')) {
+    for (const part of tag.split('|')) {
+      const n = normalizeTag(part)
+      if (n && !out.includes(n)) out.push(n)
+    }
+  }
+  return out
+}
+
+/**
+ * Build a lookup table from normalized roster tag -> tekken_id.
+ */
+function buildRosterIndex(rosterPlayers) {
+  const idx = {}
+  for (const p of rosterPlayers) {
+    if (!p.tekken_id) continue
+    const key = normalizeTag(p.player_tag)
+    if (!idx[key]) idx[key] = { tekken_id: p.tekken_id, player_tag: p.player_tag }
+  }
+  return idx
+}
+
+function findEwgfMatch(braacketTag, rosterIndex) {
+  // One-off manual aliases for tags that differ too much to fuzzy-match.
+  // braacket name (lowercased/stripped) -> ewgf roster name (as-is)
+  const MANUAL_ALIASES = {
+    drago: 'Dragosiege',
+  }
+  const aliased = MANUAL_ALIASES[normalizeTag(braacketTag.split('|').pop() || braacketTag)]
+  if (aliased && rosterIndex[normalizeTag(aliased)]) {
+    return rosterIndex[normalizeTag(aliased)]
+  }
+  for (const cand of matchCandidates(braacketTag)) {
+    if (rosterIndex[cand]) return rosterIndex[cand]
+  }
+  return null
+}
+
 export default function BraacketPage() {
   const [data, setData]       = useState(null)
+  const [roster, setRoster]   = useState([]) // ranks.json players (for EWGF cross-linking)
   const [loading, setLoading] = useState(true)
   const [error, setError]     = useState(null)
   const [search, setSearch]   = useState('')
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}data/braacket-rankings.json`)
-      .then(r => {
+    const base = import.meta.env.BASE_URL
+    Promise.all([
+      fetch(`${base}data/braacket-rankings.json`).then(r => {
         if (!r.ok) throw new Error(`Failed to load braacket data (${r.status})`)
         return r.json()
+      }),
+      // ranks.json failure shouldn't block the tab — just means no EWGF links.
+      fetch(`${base}data/ranks.json`).then(r => r.ok ? r.json() : { players: [] }).catch(() => ({ players: [] })),
+    ])
+      .then(([braacket, ranks]) => {
+        setData(braacket)
+        setRoster(ranks.players ?? [])
+        setLoading(false)
       })
-      .then(d => { setData(d); setLoading(false) })
       .catch(e => { setError(e.message); setLoading(false) })
   }, [])
 
@@ -36,6 +102,7 @@ export default function BraacketPage() {
   if (error)   return <div className="state-message">Error: {error}</div>
 
   const allPlayers = data.players ?? []
+  const rosterIndex = buildRosterIndex(roster)
 
   // Compute the point gap to the next-higher-ranked player (rank N-1).
   // Always computed against the FULL list so the gap reflects true ladder
@@ -96,6 +163,14 @@ export default function BraacketPage() {
           <span className="stat-value">Glicko</span>
           Rating system
         </div>
+        {roster.length > 0 && (
+          <div className="stat">
+            <span className="stat-value">
+              {allPlayers.filter(p => findEwgfMatch(p.player_tag, rosterIndex)).length}
+            </span>
+            On EWGF tracker
+          </div>
+        )}
       </div>
 
       <div className="filters">
@@ -121,17 +196,19 @@ export default function BraacketPage() {
               <th>Character</th>
               <th>Points</th>
               <th>Gap</th>
+              <th>EWGF</th>
             </tr>
           </thead>
           <tbody>
             {players.length === 0 && (
               <tr>
-                <td colSpan={5} className="no-results">No players match your search.</td>
+                <td colSpan={6} className="no-results">No players match your search.</td>
               </tr>
             )}
             {players.map(player => {
               const url = profileUrlFor(player, data.league)
               const gap = gapByTag[player.player_tag]
+              const ewgf = findEwgfMatch(player.player_tag, rosterIndex)
               return (
                 <tr key={player.player_tag}>
                   <td className={`rank-position ${player.rank <= 3 ? 'top-3' : ''}`}>
@@ -160,6 +237,21 @@ export default function BraacketPage() {
                   </td>
                   <td className="point-gap">
                     {gap == null ? <span className="point-gap--leader">—</span> : gap}
+                  </td>
+                  <td className="ewgf-cell">
+                    {ewgf ? (
+                      <a
+                        href={`https://ewgf.gg/player/${ewgf.tekken_id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ewgf-link"
+                        title={`View ${ewgf.player_tag} on ewgf.gg`}
+                      >
+                        ↗ ewgf.gg
+                      </a>
+                    ) : (
+                      <span className="ewgf-missing">—</span>
+                    )}
                   </td>
                 </tr>
               )

@@ -489,3 +489,39 @@ tbody td {
   font-weight: 600;
   color: var(--accent);
 }
+
+/* Point gap to the player above */
+.point-gap {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.point-gap--leader {
+  color: var(--accent);
+}
+
+/* EWGF cross-link column */
+.ewgf-cell {
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.ewgf-link {
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid transparent;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.ewgf-link:hover {
+  border-color: var(--accent);
+  background: rgba(200, 168, 75, 0.08);
+}
+
+.ewgf-missing {
+  color: var(--text-muted);
+  opacity: 0.4;
+}
