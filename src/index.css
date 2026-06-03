@@ -467,6 +467,20 @@ tbody td {
   color: var(--text-muted);
 }
 
+.braacket-last-tournament {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.braacket-tournament-name {
+  color: var(--text);
+}
+
+.braacket-tournament-date {
+  color: var(--text-muted);
+}
+
 .braacket-source {
   color: var(--text-muted);
   font-size: 0.8rem;

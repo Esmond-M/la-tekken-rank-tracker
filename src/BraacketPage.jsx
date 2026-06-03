@@ -136,6 +136,19 @@ export default function BraacketPage() {
           {data.ranking_period && (
             <span className="braacket-period"> · {data.ranking_period}</span>
           )}
+          {data.last_tournament && (
+            <div className="braacket-last-tournament">
+              Last updated after:{' '}
+              <span className="braacket-tournament-name">{data.last_tournament.name}</span>
+              {data.last_tournament.date && (
+                <span className="braacket-tournament-date">
+                  {' '}({new Date(data.last_tournament.date + 'T00:00:00').toLocaleDateString('en-US', {
+                    month: 'short', day: 'numeric', year: 'numeric',
+                  })})
+                </span>
+              )}
+            </div>
+          )}
         </div>
         <div className="braacket-source">
           Source:{' '}

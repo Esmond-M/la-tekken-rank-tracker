@@ -5,6 +5,10 @@
   "ranking_id": "7D81E3FE-6B24-4332-B660-9E5FB9F9F421",
   "ranking_period": "17 March 2026 – 16 March 2027",
   "updated_at": "2026-06-03T21:20:19.000Z",
+  "last_tournament": {
+    "name": "Monthly Godlike Prometheus",
+    "date": "2026-05-31"
+  },
   "players": [
     {
       "rank": 1,
