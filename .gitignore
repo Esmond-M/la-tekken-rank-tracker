@@ -3,3 +3,4 @@ dist/
 .env
 .env.local
 .rate-limit-log.json
+data/run-log.json

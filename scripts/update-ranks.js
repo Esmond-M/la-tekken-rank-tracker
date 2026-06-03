@@ -166,6 +166,7 @@ async function main() {
   let failed = 0
   let skipped = 0
   let rateLimitHit = false
+  const log = { skipped_no_id: [], skipped_rate_limit: [], failed: [], successful: [] }
 
   console.log(`Fetching ranks for ${players.length} players...`)
 
@@ -183,6 +184,7 @@ async function main() {
         source: 'manual',
       })
       console.log(`  [skip] ${player.player_tag} — no Tekken ID`)
+      log.skipped_no_id.push(player.player_tag)
       skipped++
       continue
     }
@@ -199,6 +201,7 @@ async function main() {
         last_updated: null,
         source: 'manual',
       })
+      log.skipped_rate_limit.push(player.player_tag)
       skipped++
       continue
     }
@@ -230,6 +233,7 @@ async function main() {
           source: 'api',
         })
         console.log(`  [ok] ${player.player_tag} — ${rankData.rank_name} (${rankData.tekken_power?.toLocaleString()})`)
+        log.successful.push(player.player_tag)
         successful++
       } else {
         results.push({
@@ -243,6 +247,8 @@ async function main() {
           last_updated: null,
           source: 'manual',
         })
+        console.warn(`  [no data] ${player.player_tag} — API returned no battles`)
+        log.failed.push({ player: player.player_tag, reason: 'no_battles' })
         failed++
       }
 
@@ -264,6 +270,7 @@ async function main() {
           last_updated: null,
           source: 'manual',
         })
+        log.skipped_rate_limit.push(player.player_tag)
         skipped++
       } else {
         console.error(`  [error] ${player.player_tag}: ${err.message}`)
@@ -278,6 +285,7 @@ async function main() {
           last_updated: null,
           source: 'manual',
         })
+        log.failed.push({ player: player.player_tag, reason: err.message })
         failed++
       }
     }
@@ -331,14 +339,35 @@ async function main() {
   logEntries = logEntries.slice(-30)
   writeFileSync(logPath, JSON.stringify(logEntries, null, 2))
 
-  console.log(`\nDone. Updated: ${successful}, Failed: ${failed}, Skipped: ${skipped}`)
-  console.log(`API calls this run: ${apiCallsThisRun}`)
+  // Write run log (gitignored) — keeps last 10 runs with per-player detail
+  const runLogPath = join(ROOT, 'data/run-log.json')
+  let runLogEntries = []
+  try { runLogEntries = JSON.parse(readFileSync(runLogPath, 'utf8')) } catch { /* first run */ }
+  runLogEntries.push({
+    ran_at: new Date().toISOString(),
+    api_calls: apiCallsThisRun,
+    successful: log.successful,
+    failed: log.failed,
+    skipped_no_id: log.skipped_no_id,
+    skipped_rate_limit: log.skipped_rate_limit,
+  })
+  runLogEntries = runLogEntries.slice(-10)
+  writeFileSync(runLogPath, JSON.stringify(runLogEntries, null, 2))
+
+  console.log(`\n${'─'.repeat(50)}`)
+  console.log(`Run complete — ${new Date().toISOString()}`)
+  console.log(`  ✓ Updated:  ${successful} players`)
+  if (failed > 0)     console.log(`  ✗ Failed:   ${failed} — ${log.failed.map(f => `${f.player} (${f.reason})`).join(', ')}`)
+  if (log.skipped_no_id.length)      console.log(`  - No ID:    ${log.skipped_no_id.join(', ')}`)
+  if (log.skipped_rate_limit.length) console.log(`  - RateSkip: ${log.skipped_rate_limit.join(', ')}`)
+  console.log(`  API calls: ${apiCallsThisRun}`)
   if (lastRateLimitMeta) {
-    console.log(`Rate limit remaining: ${lastRateLimitMeta.rate_limit_remaining} (resets ${lastRateLimitMeta.rate_limit_reset})`)
+    console.log(`  Remaining: ${lastRateLimitMeta.rate_limit_remaining} calls (resets ${lastRateLimitMeta.rate_limit_reset})`)
   }
   if (rateLimitHit) {
-    console.warn('Rate limit was hit — some players used manual data. Consider Pro tier if this is frequent.')
+    console.warn('  ⚠ Rate limit was hit — some players used manual data.')
   }
+  console.log('─'.repeat(50))
 }
 
 main().catch(err => {
