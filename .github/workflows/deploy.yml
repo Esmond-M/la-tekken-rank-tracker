@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths-ignore:
       - 'public/data/ranks.json'
+      - 'data/api-cache.json'
 
 permissions:
   contents: read
