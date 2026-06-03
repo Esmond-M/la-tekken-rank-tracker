@@ -495,6 +495,129 @@ tbody td {
   border-bottom-color: var(--accent);
 }
 
+/* ---------- Player Card modal ---------- */
+.player-link--button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+  border-bottom: 1px dotted transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+.player-link--button:hover {
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+}
+
+.player-card-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fade-in 0.15s ease;
+}
+@keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
+
+.player-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  max-width: 720px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 1.75rem;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+}
+
+.player-card-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+.player-card-close:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.player-card-title {
+  margin: 0 0 1.25rem;
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.player-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+@media (max-width: 640px) {
+  .player-card-grid { grid-template-columns: 1fr; }
+  .player-card { padding: 1.25rem; }
+}
+
+.player-card-section {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+}
+.player-card-section header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.player-card-section h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+.player-card-source {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.player-card-section dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.4rem 0.85rem;
+  font-size: 0.9rem;
+}
+.player-card-section dl > div {
+  display: contents;
+}
+.player-card-section dt {
+  color: var(--text-muted);
+  font-weight: normal;
+}
+.player-card-section dd {
+  margin: 0;
+  color: var(--text);
+}
+.player-card-empty {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+  font-style: italic;
+}
+
 /* Braacket page meta row */
 .braacket-meta {
   display: flex;

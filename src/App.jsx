@@ -1,5 +1,45 @@
 import { useState, useEffect } from 'react'
 import BraacketPage from './BraacketPage.jsx'
+import PlayerCard from './PlayerCard.jsx'
+
+// Shared tag normalizer (matches BraacketPage's logic): lowercase, strip
+// everything that isn't a-z0-9. Used to cross-link an EWGF player to a
+// braacket entry when the user clicks a player name.
+function normalizeTag(s) {
+  return (s ?? '').toLowerCase().replace(/[^a-z0-9]/g, '')
+}
+
+// Manual aliases for tags that don't fuzzy-match across the two sources.
+// Keep in sync with BraacketPage.jsx.
+const MANUAL_ALIASES = {
+  drago: 'Dragosiege',
+}
+
+function findBraacketMatch(ewgfTag, braacketPlayers) {
+  if (!braacketPlayers || braacketPlayers.length === 0) return null
+  const target = normalizeTag(ewgfTag)
+  for (const b of braacketPlayers) {
+    if (normalizeTag(b.player_tag) === target) return b
+    // Match against |-segments of the braacket tag too ("Dojo337 | Drago").
+    if (b.player_tag.includes('|')) {
+      for (const part of b.player_tag.split('|')) {
+        if (normalizeTag(part) === target) return b
+      }
+    }
+  }
+  // Reverse-alias: ewgf "Dragosiege" -> braacket "Drago"
+  for (const [aliasKey, ewgfName] of Object.entries(MANUAL_ALIASES)) {
+    if (normalizeTag(ewgfName) === target) {
+      const match = braacketPlayers.find(b => {
+        const last = b.player_tag.split('|').pop() || b.player_tag
+        return normalizeTag(last) === aliasKey
+      })
+      if (match) return match
+    }
+  }
+  return null
+}
+
 
 const RANK_COLORS = {
   'God of Destruction VIII':  'var(--god-8)',
@@ -113,6 +153,29 @@ export default function App() {
   const [sortDir, setSortDir] = useState('asc')
   const [search, setSearch] = useState('')
   const [characterFilter, setCharacterFilter] = useState('all')
+  // Tournament data — fetched once at the App level so both tabs and the
+  // shared PlayerCard modal can use it without re-fetching.
+  const [braacketPlayers, setBraacketPlayers] = useState([])
+  // Currently-open player card: { tag, ewgf, braacket } or null.
+  const [selectedPlayer, setSelectedPlayer] = useState(null)
+
+  function openPlayerByEwgf(ewgfPlayer) {
+    setSelectedPlayer({
+      tag: ewgfPlayer.player_tag,
+      ewgf: ewgfPlayer,
+      braacket: findBraacketMatch(ewgfPlayer.player_tag, braacketPlayers),
+    })
+  }
+
+  function openPlayerByBraacket(braacketPlayer, ewgfRosterPlayer) {
+    // ewgfRosterPlayer is the matched ranks.json entry (from BraacketPage's
+    // own roster lookup). May be null if the player isn't on EWGF.
+    setSelectedPlayer({
+      tag: braacketPlayer.player_tag,
+      ewgf: ewgfRosterPlayer ?? null,
+      braacket: braacketPlayer,
+    })
+  }
 
   function handleSort(key) {
     if (sortKey === key) {
@@ -131,6 +194,15 @@ export default function App() {
       })
       .then(d => { setData(d); setLoading(false) })
       .catch(e => { setError(e.message); setLoading(false) })
+  }, [])
+
+  // Load tournament data once. Failure is non-fatal — the Online Ranks tab
+  // still works, and player cards just won't have a tournament side.
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}data/braacket-rankings.json`)
+      .then(r => r.ok ? r.json() : null)
+      .then(d => { if (d?.players) setBraacketPlayers(d.players) })
+      .catch(() => { /* ignore */ })
   }, [])
 
   if (loading) {
@@ -216,7 +288,7 @@ export default function App() {
         </button>
       </nav>
 
-      {view === 'braacket' ? <BraacketPage /> : (<>
+      {view === 'braacket' ? <BraacketPage onOpenPlayer={openPlayerByBraacket} /> : (<>
       <div className="stats-bar">
         <div className="stat">
           <span className="stat-value">
@@ -300,18 +372,13 @@ export default function App() {
                   {index + 1}
                 </td>
                 <td className="player-tag">
-                  {player.tekken_id ? (
-                    <a
-                      href={`https://ewgf.gg/player/${player.tekken_id}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="player-link"
-                    >
-                      {player.player_tag}
-                    </a>
-                  ) : (
-                    player.player_tag
-                  )}
+                  <button
+                    type="button"
+                    className="player-link player-link--button"
+                    onClick={() => openPlayerByEwgf(player)}
+                  >
+                    {player.player_tag}
+                  </button>
                 </td>
                 <td
                   className="rank-name"
@@ -350,6 +417,15 @@ export default function App() {
         </p>
       </footer>
       </>)}
+
+      {selectedPlayer && (
+        <PlayerCard
+          tag={selectedPlayer.tag}
+          ewgf={selectedPlayer.ewgf}
+          braacket={selectedPlayer.braacket}
+          onClose={() => setSelectedPlayer(null)}
+        />
+      )}
     </>
   )
 }

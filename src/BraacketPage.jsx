@@ -78,7 +78,7 @@ function findEwgfMatch(braacketTag, rosterIndex) {
   return null
 }
 
-export default function BraacketPage() {
+export default function BraacketPage({ onOpenPlayer }) {
   const [data, setData]       = useState(null)
   const [roster, setRoster]   = useState([]) // ranks.json players (for EWGF cross-linking)
   const [loading, setLoading] = useState(true)
@@ -258,13 +258,26 @@ export default function BraacketPage() {
               const url = profileUrlFor(player, data.league)
               const gap = gapByTag[player.player_tag]
               const ewgf = findEwgfMatch(player.player_tag, rosterIndex)
+              // Look up the full ewgf roster entry (not just the tekken_id
+              // index) so the modal gets rank/power/etc.
+              const ewgfFull = ewgf
+                ? roster.find(r => r.tekken_id === ewgf.tekken_id) ?? null
+                : null
               return (
                 <tr key={player.player_tag}>
                   <td className={`rank-position ${player.rank <= 3 ? 'top-3' : ''}`}>
                     {player.rank}
                   </td>
                   <td className="player-tag">
-                    {url ? (
+                    {onOpenPlayer ? (
+                      <button
+                        type="button"
+                        className="player-link player-link--button"
+                        onClick={() => onOpenPlayer(player, ewgfFull)}
+                      >
+                        {player.player_tag}
+                      </button>
+                    ) : url ? (
                       <a
                         href={url}
                         target="_blank"
