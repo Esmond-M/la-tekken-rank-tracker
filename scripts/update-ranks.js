@@ -105,7 +105,14 @@ async function main() {
     process.exit(1)
   }
 
-  const players = JSON.parse(readFileSync(join(ROOT, 'data/players.json'), 'utf8'))
+  let players
+  try {
+    players = JSON.parse(readFileSync(join(ROOT, 'data/players.json'), 'utf8'))
+  } catch (err) {
+    console.error('Failed to load data/players.json:', err.message)
+    console.error('Make sure the file exists and contains valid JSON.')
+    process.exit(1)
+  }
   const results = []
   const apiCache = []   // raw battle data saved for offline reuse
   let successful = 0
