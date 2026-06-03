@@ -4,6 +4,7 @@
 - The EWGF API (`api.ewgf.gg`) requires `EWGF_API_KEY` (stored as a GitHub Actions secret).
 - **Do NOT trigger or simulate API calls locally** without confirming with the user first.
 - **Rate limit: 100 calls per day** on the free tier. The roster is ~46 players = 46 calls per run. That means roughly **2 runs per day max**.
+- **Rate limit resets at midnight UTC** (7 PM Central / 6 PM Central during DST). So if you burn the limit, it's available again the next UTC day.
 - The scheduled run fires daily at 8 AM UTC (3 AM Central). Manual runs via the Actions tab count against the same daily limit.
 - The update script is `scripts/update-ranks.js` and runs via GitHub Actions only (`update-ranks.yml`). Never run it locally unless the user explicitly asks.
 
