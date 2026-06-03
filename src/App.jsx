@@ -170,6 +170,17 @@ export default function App() {
         </div>
       </header>
 
+      <div className="stats-bar">
+        <div className="stat">
+          <span className="stat-value">
+            {filtered.length < allPlayers.length
+              ? `${filtered.length} of ${allPlayers.length}`
+              : allPlayers.length}
+          </span>
+          Players tracked
+        </div>
+      </div>
+
       <div className="filters">
         <input
           type="text"
