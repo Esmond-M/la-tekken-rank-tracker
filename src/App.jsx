@@ -408,13 +408,13 @@ export default function App() {
       </div>
 
       <footer className="footer">
-        <p>
-          Data sourced from <a href="https://ewgf.gg" target="_blank" rel="noopener noreferrer">ewgf.gg</a>
-          {' · '}
-          <a href="https://github.com/Esmond-M/la-tekken-rank-tracker" target="_blank" rel="noopener noreferrer">GitHub</a>
-          {' · '}
-          Not affiliated with Bandai Namco
-        </p>
+        <div className="footer-social">
+          <a href="http://twitch.tv/LAFGCTV" target="_blank" rel="noopener noreferrer">Twitch</a>
+          <a href="https://www.youtube.com/channel/UCf9AM0hj8NhyBEYTOYWoWsg/featured" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="https://twitter.com/LAFGCTV" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href="https://discord.gg/mkn9WJaGhu" target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="https://www.facebook.com/groups/LouisianaFGC/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </div>
       </footer>
       </>)}
 

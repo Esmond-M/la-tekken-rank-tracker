@@ -463,6 +463,25 @@ tbody td {
   color: var(--text);
 }
 
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.footer-social a {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+
+.footer-social a:hover {
+  color: var(--text);
+}
+
 /* Tab navigation */
 .tab-nav {
   display: flex;
