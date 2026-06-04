@@ -91,6 +91,15 @@ export default function PlayerCard({ tag, ewgf, braacket, onClose }) {
                     >
                       View on ewgf.gg ↗
                     </a>
+                    {' '}
+                    <a
+                      href={`https://wank.wavu.wiki/player/${ewgf.tekken_id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="player-link"
+                    >
+                      View on wavu wank ↗
+                    </a>
                   </dd></div>
                 )}
               </dl>
