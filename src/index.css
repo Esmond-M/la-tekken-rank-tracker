@@ -75,6 +75,12 @@ html, body {
   text-decoration: underline;
 }
 
+.header-social {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 /* Stats bar */
 .stats-bar {
   display: flex;
@@ -480,6 +486,33 @@ tbody td {
 
 .footer-social a:hover {
   color: var(--text);
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 15%, var(--surface));
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 30%, transparent);
+  transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
+  z-index: 50;
+}
+
+.scroll-to-top:hover {
+  background: color-mix(in srgb, var(--accent) 28%, var(--surface));
+  box-shadow: 0 0 22px color-mix(in srgb, var(--accent) 55%, transparent);
+  transform: translateY(-2px);
 }
 
 /* Tab navigation */

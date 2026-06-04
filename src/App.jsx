@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import BraacketPage from './BraacketPage.jsx'
 import PlayerCard from './PlayerCard.jsx'
 
@@ -123,6 +123,25 @@ function viewFromUrl() {
   if (typeof window === 'undefined') return 'ranked'
   const tab = new URLSearchParams(window.location.search).get('tab')
   return tab === 'tournament' ? 'braacket' : 'ranked'
+}
+
+function ScrollToTop() {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 400)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const scrollUp = useCallback(() => window.scrollTo({ top: 0, behavior: 'smooth' }), [])
+
+  if (!visible) return null
+  return (
+    <button type="button" className="scroll-to-top" onClick={scrollUp} aria-label="Back to top">
+      ↑
+    </button>
+  )
 }
 
 export default function App() {
@@ -268,6 +287,13 @@ export default function App() {
         <h1>Louisiana <span>Tekken 8</span> Rank Tracker</h1>
         <div className="header-meta">
           <span>Updated {lastUpdated}</span>
+          <span className="header-social">
+            <a href="http://twitch.tv/LAFGCTV" target="_blank" rel="noopener noreferrer">Twitch</a>
+            <a href="https://www.youtube.com/channel/UCf9AM0hj8NhyBEYTOYWoWsg/featured" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a href="https://twitter.com/LAFGCTV" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://discord.gg/mkn9WJaGhu" target="_blank" rel="noopener noreferrer">Discord</a>
+            <a href="https://www.facebook.com/groups/LouisianaFGC/" target="_blank" rel="noopener noreferrer">Facebook</a>
+          </span>
         </div>
       </header>
 
@@ -426,6 +452,8 @@ export default function App() {
           onClose={() => setSelectedPlayer(null)}
         />
       )}
+
+      <ScrollToTop />
     </>
   )
 }
