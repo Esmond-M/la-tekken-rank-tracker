@@ -488,7 +488,13 @@ async function main() {
 
   const output = {
     updated_at: new Date().toISOString(),
-    stats: { successful, failed, skipped },
+    stats: {
+      successful,
+      failed,
+      skipped,
+      rate_limit_hit: rateLimitHit,
+      skipped_rate_limit_count: log.skipped_rate_limit.length,
+    },
     players: results,
   }
 
@@ -541,6 +547,21 @@ async function main() {
   })
   runLogEntries = runLogEntries.slice(-10)
   writeFileSync(runLogPath, JSON.stringify(runLogEntries, null, 2))
+
+  // GitHub Actions annotations — show up as callouts on the workflow run page
+  if (process.env.GITHUB_ACTIONS) {
+    if (rateLimitHit) {
+      const count = log.skipped_rate_limit.length
+      console.log(`::error title=API Rate Limit Hit::Daily quota reached — ${count} player${count !== 1 ? 's' : ''} skipped and showing stale data. Quota resets midnight UTC.`)
+    }
+    if (log.failed.length > 0) {
+      const names = log.failed.map(f => f.player).join(', ')
+      console.log(`::warning title=API Fetch Failures::${log.failed.length} player(s) failed to fetch: ${names}`)
+    }
+    if (log.skipped_no_id.length > 0) {
+      console.log(`::notice title=No Tekken ID::${log.skipped_no_id.length} player(s) have no Tekken ID and show peak_rank only: ${log.skipped_no_id.join(', ')}`)
+    }
+  }
 
   console.log(`\n${'─'.repeat(50)}`)
   console.log(`Run complete — ${new Date().toISOString()}`)

@@ -63,3 +63,49 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         id: deployment
+
+      - name: Report run results
+        if: always()
+        run: |
+          node << 'EOF'
+          const fs = require('fs');
+          let data;
+          try {
+            data = JSON.parse(fs.readFileSync('public/data/ranks.json', 'utf8'));
+          } catch (e) {
+            console.log('::error title=Missing Output::ranks.json not found — update script may have crashed entirely');
+            process.exit(1);
+          }
+
+          const { stats, updated_at } = data;
+          const total = stats.successful + stats.failed;
+
+          // Write a summary table visible on the workflow run page
+          const lines = [
+            '## Rank Update Summary',
+            '',
+            `**Run:** ${updated_at}`,
+            '',
+            '| Status | Count |',
+            '|--------|-------|',
+            `| ✅ Updated from API | ${stats.successful} |`,
+            `| ❌ Failed | ${stats.failed} |`,
+            `| ⏭️ Skipped / fallback | ${stats.skipped} |`,
+          ];
+
+          if (stats.rate_limit_hit) {
+            lines.push('', `> ⚠️ **Rate limit hit** — ${stats.skipped_rate_limit_count ?? '?'} player(s) fell back to stale data from players.json. Quota resets midnight UTC.`);
+          }
+          if (stats.failed > 0) {
+            lines.push('', `> ⚠️ **${stats.failed} player(s) failed** to fetch from the API. Check step logs for details.`);
+          }
+
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n');
+
+          // Fail the job on critical issues — this is what triggers the GitHub email notification
+          const criticalFailure = stats.rate_limit_hit || (total > 0 && stats.failed / total > 0.25);
+          if (criticalFailure) {
+            console.log('::error title=Notification::Job marked failed to trigger email alert. See summary above for details.');
+            process.exit(1);
+          }
+          EOF
