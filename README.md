@@ -15,8 +15,6 @@ A community-maintained leaderboard for Louisiana Tekken 8 players. Tracks both *
 ### Tournament Rankings tab
 Tournament standings are sourced from the [LATK8 Braacket league](https://braacket.com/league/LATK8). The data in `public/data/braacket-rankings.json` is updated manually by exporting from braacket.com after each tournament.
 
-> **Note:** Braacket's ToS prohibits automated scraping. Updates are done by hand via their CSV export feature.
-
 ### Player cards
 Click any player name on either tab to open a **player card** showing that player's data from both sources side-by-side — online rank + Tekken Power from EWGF, and tournament rank + points from Braacket.
 
