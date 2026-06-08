@@ -363,7 +363,7 @@ export default function App() {
               ? `${filtered.length} of ${allPlayers.length}`
               : allPlayers.length}
           </span>
-          Players tracked
+          {filtered.length < allPlayers.length ? 'Players showing' : 'Players tracked'}
         </div>
       </div>
 
@@ -449,6 +449,18 @@ export default function App() {
                   >
                     {player.player_tag}
                   </button>
+                  {player.tekken_id && (
+                    <a
+                      href={`https://ewgf.gg/player/${player.tekken_id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="player-ext-link"
+                      aria-label={`${player.player_tag} on ewgf.gg`}
+                      onClick={e => e.stopPropagation()}
+                    >
+                      <i className="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+                    </a>
+                  )}
                 </td>
                 <td
                   className="rank-name"

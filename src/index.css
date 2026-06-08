@@ -736,6 +736,27 @@ tbody td {
   opacity: 0.8;
 }
 
+.player-ext-link {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+  vertical-align: middle;
+}
+
+tr:hover .player-ext-link,
+.player-ext-link:focus {
+  opacity: 1;
+}
+
+.player-ext-link:hover {
+  color: var(--accent);
+  opacity: 1;
+}
+
 .player-card-backdrop {
   position: fixed;
   inset: 0;
