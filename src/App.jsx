@@ -512,8 +512,8 @@ export default function App() {
         <div className="footer-divider"></div>
         <p className="footer-contact">Issues? Contact <span className="footer-handle">@Sneak47</span></p>
         <div className="footer-links">
-          <a href="https://discord.com/users/Sneak47" target="_blank" rel="noopener noreferrer" className="footer-link" aria-label="Sneak47 Discord"><i className="bi bi-discord"></i></a>
-          <a href="https://twitter.com/Sneak47" target="_blank" rel="noopener noreferrer" className="footer-link" aria-label="Sneak47 Twitter"><i className="bi bi-twitter-x"></i></a>
+          <a href="https://discord.com/users/SolidSneak47" target="_blank" rel="noopener noreferrer" className="footer-link" aria-label="Sneak47 Discord"><i className="bi bi-discord"></i></a>
+          <a href="https://twitter.com/SolidSneak47" target="_blank" rel="noopener noreferrer" className="footer-link" aria-label="Sneak47 Twitter"><i className="bi bi-twitter-x"></i></a>
         </div>
       </footer>
       </>)}
