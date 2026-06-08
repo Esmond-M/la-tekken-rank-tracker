@@ -326,15 +326,15 @@ export default function App() {
     <>
       <header className="header">
         <h1>Louisiana <span>Tekken 8</span> Rank Tracker</h1>
-        <div className="header-meta">
-          <span>Updated {lastUpdated}</span>
-          <span className="header-social">
-            <a href="http://twitch.tv/LAFGCTV" target="_blank" rel="noopener noreferrer" aria-label="LAFGC Twitch"><i className="bi bi-twitch"></i></a>
-            <a href="https://www.youtube.com/channel/UCf9AM0hj8NhyBEYTOYWoWsg/featured" target="_blank" rel="noopener noreferrer" aria-label="LAFGC YouTube"><i className="bi bi-youtube"></i></a>
-            <a href="https://twitter.com/LAFGCTV" target="_blank" rel="noopener noreferrer" aria-label="LAFGC Twitter"><i className="bi bi-twitter-x"></i></a>
-            <a href="https://discord.gg/mkn9WJaGhu" target="_blank" rel="noopener noreferrer" aria-label="LAFGC Discord"><i className="bi bi-discord"></i></a>
-            <a href="https://www.facebook.com/groups/LouisianaFGC/" target="_blank" rel="noopener noreferrer" aria-label="LAFGC Facebook"><i className="bi bi-facebook"></i></a>
-          </span>
+        <p className="header-sub">
+          Last updated: {lastUpdated} &bull; {allPlayers.length} players tracked
+        </p>
+        <div className="header-social">
+          <a href="http://twitch.tv/LAFGCTV" target="_blank" rel="noopener noreferrer" className="header-social-link" aria-label="LAFGC Twitch"><i className="bi bi-twitch"></i></a>
+          <a href="https://www.youtube.com/channel/UCf9AM0hj8NhyBEYTOYWoWsg/featured" target="_blank" rel="noopener noreferrer" className="header-social-link" aria-label="LAFGC YouTube"><i className="bi bi-youtube"></i></a>
+          <a href="https://twitter.com/LAFGCTV" target="_blank" rel="noopener noreferrer" className="header-social-link" aria-label="LAFGC Twitter"><i className="bi bi-twitter-x"></i></a>
+          <a href="https://discord.gg/mkn9WJaGhu" target="_blank" rel="noopener noreferrer" className="header-social-link" aria-label="LAFGC Discord"><i className="bi bi-discord"></i></a>
+          <a href="https://www.facebook.com/groups/LouisianaFGC/" target="_blank" rel="noopener noreferrer" className="header-social-link" aria-label="LAFGC Facebook"><i className="bi bi-facebook"></i></a>
         </div>
       </header>
 
