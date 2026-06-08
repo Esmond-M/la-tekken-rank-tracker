@@ -435,7 +435,7 @@ export default function App() {
             )}
             {players.map((player, index) => (
               <tr key={player.tekken_id ?? player.player_tag}>
-                <td className={`rank-position ${index < 3 ? 'top-3' : ''}`}>
+                <td className={`rank-position${index === 0 ? ' top-3 pos-1' : index === 1 ? ' top-3 pos-2' : index === 2 ? ' top-3 pos-3' : ''}`}>
                   {index + 1}
                 </td>
                 <td className="player-tag">
