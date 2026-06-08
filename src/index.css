@@ -569,6 +569,28 @@ tbody td {
   margin-right: 0.5rem;
 }
 
+/* Clickable character filter button */
+.char-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  font-size: 0.85rem;
+  transition: color 0.15s;
+}
+
+.char-filter-btn:hover {
+  color: var(--accent);
+}
+
+.char-filter-btn:hover .char-img {
+  border-color: var(--accent);
+}
+
 /* Rank badge images */
 .rank-icon {
   width: 80px;

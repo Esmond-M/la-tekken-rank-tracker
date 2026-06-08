@@ -466,7 +466,12 @@ export default function App() {
                     const char = player.current_character ?? player.main_character
                     const imgUrl = charImageURL(char)
                     return (
-                      <>
+                      <button
+                        type="button"
+                        className="char-filter-btn"
+                        onClick={() => setCharacterFilter(char === characterFilter ? 'all' : char)}
+                        title={char ? `Filter by ${char}` : undefined}
+                      >
                         {imgUrl && (
                           <img
                             className="char-img"
@@ -476,7 +481,7 @@ export default function App() {
                           />
                         )}
                         {char ?? '—'}
-                      </>
+                      </button>
                     )
                   })()}
                   {player.secondary_character && (
