@@ -213,6 +213,12 @@ export default function App() {
   const [sortDir, setSortDir] = useState('asc')
   const [search, setSearch] = useState('')
   const [characterFilter, setCharacterFilter] = useState('all')
+  // Tick every minute so the relative "Updated X ago" string stays fresh.
+  const [, setTick] = useState(0)
+  useEffect(() => {
+    const id = setInterval(() => setTick(t => t + 1), 60_000)
+    return () => clearInterval(id)
+  }, [])
   // Tournament data — fetched once at the App level so both tabs and the
   // shared PlayerCard modal can use it without re-fetching.
   const [braacketPlayers, setBraacketPlayers] = useState([])
@@ -320,14 +326,15 @@ export default function App() {
         month: 'short', day: 'numeric', year: 'numeric',
         hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
       })
-    : 'Unknown'
+    : null
+  const lastUpdatedRelative = data.updated_at ? formatRelativeTime(data.updated_at) : 'Unknown'
 
   return (
     <>
       <header className="header">
         <h1>Louisiana <span>Tekken 8</span> Rank Tracker</h1>
         <p className="header-sub">
-          Last updated: {lastUpdated} &bull; {allPlayers.length} players tracked
+          Updated <span title={lastUpdated ?? undefined}>{lastUpdatedRelative}</span> &bull; {allPlayers.length} players tracked
         </p>
         <div className="header-social">
           <a href="http://twitch.tv/LAFGCTV" target="_blank" rel="noopener noreferrer" className="header-social-link" aria-label="LAFGC Twitch"><i className="bi bi-twitch"></i></a>
@@ -398,7 +405,7 @@ export default function App() {
       </div>
 
       <div className="table-wrap">
-        <table>
+        <table data-sort={sortKey}>
           <thead>
             <tr>
               <th>#</th>
