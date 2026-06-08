@@ -106,6 +106,20 @@ function formatRelativeTime(iso) {
   return `${Math.floor(months / 12)}y ago`
 }
 
+// Character name → ewgf.gg icon slug
+const CHAR_SLUG_OVERRIDES = {
+  'Jack 8':    'Jack-8',
+  'Armor King': 'ArmorKing',
+  'Fahkumram': 'Fahkumram',
+}
+
+function charImageURL(name) {
+  if (!name) return null
+  const slug = CHAR_SLUG_OVERRIDES[name]
+    ?? name.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('')
+  return `https://ewgf.gg/static/character-icons/${slug}T8.webp`
+}
+
 function PlatformBadge({ platform }) {
   if (!platform) return null
   const key = platform.toLowerCase()
@@ -288,11 +302,11 @@ export default function App() {
         <div className="header-meta">
           <span>Updated {lastUpdated}</span>
           <span className="header-social">
-            <a href="http://twitch.tv/LAFGCTV" target="_blank" rel="noopener noreferrer">Twitch</a>
-            <a href="https://www.youtube.com/channel/UCf9AM0hj8NhyBEYTOYWoWsg/featured" target="_blank" rel="noopener noreferrer">YouTube</a>
-            <a href="https://twitter.com/LAFGCTV" target="_blank" rel="noopener noreferrer">Twitter</a>
-            <a href="https://discord.gg/mkn9WJaGhu" target="_blank" rel="noopener noreferrer">Discord</a>
-            <a href="https://www.facebook.com/groups/LouisianaFGC/" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="http://twitch.tv/LAFGCTV" target="_blank" rel="noopener noreferrer" aria-label="LAFGC Twitch"><i className="bi bi-twitch"></i></a>
+            <a href="https://www.youtube.com/channel/UCf9AM0hj8NhyBEYTOYWoWsg/featured" target="_blank" rel="noopener noreferrer" aria-label="LAFGC YouTube"><i className="bi bi-youtube"></i></a>
+            <a href="https://twitter.com/LAFGCTV" target="_blank" rel="noopener noreferrer" aria-label="LAFGC Twitter"><i className="bi bi-twitter-x"></i></a>
+            <a href="https://discord.gg/mkn9WJaGhu" target="_blank" rel="noopener noreferrer" aria-label="LAFGC Discord"><i className="bi bi-discord"></i></a>
+            <a href="https://www.facebook.com/groups/LouisianaFGC/" target="_blank" rel="noopener noreferrer" aria-label="LAFGC Facebook"><i className="bi bi-facebook"></i></a>
           </span>
         </div>
       </header>
@@ -416,7 +430,23 @@ export default function App() {
                   {formatPower(player.tekken_power)}
                 </td>
                 <td className="character">
-                  {player.current_character ?? player.main_character ?? '—'}
+                  {(() => {
+                    const char = player.current_character ?? player.main_character
+                    const imgUrl = charImageURL(char)
+                    return (
+                      <>
+                        {imgUrl && (
+                          <img
+                            className="char-img"
+                            src={imgUrl}
+                            alt={char}
+                            onError={e => { e.target.style.display = 'none' }}
+                          />
+                        )}
+                        {char ?? '—'}
+                      </>
+                    )
+                  })()}
                   {player.secondary_character && (
                     <span className="secondary-char"> / {player.secondary_character}</span>
                   )}
@@ -434,12 +464,19 @@ export default function App() {
       </div>
 
       <footer className="footer">
-        <div className="footer-social">
-          <a href="http://twitch.tv/LAFGCTV" target="_blank" rel="noopener noreferrer">Twitch</a>
-          <a href="https://www.youtube.com/channel/UCf9AM0hj8NhyBEYTOYWoWsg/featured" target="_blank" rel="noopener noreferrer">YouTube</a>
-          <a href="https://twitter.com/LAFGCTV" target="_blank" rel="noopener noreferrer">Twitter</a>
-          <a href="https://discord.gg/mkn9WJaGhu" target="_blank" rel="noopener noreferrer">Discord</a>
-          <a href="https://www.facebook.com/groups/LouisianaFGC/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <p className="footer-community-name">Louisiana FGC Community</p>
+        <div className="footer-links">
+          <a href="http://twitch.tv/LAFGCTV" target="_blank" rel="noopener noreferrer" className="footer-link" aria-label="LAFGC Twitch"><i className="bi bi-twitch"></i></a>
+          <a href="https://www.youtube.com/channel/UCf9AM0hj8NhyBEYTOYWoWsg/featured" target="_blank" rel="noopener noreferrer" className="footer-link" aria-label="LAFGC YouTube"><i className="bi bi-youtube"></i></a>
+          <a href="https://twitter.com/LAFGCTV" target="_blank" rel="noopener noreferrer" className="footer-link" aria-label="LAFGC Twitter"><i className="bi bi-twitter-x"></i></a>
+          <a href="https://discord.gg/mkn9WJaGhu" target="_blank" rel="noopener noreferrer" className="footer-link" aria-label="LAFGC Discord"><i className="bi bi-discord"></i></a>
+          <a href="https://www.facebook.com/groups/LouisianaFGC/" target="_blank" rel="noopener noreferrer" className="footer-link" aria-label="LAFGC Facebook"><i className="bi bi-facebook"></i></a>
+        </div>
+        <div className="footer-divider"></div>
+        <p className="footer-contact">Issues? Contact <span className="footer-handle">@Sneak47</span></p>
+        <div className="footer-links">
+          <a href="https://discord.com/users/Sneak47" target="_blank" rel="noopener noreferrer" className="footer-link" aria-label="Sneak47 Discord"><i className="bi bi-discord"></i></a>
+          <a href="https://twitter.com/Sneak47" target="_blank" rel="noopener noreferrer" className="footer-link" aria-label="Sneak47 Twitter"><i className="bi bi-twitter-x"></i></a>
         </div>
       </footer>
       </>)}
