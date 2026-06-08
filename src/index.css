@@ -333,6 +333,27 @@ tbody td {
   border-color: var(--accent);
 }
 
+.search-wrap {
+  flex: 1;
+  min-width: 180px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-wrap input {
+  width: 100%;
+  padding-left: 2.1rem;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.7rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
 .filters input {
   flex: 1;
   min-width: 180px;
@@ -608,6 +629,17 @@ tbody td {
 
 .char-filter-btn:hover {
   color: var(--accent);
+}
+
+.char-filter-btn--active {
+  color: var(--accent);
+  outline: 2px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.char-filter-btn--active .char-img {
+  border-color: var(--accent);
 }
 
 .char-filter-btn:hover .char-img {

@@ -368,12 +368,15 @@ export default function App() {
       </div>
 
       <div className="filters">
-        <input
-          type="text"
-          placeholder="Search player name..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-        />
+        <div className="search-wrap">
+          <i className="bi bi-search search-icon" aria-hidden="true"></i>
+          <input
+            type="text"
+            placeholder="Search player name..."
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
+        </div>
         <select
           value={characterFilter}
           onChange={e => setCharacterFilter(e.target.value)}
@@ -468,9 +471,9 @@ export default function App() {
                     return (
                       <button
                         type="button"
-                        className="char-filter-btn"
+                        className={`char-filter-btn${char === characterFilter ? ' char-filter-btn--active' : ''}`}
                         onClick={() => setCharacterFilter(char === characterFilter ? 'all' : char)}
-                        title={char ? `Filter by ${char}` : undefined}
+                        title={char ? (char === characterFilter ? `Clear ${char} filter` : `Filter by ${char}`) : undefined}
                       >
                         {imgUrl && (
                           <img
