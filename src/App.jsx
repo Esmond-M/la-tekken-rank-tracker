@@ -440,7 +440,17 @@ export default function App() {
           <tbody>
             {players.length === 0 && (
               <tr>
-                <td colSpan={7} className="no-results">No players match your filters.</td>
+                <td colSpan={7} className="no-results">
+                  <i className="bi bi-search" aria-hidden="true" style={{ fontSize: '1.5rem', display: 'block', marginBottom: '0.5rem', opacity: 0.4 }}></i>
+                  No players match your filters.
+                  <button
+                    type="button"
+                    className="no-results-clear"
+                    onClick={() => { setSearch(''); setCharacterFilter('all') }}
+                  >
+                    Clear filters
+                  </button>
+                </td>
               </tr>
             )}
             {players.map((player, index) => (

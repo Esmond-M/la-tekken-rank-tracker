@@ -389,6 +389,26 @@ tbody td {
   text-align: center;
   color: var(--text-muted);
   font-size: 0.9rem;
+  line-height: 2;
+}
+
+.no-results-clear {
+  display: inline-block;
+  margin-left: 0.6rem;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.no-results-clear:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
 }
 
 /* ── Mobile card layout ────────────────────────────────────── */
@@ -443,6 +463,11 @@ tbody td {
     align-self: center;
     text-align: right;
     font-size: 0.8rem;
+  }
+
+  tbody td.rank-name .rank-icon {
+    width: 48px;
+    height: 24px;
   }
 
   /* Secondary row: character · power · platform — row 2, spans cols 2-3 */
