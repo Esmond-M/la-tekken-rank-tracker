@@ -84,6 +84,33 @@ function getRankColor(rankName) {
   return RANK_COLORS[rankName] ?? 'var(--default-rank)'
 }
 
+// Rank name → ewgf.gg rank icon slug
+const RANK_ICON_SLUG = {
+  'God of Destruction VIII': 'GodOfDestruction8',
+  'God of Destruction VII':  'GodOfDestruction7',
+  'God of Destruction VI':   'GodOfDestruction6',
+  'God of Destruction V':    'GodOfDestruction5',
+  'God of Destruction IV':   'GodOfDestruction4',
+  'God of Destruction III':  'GodOfDestruction3',
+  'God of Destruction II':   'GodOfDestruction2',
+  'God of Destruction I':    'GodOfDestruction1',
+  'God of Destruction':      'GodOfDestruction',
+  'Tekken God Supreme':      'TekkenGodSupreme',
+  'Tekken God':              'TekkenGod',
+  'Tekken King':             'TekkenKing',
+  'Tekken Emperor':          'TekkenEmperor',
+  'Bushin':                  'Bushin',
+  'Kishin':                  'Kishin',
+  'Raijin':                  'Raijin',
+  'Fujin':                   'Fujin',
+}
+
+function rankIconURL(rankName) {
+  const slug = RANK_ICON_SLUG[rankName]
+  if (!slug) return null
+  return `https://ewgf.gg/static/rank-icons/${slug}T8.webp`
+}
+
 function formatPower(power) {
   if (!power) return '—'
   return power.toLocaleString()
@@ -424,7 +451,12 @@ export default function App() {
                   className="rank-name"
                   style={{ color: getRankColor(player.rank_name) }}
                 >
-                  {player.rank_name ?? '—'}
+                  {(() => {
+                    const icon = rankIconURL(player.rank_name)
+                    return icon
+                      ? <img className="rank-icon" src={icon} alt={player.rank_name ?? ''} title={player.rank_name ?? ''} onError={e => { e.target.style.display = 'none' }} />
+                      : (player.rank_name ?? '—')
+                  })()}
                 </td>
                 <td className="tekken-power">
                   {formatPower(player.tekken_power)}
