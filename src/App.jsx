@@ -136,7 +136,9 @@ function formatRelativeTime(iso) {
 // Character name → ewgf.gg icon slug
 const CHAR_SLUG_OVERRIDES = {
   'Jack 8':    'Jack-8',
-  'Armor King': 'ArmorKing',
+  'Armor King': 'Armor_King',
+  'Devil Jin':  'Devil_Jin',
+  'Miary Zo':   'Miary_Zo',
   'Fahkumram': 'Fahkumram',
 }
 
