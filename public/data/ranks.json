@@ -1,11 +1,9 @@
 {
-  "updated_at": "2026-06-10T04:47:23.310Z",
+  "updated_at": "2026-06-10T04:49:54.688Z",
   "stats": {
-    "successful": 2,
+    "successful": 48,
     "failed": 0,
-    "skipped": 0,
-    "rate_limit_hit": false,
-    "skipped_rate_limit_count": 0
+    "skipped": 0
   },
   "players": [
     {
@@ -608,7 +606,7 @@
     },
     {
       "tekken_id": "2bhAGQRT2tBQ",
-      "player_tag": null,
+      "player_tag": "Adude3",
       "platform": null,
       "main_character": null,
       "rank_name": "Tekken God Supreme",
