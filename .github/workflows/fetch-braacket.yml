@@ -1,0 +1,50 @@
+name: Fetch Braacket Rankings
+
+# Scrapes the LA Tekken 8 Braacket league rankings page and commits the
+# result to public/data/braacket-rankings.json.
+#
+# Scraping permission was obtained from braacket.com in June 2026.
+# Runs weekly on Mondays at 9 AM UTC. Can also be triggered manually
+# from the Actions tab (workflow_dispatch).
+#
+# No secrets required — the rankings page is publicly accessible HTML.
+
+on:
+  schedule:
+    # Every Monday at 9 AM UTC (4 AM Central)
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Braacket rankings
+        run: node scripts/fetch-braacket.js
+
+      - name: Commit updated braacket-rankings.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if [ -f "public/data/braacket-rankings.json" ]; then
+            git add public/data/braacket-rankings.json
+            echo "Staged: public/data/braacket-rankings.json"
+          else
+            echo "::error::braacket-rankings.json not found — fetch script may have failed"
+            exit 1
+          fi
+
+          git diff --staged --quiet || git commit -m "chore: update braacket rankings [skip ci]"
+          git push
