@@ -5,6 +5,11 @@ on:
     # Daily at 8 AM UTC (3 AM Central)
     - cron: '0 8 * * *'
   workflow_dispatch:
+    inputs:
+      player_ids:
+        description: 'Comma-separated Tekken IDs to fetch only specific players (leave blank for all). E.g. 2T7Ay7t77iha,2bhAGQRT2tBQ'
+        required: false
+        default: ''
 
 jobs:
   update:
@@ -24,7 +29,13 @@ jobs:
           node-version: '20'
 
       - name: Fetch latest ranks
-        run: node scripts/update-ranks.js
+        run: |
+          if [ -n "${{ github.event.inputs.player_ids }}" ]; then
+            echo "Fetching specific players: ${{ github.event.inputs.player_ids }}"
+            node scripts/update-ranks.js --player "${{ github.event.inputs.player_ids }}"
+          else
+            node scripts/update-ranks.js
+          fi
         env:
           EWGF_API_KEY: ${{ secrets.EWGF_API_KEY }}
 
