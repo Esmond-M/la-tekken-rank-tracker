@@ -3,7 +3,7 @@
 ## ⚠️ API Calls — Be Careful
 - The EWGF API (`api.ewgf.gg`) requires `EWGF_API_KEY` (stored as a GitHub Actions secret).
 - **Do NOT trigger or simulate API calls locally** without confirming with the user first.
-- **Rate limit: 100 calls per day** on the free tier. The roster is ~46 players = 46 calls per run. That means roughly **2 runs per day max**.
+- **Rate limit: 100 calls per day** on the free tier. The roster is ~48 players = 48 calls per run. That means roughly **2 runs per day max**.
 - **Rate limit resets at midnight UTC** (7 PM Central / 6 PM Central during DST). So if you burn the limit, it's available again the next UTC day.
 - The scheduled run fires daily at 8 AM UTC (3 AM Central). Manual runs via the Actions tab count against the same daily limit.
 - The update script is `scripts/update-ranks.js` and runs via GitHub Actions only (`update-ranks.yml`). Never run it locally unless the user explicitly asks.
@@ -31,6 +31,13 @@
 - **Secondary character** = best-ranked OTHER character within 2 tiers of primary AND at least God of Destruction base. Excluded if same as primary.
 - `last_seen` = most recent `battle_at` across all returned battles (true "last played"). `last_updated` = timestamp of the best-rank battle for the displayed character.
 - Falls back to peak_rank from `players.json` if API didn't return battles or player has no Tekken ID.
+
+## Adding a New Player (step-by-step)
+1. Add the entry to `data/players.json`. At minimum set `tekken_id` and `player_tag`. Fill `main_character` and `peak_rank` if known; set `null` if not.
+2. Commit and push `players.json`.
+3. Trigger a targeted API fetch via **Actions → Update Ranks → Run workflow**, paste the new Tekken ID(s) into the `player_ids` field. This costs N calls instead of 48.
+4. **Important:** If you set or corrected `player_tag` / `main_character` in `players.json` AFTER the API run already committed, the name won't appear in `ranks.json` until you run `node scripts/update-ranks.js --from-cache` locally and commit `public/data/ranks.json`. (Zero API calls.)
+5. If `main_character` is `null`, the rank logic falls back to showing whatever character had the highest rank in recent battles. That's fine short-term, but the primary slot won't be locked until `main_character` is set.
 
 ## Reprocessing Without API Calls (`--from-cache`)
 - `node scripts/update-ranks.js --from-cache` reprocesses `data/api-cache.json` through the current rank logic and rewrites `public/data/ranks.json`. **Zero API calls used.**
