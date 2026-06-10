@@ -37,6 +37,13 @@
 - Use this when changing rank-picking logic and you want to test the result without waiting for the next daily run (and without burning the 100/day quota).
 - Only works if `data/api-cache.json` exists locally (it does — committed to repo each run).
 
+## Fetching Only Specific Players (`--player`)
+- `node scripts/update-ranks.js --player <id1,id2>` fetches the API for **only the listed Tekken IDs** and merges results into the existing `ranks.json` and `api-cache.json`. All other players are left untouched.
+- Use this when adding new players to the roster and you want to see them on the live site without burning a full 46-call run.
+- Example: `node scripts/update-ranks.js --player 2T7Ay7t77iha,2bhAGQRT2tBQ`
+- Also available as a manual GitHub Actions trigger — go to Actions → Update Ranks → Run workflow, and paste the IDs in the **"player_ids"** input field.
+- Costs **N calls** (one per ID) instead of 46. Safe to use mid-day.
+
 ## Rank Tier Order (highest → lowest)
 God of Destruction VIII → VII → VI → V → IV → III → II → I → God of Destruction (base) → Tekken God Supreme → Tekken God → Tekken King → Tekken Emperor → Bushin → Kishin → Raijin → Fujin
 
@@ -67,29 +74,26 @@ Sorting: rank tier first, then `tekken_power` desc as tiebreaker within the same
 See `BRAACKET.md` for the full integration writeup. Summary of current state:
 
 ### What exists
-- `scripts/fetch-braacket.js` — HTML scraper for the LATK8 rankings page. **Not wired into any workflow yet.** Run manually only.
-- `public/data/braacket-rankings.json` — current data, populated by hand from a CSV export.
-- `public/data/braacket_league-ranking_*.csv` — reference CSV export from the site (Allocution + 19 others, page 1 only).
+- `scripts/fetch-braacket.js` — HTML scraper for the LATK8 rankings page. Fetches **2 pages × 100 rows = up to 200 players**. Increase `PAGES_TO_FETCH` if the league grows beyond that.
+- `.github/workflows/fetch-braacket.yml` — runs the scraper **weekly on Mondays at 9 AM UTC**. Commits result to `public/data/braacket-rankings.json`. No secrets required (public page).
+- `public/data/braacket-rankings.json` — scraped output, committed each weekly run.
+- `public/data/braacket_league-ranking_*.csv` — legacy reference CSV export (page 1 only, kept for reference).
 - `src/BraacketPage.jsx` + Tournament Rankings tab in `App.jsx`.
 
-### ⚠️ Important: Braacket ToS prohibits scraping
-> "You must not conduct any systematic or automated data collection activities … without our express written consent."
-
-The scraper is built but should NOT be cron-scheduled until permission is obtained from braacket.com. CSV-based imports (manual export → drop in repo) are fine — that's just using their provided Export feature.
+### ✅ Scraping approval
+Scraping permission was obtained from braacket.com in **June 2026**. The weekly cron is intentionally light (2 requests/week). No further ToS concerns.
 
 ### Known bugs (not yet fixed)
 1. **Braacket tab unreachable on EWGF failure.** `App.jsx` early-returns on EWGF `loading`/`error` before tab nav renders. Move tab nav above the early-return guards, OR render `BraacketPage` directly when `view === 'braacket'` before EWGF state checks.
 2. **Header "Updated" timestamp is misleading on Braacket tab.** Always shows EWGF `data.updated_at`. Should swap to the active tab's timestamp.
 3. **JSX cosmetic glitch in `BraacketPage.jsx`** — character `<td>` is on same line as previous `</td>`. Renders fine, fails prettier.
 
-### Open decisions (waiting on community contact)
-- All 409 league players, or only the curated ~46 roster from `players.json`?
+### Open decisions
+- All 200+ league players, or only the curated ~46 roster from `players.json`?
 - Replace EWGF view, or keep both tabs side-by-side?
-- Update cadence — daily / weekly / after-each-tournament?
 - Which season — current S3 only, or include All-Time / S2?
 
 ### Not yet built
-- `scripts/import-braacket-csv.js` — parse a CSV from `public/data/braacket_*.csv` and write JSON. Currently done by hand.
-- Player tag → braacket profile linking. CSV export does not include the player UUID, so links require either a one-time scrape of `/league/LATK8/player` OR linking to braacket's search URL (less direct but no UUID needed).
+- Player tag → braacket profile linking. The `braacket_url` field is now populated in the scraped JSON (from the `<a href>` on each row), but `BraacketPage.jsx` doesn't yet render it as a link.
 - Cross-reference braacket player tags with `players.json` `tekken_id` to deep-link to ewgf.gg profiles from the Braacket tab.
 
