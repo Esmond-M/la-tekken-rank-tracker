@@ -271,6 +271,14 @@ tbody td {
   font-size: 0.85rem;
 }
 
+.char-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
 .platform-badge {
   display: inline-block;
   font-size: 0.72rem;
