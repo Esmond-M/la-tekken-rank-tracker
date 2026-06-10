@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-09T09:19:32.494Z",
+  "updated_at": "2026-06-10T04:47:23.310Z",
   "stats": {
-    "successful": 46,
+    "successful": 2,
     "failed": 0,
     "skipped": 0,
     "rate_limit_hit": false,
@@ -591,6 +591,32 @@
       "secondary_character": null,
       "last_updated": "2026-03-31T00:47:34Z",
       "last_seen": "2026-03-31T00:47:34Z",
+      "source": "api"
+    },
+    {
+      "tekken_id": "2T7Ay7t77iha",
+      "player_tag": "Dohma",
+      "platform": null,
+      "main_character": null,
+      "rank_name": "Tekken God Supreme",
+      "tekken_power": 248960,
+      "current_character": "Armor King",
+      "secondary_character": null,
+      "last_updated": "2026-06-07T00:00:45Z",
+      "last_seen": "2026-06-07T21:45:18Z",
+      "source": "api"
+    },
+    {
+      "tekken_id": "2bhAGQRT2tBQ",
+      "player_tag": null,
+      "platform": null,
+      "main_character": null,
+      "rank_name": "Tekken God Supreme",
+      "tekken_power": 248411,
+      "current_character": "Fahkumram",
+      "secondary_character": null,
+      "last_updated": "2026-06-09T04:39:12Z",
+      "last_seen": "2026-06-09T04:45:01Z",
       "source": "api"
     },
     {
