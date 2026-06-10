@@ -340,6 +340,16 @@ async function main() {
     process.exit(1)
   }
 
+  // --player <id1,id2,...>
+  // Fetch only the specified tekken IDs and merge results into existing ranks.json
+  // and api-cache.json, leaving all other players untouched.
+  // Useful for adding new players without burning the full 46-call daily quota.
+  // Example: node scripts/update-ranks.js --player 2T7Ay7t77iha,2bhAGQRT2tBQ
+  const playerFlagIdx = process.argv.indexOf('--player')
+  const targetIds = playerFlagIdx !== -1
+    ? new Set(process.argv[playerFlagIdx + 1]?.split(',').map(s => s.trim()).filter(Boolean))
+    : null
+
   let players
   try {
     players = JSON.parse(readFileSync(join(ROOT, 'data/players.json'), 'utf8'))
@@ -348,6 +358,20 @@ async function main() {
     console.error('Make sure the file exists and contains valid JSON.')
     process.exit(1)
   }
+
+  // If --player flag was given, filter to only those players
+  const playersToFetch = targetIds
+    ? players.filter(p => p.tekken_id && targetIds.has(p.tekken_id))
+    : players
+
+  if (targetIds) {
+    if (playersToFetch.length === 0) {
+      console.error('No matching players found for the given IDs:', [...targetIds].join(', '))
+      process.exit(1)
+    }
+    console.log(`--player mode: fetching ${playersToFetch.length} of ${players.length} player(s): ${playersToFetch.map(p => p.player_tag ?? p.tekken_id).join(', ')}`)
+  }
+
   const results = []
   const apiCache = []   // raw battle data saved for offline reuse
   let successful = 0
@@ -356,9 +380,9 @@ async function main() {
   let rateLimitHit = false
   const log = { skipped_no_id: [], skipped_rate_limit: [], failed: [], successful: [] }
 
-  console.log(`Fetching ranks for ${players.length} players...`)
+  console.log(`Fetching ranks for ${playersToFetch.length} players...`)
 
-  for (const player of players) {
+  for (const player of playersToFetch) {
     if (!player.tekken_id) {
       results.push({
         tekken_id: null,
@@ -486,6 +510,42 @@ async function main() {
     return (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
   })
 
+  // In --player mode, merge the freshly-fetched results into the existing
+  // ranks.json (replace matching entries, keep all others intact), then re-sort.
+  let finalResults = results
+  if (targetIds) {
+    const ranksPath = join(ROOT, 'public/data/ranks.json')
+    let existing = []
+    try {
+      existing = JSON.parse(readFileSync(ranksPath, 'utf8')).players ?? []
+    } catch { /* first run or file missing — start fresh */ }
+
+    // Remove stale entries for the players we just fetched, then append fresh ones
+    const freshIds = new Set(results.map(r => r.tekken_id))
+    finalResults = [
+      ...existing.filter(r => !freshIds.has(r.tekken_id)),
+      ...results,
+    ]
+    finalResults.sort((a, b) => {
+      const tierDiff = rankSortValue(a.rank_name) - rankSortValue(b.rank_name)
+      if (tierDiff !== 0) return tierDiff
+      return (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
+    })
+
+    // Merge api-cache entries too
+    const cachePath2 = join(ROOT, 'data/api-cache.json')
+    try {
+      const existingCache = JSON.parse(readFileSync(cachePath2, 'utf8'))
+      const freshCacheIds = new Set(apiCache.map(c => c.tekken_id))
+      const mergedCache = [
+        ...(existingCache.players ?? []).filter(c => !freshCacheIds.has(c.tekken_id)),
+        ...apiCache,
+      ]
+      writeFileSync(cachePath2, JSON.stringify({ ...existingCache, players: mergedCache }, null, 2))
+      console.log(`API cache merged into data/api-cache.json`)
+    } catch { /* no existing cache — will be written fresh below */ }
+  }
+
   const output = {
     updated_at: new Date().toISOString(),
     stats: {
@@ -495,7 +555,7 @@ async function main() {
       rate_limit_hit: rateLimitHit,
       skipped_rate_limit_count: log.skipped_rate_limit.length,
     },
-    players: results,
+    players: finalResults,
   }
 
   mkdirSync(join(ROOT, 'public/data'), { recursive: true })
@@ -503,15 +563,18 @@ async function main() {
 
   // Save raw API battle data so ranks can be reprocessed later without new API calls.
   // Useful for debugging, re-sorting, or AI analysis offline.
+  // In --player mode the cache was already merged above; skip the full overwrite.
   const cachePath = join(ROOT, 'data/api-cache.json')
-  const cacheOutput = {
-    generated_at: new Date().toISOString(),
-    note: 'Raw battle data from EWGF API. Do not commit sensitive info. Re-run update-ranks.js to refresh.',
-    players: apiCache,
+  if (!targetIds) {
+    const cacheOutput = {
+      generated_at: new Date().toISOString(),
+      note: 'Raw battle data from EWGF API. Do not commit sensitive info. Re-run update-ranks.js to refresh.',
+      players: apiCache,
+    }
+    mkdirSync(join(ROOT, 'data'), { recursive: true })
+    writeFileSync(cachePath, JSON.stringify(cacheOutput, null, 2))
+    console.log(`API cache written to data/api-cache.json (${apiCache.length} players)`)
   }
-  mkdirSync(join(ROOT, 'data'), { recursive: true })
-  writeFileSync(cachePath, JSON.stringify(cacheOutput, null, 2))
-  console.log(`API cache written to data/api-cache.json (${apiCache.length} players)`)
 
   // Write a private rate-limit log (gitignored) so you can keep an eye on usage.
   const logPath = join(ROOT, '.rate-limit-log.json')
