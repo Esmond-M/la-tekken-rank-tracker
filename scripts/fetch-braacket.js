@@ -1,11 +1,17 @@
 /**
  * fetch-braacket.js
  *
- * Scrapes the Louisiana Tekken 8 Rankings from braacket.com and writes
- * the result to public/data/braacket-rankings.json.
+ * Scrapes the Louisiana Tekken 8 Braacket league rankings and writes the
+ * result to public/data/braacket-rankings.json.
  *
- * No API key required — the rankings page is publicly accessible.
- * Uses only Node.js built-ins (native fetch, fs, path).
+ * Scraping has been approved by braacket.com (permission obtained June 2026).
+ * This script is run on a weekly schedule via .github/workflows/fetch-braacket.yml.
+ *
+ * No API key required — the rankings page is publicly accessible HTML.
+ * Uses only Node.js built-ins (native fetch, fs, path). No npm dependencies.
+ *
+ * Pages fetched: controlled by PAGES_TO_FETCH (currently 2 × 100 rows = up to 200 players).
+ * Increment PAGES_TO_FETCH if the league grows beyond 200 active players.
  *
  * Run locally:   node scripts/fetch-braacket.js
  * From cache:    (no cache equivalent — this IS the source, no API quota)
@@ -20,7 +26,8 @@ const ROOT = join(__dirname, '..')
 
 const LEAGUE_SLUG  = 'LATK8'
 const RANKING_ID   = '7D81E3FE-6B24-4332-B660-9E5FB9F9F421'
-const BRAACKET_URL = `https://braacket.com/league/${LEAGUE_SLUG}/ranking/${RANKING_ID}?rows=100`
+const PAGES_TO_FETCH = 2
+const BASE_URL     = `https://braacket.com/league/${LEAGUE_SLUG}/ranking/${RANKING_ID}?rows=100`
 
 // ---------------------------------------------------------------------------
 // HTML helpers
@@ -103,10 +110,11 @@ function parseRankings(html) {
 // Main
 // ---------------------------------------------------------------------------
 
-async function main() {
-  console.log(`Fetching braacket rankings…\n  ${BRAACKET_URL}\n`)
+async function fetchPage(pageNum) {
+  const url = pageNum === 1 ? BASE_URL : `${BASE_URL}&page=${pageNum}`
+  console.log(`Fetching page ${pageNum}…\n  ${url}\n`)
 
-  const res = await fetch(BRAACKET_URL, {
+  const res = await fetch(url, {
     headers: {
       'User-Agent': 'Mozilla/5.0 (compatible; LA-TK-Tracker/1.0)',
       'Accept':     'text/html,application/xhtml+xml',
@@ -114,22 +122,42 @@ async function main() {
   })
 
   if (!res.ok) {
-    console.error(`HTTP ${res.status} — failed to fetch braacket page`)
+    console.error(`HTTP ${res.status} — failed to fetch braacket page ${pageNum}`)
     process.exit(1)
   }
 
-  const html    = await res.text()
-  const players = parseRankings(html)
+  return res.text()
+}
 
-  if (players.length === 0) {
+async function main() {
+  const htmlPages = []
+  for (let p = 1; p <= PAGES_TO_FETCH; p++) {
+    htmlPages.push(await fetchPage(p))
+  }
+
+  // Use first page HTML for metadata extraction
+  const firstHtml = htmlPages[0]
+
+  // Parse each page and merge, using rank from the page as-is (already correct)
+  const allPlayers = htmlPages.flatMap(html => parseRankings(html))
+
+  if (allPlayers.length === 0) {
     console.error('No players parsed — the page structure may have changed.')
     console.error('Check the HTML and update the parseRankings() cell indices.')
     process.exit(1)
   }
 
-  // Pull ranking name and period from the page text
-  const nameMatch   = html.match(/LA Tekken 8 Rankings \(S\d+\)/)
-  const periodMatch = html.match(/(\d{1,2} \w+ \d{4})\s*[-–]\s*(\d{1,2} \w+ \d{4})/)
+  // Deduplicate by player_tag in case a player appears on multiple pages
+  const seen = new Set()
+  const players = allPlayers.filter(p => {
+    if (seen.has(p.player_tag)) return false
+    seen.add(p.player_tag)
+    return true
+  })
+
+  // Pull ranking name and period from the first page's HTML
+  const nameMatch   = firstHtml.match(/LA Tekken 8 Rankings \(S\d+\)/)
+  const periodMatch = firstHtml.match(/(\d{1,2} \w+ \d{4})\s*[-–]\s*(\d{1,2} \w+ \d{4})/)
 
   const output = {
     source:          'braacket',
@@ -137,6 +165,7 @@ async function main() {
     ranking_name:    nameMatch   ? nameMatch[0]                          : 'LA Tekken 8 Rankings',
     ranking_id:      RANKING_ID,
     ranking_period:  periodMatch ? `${periodMatch[1]} – ${periodMatch[2]}` : null,
+    pages_fetched:   PAGES_TO_FETCH,
     updated_at:      new Date().toISOString(),
     players,
   }
@@ -147,7 +176,7 @@ async function main() {
     JSON.stringify(output, null, 2)
   )
 
-  console.log(`✓ Wrote ${players.length} players → public/data/braacket-rankings.json`)
+  console.log(`✓ Wrote ${players.length} players (${PAGES_TO_FETCH} pages) → public/data/braacket-rankings.json`)
   console.log(`  Ranking: ${output.ranking_name}`)
   if (output.ranking_period) console.log(`  Period:  ${output.ranking_period}`)
   console.log(`  Top 3:   ${players.slice(0, 3).map(p => `${p.player_tag} (${p.points})`).join(', ')}`)
