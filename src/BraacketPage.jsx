@@ -5,6 +5,20 @@ function formatPoints(pts) {
   return pts.toLocaleString()
 }
 
+// Character name → ewgf.gg icon slug (keep in sync with App.jsx)
+const CHAR_SLUG_OVERRIDES = {
+  'Jack 8':     'Jack-8',
+  'Armor King': 'ArmorKing',
+  'Fahkumram':  'Fahkumram',
+}
+
+function charImageURL(name) {
+  if (!name) return null
+  const slug = CHAR_SLUG_OVERRIDES[name]
+    ?? name.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('')
+  return `https://ewgf.gg/static/character-icons/${slug}T8.webp`
+}
+
 /**
  * If we don't have an explicit braacket_url (i.e. UUID), fall back to the
  * league search URL. Less direct than a profile link, but works for every
@@ -292,7 +306,22 @@ export default function BraacketPage({ onOpenPlayer }) {
                     )}
                   </td>
                   <td className="character">
-                    {player.character ?? <span style={{ color: 'var(--text-muted)' }}>—</span>}
+                    {(() => {
+                      const charName = ewgfFull?.current_character ?? ewgfFull?.main_character
+                      const imgUrl = charImageURL(charName)
+                      if (imgUrl) {
+                        return (
+                          <img
+                            src={imgUrl}
+                            alt={charName}
+                            title={charName}
+                            className="char-icon"
+                            onError={e => { e.currentTarget.style.display = 'none' }}
+                          />
+                        )
+                      }
+                      return <span style={{ color: 'var(--text-muted)' }}>—</span>
+                    })()}
                   </td>
                   <td className="braacket-points">
                     {formatPoints(player.points)}
