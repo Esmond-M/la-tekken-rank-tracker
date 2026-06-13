@@ -778,6 +778,12 @@ tbody td {
   opacity: 0.8;
 }
 
+.player-online-tag {
+  font-size: 0.8em;
+  opacity: 0.6;
+  font-weight: 400;
+}
+
 .player-ext-link {
   display: inline-flex;
   align-items: center;
