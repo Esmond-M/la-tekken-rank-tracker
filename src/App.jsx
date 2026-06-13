@@ -296,7 +296,9 @@ export default function App() {
       if (char !== characterFilter) return false
     }
     if (search.trim()) {
-      return p.player_tag.toLowerCase().includes(search.trim().toLowerCase())
+      const q = search.trim().toLowerCase()
+      return p.player_tag.toLowerCase().includes(q) ||
+        (p.known_name ?? '').toLowerCase().includes(q)
     }
     return true
   })
@@ -466,7 +468,16 @@ export default function App() {
                     className="player-link player-link--button"
                     onClick={() => openPlayerByEwgf(player)}
                   >
-                    {player.player_tag}
+                    {(() => {
+                      const showAlias = player.known_name && (() => {
+                        const a = normalizeTag(player.player_tag)
+                        const b = normalizeTag(player.known_name)
+                        return a !== b && !a.includes(b) && !b.includes(a)
+                      })()
+                      return showAlias
+                        ? <>{player.player_tag} <span className="player-online-tag">({player.known_name})</span></>
+                        : player.player_tag
+                    })()}
                   </button>
                   {player.tekken_id && (
                     <a
@@ -520,6 +531,9 @@ export default function App() {
                   })()}
                   {player.secondary_character && (
                     <span className="secondary-char"> / {player.secondary_character}</span>
+                  )}
+                  {player.show_tertiary && player.tertiary_character && (
+                    <span className="secondary-char"> / {player.tertiary_character}</span>
                   )}
                 </td>
                 <td className="platform-cell">
