@@ -1,11 +1,9 @@
 {
-  "updated_at": "2026-06-13T09:13:33.793Z",
+  "updated_at": "2026-06-13T16:53:06.481Z",
   "stats": {
     "successful": 48,
     "failed": 0,
-    "skipped": 0,
-    "rate_limit_hit": false,
-    "skipped_rate_limit_count": 0
+    "skipped": 0
   },
   "players": [
     {
@@ -17,6 +15,7 @@
       "tekken_power": 437623,
       "current_character": "Jun",
       "secondary_character": "Fahkumram",
+      "tertiary_character": "Kunimitsu",
       "last_updated": "2026-06-11T04:40:20Z",
       "last_seen": "2026-06-11T04:40:20Z",
       "source": "api"
@@ -30,9 +29,11 @@
       "tekken_power": 436255,
       "current_character": "Reina",
       "secondary_character": "Kunimitsu",
+      "tertiary_character": null,
       "last_updated": "2026-06-12T01:06:44Z",
       "last_seen": "2026-06-12T01:06:44Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "Flex"
     },
     {
       "tekken_id": "556QMQehGYQM",
@@ -43,6 +44,7 @@
       "tekken_power": 424434,
       "current_character": "Jin",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": null,
       "last_seen": "2026-06-12T07:31:18Z",
       "source": "api"
@@ -56,9 +58,11 @@
       "tekken_power": 415657,
       "current_character": "Law",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-12T05:10:39Z",
       "last_seen": "2026-06-12T05:45:50Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "BewareIIIusion"
     },
     {
       "tekken_id": "5hj4DTr6RdTJ",
@@ -69,9 +73,11 @@
       "tekken_power": 413981,
       "current_character": "Nina",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": null,
       "last_seen": "2026-06-12T05:49:21Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "STOPKICHARGINGM"
     },
     {
       "tekken_id": "33e7D2r4f9t8",
@@ -82,9 +88,11 @@
       "tekken_power": 397008,
       "current_character": "Dragunov",
       "secondary_character": "Kunimitsu",
+      "tertiary_character": null,
       "last_updated": "2026-06-11T18:06:38Z",
       "last_seen": "2026-06-11T18:06:38Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "KOGDRE"
     },
     {
       "tekken_id": "34aDeFQimJgn",
@@ -95,9 +103,11 @@
       "tekken_power": 390210,
       "current_character": "Paul",
       "secondary_character": "Kazuya",
+      "tertiary_character": null,
       "last_updated": "2026-06-11T20:41:56Z",
       "last_seen": "2026-06-11T20:53:13Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "Twko"
     },
     {
       "tekken_id": "5BiLay7M68ja",
@@ -108,9 +118,11 @@
       "tekken_power": 389171,
       "current_character": "Shaheen",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-05T19:41:54Z",
       "last_seen": "2026-06-05T19:48:18Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "TjM | Lyvesauce"
     },
     {
       "tekken_id": "4BHtJmgQAGfM",
@@ -121,9 +133,11 @@
       "tekken_power": 379485,
       "current_character": "Armor King",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-06T18:14:48Z",
       "last_seen": "2026-06-10T00:55:12Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "Fear Magneto"
     },
     {
       "tekken_id": "4fM948dh8AaT",
@@ -134,9 +148,11 @@
       "tekken_power": 402165,
       "current_character": "Jack 8",
       "secondary_character": "Jack-8",
+      "tertiary_character": "Feng",
       "last_updated": null,
       "last_seen": "2026-06-11T16:04:55Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "T8 terrible"
     },
     {
       "tekken_id": "48mghAMDbn6J",
@@ -147,9 +163,11 @@
       "tekken_power": 400107,
       "current_character": "Raven",
       "secondary_character": "Kunimitsu",
+      "tertiary_character": "Hwoarang",
       "last_updated": null,
       "last_seen": "2026-06-12T08:48:01Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "TVDeliriumheart"
     },
     {
       "tekken_id": "3Mtn7ghBHrdQ",
@@ -160,9 +178,12 @@
       "tekken_power": 397198,
       "current_character": "Azucena",
       "secondary_character": "Eddy",
+      "tertiary_character": "Zafina",
+      "show_tertiary": true,
       "last_updated": "2026-06-11T12:23:15Z",
       "last_seen": "2026-06-12T09:03:18Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "Mason Reigns"
     },
     {
       "tekken_id": "3Y4GdfdL9HB6",
@@ -173,6 +194,7 @@
       "tekken_power": 383635,
       "current_character": "Kazuya",
       "secondary_character": "Reina",
+      "tertiary_character": "Heihachi",
       "last_updated": null,
       "last_seen": "2026-06-11T02:02:16Z",
       "source": "api"
@@ -186,9 +208,11 @@
       "tekken_power": 374582,
       "current_character": "Law",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-11T15:33:07Z",
       "last_seen": "2026-06-12T03:59:25Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "Professor Juice"
     },
     {
       "tekken_id": "5j2gTqJrEbyr",
@@ -199,6 +223,7 @@
       "tekken_power": 374270,
       "current_character": "Lars",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-06T03:39:35Z",
       "last_seen": "2026-06-06T22:48:16Z",
       "source": "api"
@@ -212,9 +237,11 @@
       "tekken_power": 372877,
       "current_character": "King",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-11T03:22:16Z",
       "last_seen": "2026-06-11T03:22:16Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "AFilthyKingMain"
     },
     {
       "tekken_id": "45BYtinY394j",
@@ -225,9 +252,11 @@
       "tekken_power": 372075,
       "current_character": "Paul",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-11T21:54:29Z",
       "last_seen": "2026-06-11T21:54:29Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "Rawpotential"
     },
     {
       "tekken_id": "2mmdJn74QDFd",
@@ -238,6 +267,7 @@
       "tekken_power": 371825,
       "current_character": "Steve",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-11T03:39:21Z",
       "last_seen": "2026-06-11T03:49:04Z",
       "source": "api"
@@ -251,6 +281,7 @@
       "tekken_power": 382819,
       "current_character": "Raven",
       "secondary_character": "King",
+      "tertiary_character": null,
       "last_updated": null,
       "last_seen": "2026-06-10T02:05:04Z",
       "source": "api"
@@ -264,6 +295,7 @@
       "tekken_power": 371175,
       "current_character": "Kuma",
       "secondary_character": "Panda",
+      "tertiary_character": null,
       "last_updated": "2026-05-25T14:49:12Z",
       "last_seen": "2026-05-25T15:06:58Z",
       "source": "api"
@@ -277,6 +309,7 @@
       "tekken_power": 368281,
       "current_character": "Eddy",
       "secondary_character": "Miary Zo",
+      "tertiary_character": "Azucena",
       "last_updated": "2026-06-12T03:57:39Z",
       "last_seen": "2026-06-12T04:40:47Z",
       "source": "api"
@@ -290,6 +323,7 @@
       "tekken_power": 367195,
       "current_character": "King",
       "secondary_character": "Armor King",
+      "tertiary_character": "Victor",
       "last_updated": "2026-06-07T00:50:59Z",
       "last_seen": "2026-06-08T22:28:17Z",
       "source": "api"
@@ -303,9 +337,11 @@
       "tekken_power": 367069,
       "current_character": "Fahkumram",
       "secondary_character": "Kazuya",
+      "tertiary_character": "Bryan",
       "last_updated": "2026-05-30T01:38:19Z",
       "last_seen": "2026-05-30T01:38:19Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "DJSymphix"
     },
     {
       "tekken_id": "52rBt7NdyDQM",
@@ -316,9 +352,11 @@
       "tekken_power": 365987,
       "current_character": "Hwoarang",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-06T08:04:27Z",
       "last_seen": "2026-06-06T08:04:27Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "Dojo337 | Drago"
     },
     {
       "tekken_id": "2DEhtt4Yndfj",
@@ -329,9 +367,11 @@
       "tekken_power": 375297,
       "current_character": "Jin",
       "secondary_character": "Jun",
+      "tertiary_character": null,
       "last_updated": "2026-06-12T08:42:33Z",
       "last_seen": "2026-06-12T08:42:33Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "ItsSyrixTT"
     },
     {
       "tekken_id": "63tgim8JT6My",
@@ -342,9 +382,11 @@
       "tekken_power": 367109,
       "current_character": "Victor",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": null,
       "last_seen": "2026-06-12T04:40:47Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "Dojo337Jakarogo"
     },
     {
       "tekken_id": "23EgNYiq8MBf",
@@ -355,9 +397,11 @@
       "tekken_power": 365774,
       "current_character": "Armor King",
       "secondary_character": "Fahkumram",
+      "tertiary_character": null,
       "last_updated": "2026-06-12T03:01:47Z",
       "last_seen": "2026-06-12T03:17:51Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "Dojo337xstaunch"
     },
     {
       "tekken_id": "4NRAgMFqdnMJ",
@@ -368,9 +412,11 @@
       "tekken_power": 364352,
       "current_character": "Reina",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-10T23:52:44Z",
       "last_seen": "2026-06-10T23:52:44Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "TH|7sev.ens"
     },
     {
       "tekken_id": "3536QnT78bHr",
@@ -381,9 +427,11 @@
       "tekken_power": 363019,
       "current_character": "Lili",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": null,
       "last_seen": "2026-06-11T04:10:59Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "ILearnStick"
     },
     {
       "tekken_id": "45gFGNn63nhf",
@@ -394,9 +442,11 @@
       "tekken_power": 355975,
       "current_character": "King",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-07T06:03:31Z",
       "last_seen": "2026-06-07T06:03:31Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "UDG_KING"
     },
     {
       "tekken_id": "3eL532RyBdT2",
@@ -407,6 +457,7 @@
       "tekken_power": 355292,
       "current_character": "Eddy",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-02T02:59:16Z",
       "last_seen": "2026-06-12T09:08:59Z",
       "source": "api"
@@ -420,6 +471,7 @@
       "tekken_power": 364482,
       "current_character": "Yoshimitsu",
       "secondary_character": "Jin",
+      "tertiary_character": null,
       "last_updated": "2026-06-11T02:32:35Z",
       "last_seen": "2026-06-11T02:32:35Z",
       "source": "api"
@@ -433,6 +485,7 @@
       "tekken_power": 364166,
       "current_character": "Lidia",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-02T00:58:38Z",
       "last_seen": "2026-06-07T23:41:51Z",
       "source": "api"
@@ -446,6 +499,7 @@
       "tekken_power": 363383,
       "current_character": "Paul",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": null,
       "last_seen": "2026-06-11T12:53:21Z",
       "source": "api"
@@ -459,6 +513,7 @@
       "tekken_power": 360004,
       "current_character": "Leo",
       "secondary_character": "Kunimitsu",
+      "tertiary_character": null,
       "last_updated": null,
       "last_seen": "2026-06-12T01:22:19Z",
       "source": "api"
@@ -472,9 +527,11 @@
       "tekken_power": 358275,
       "current_character": "Lili",
       "secondary_character": "Zafina",
+      "tertiary_character": null,
       "last_updated": "2026-06-10T18:13:47Z",
       "last_seen": "2026-06-11T03:12:33Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "28gramz"
     },
     {
       "tekken_id": "5yNji7nR6Yh4",
@@ -485,6 +542,7 @@
       "tekken_power": 358049,
       "current_character": "Jin",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-09T18:36:24Z",
       "last_seen": "2026-06-09T18:45:24Z",
       "source": "api"
@@ -498,6 +556,7 @@
       "tekken_power": 356152,
       "current_character": "Miary Zo",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": null,
       "last_seen": "2026-06-07T23:41:51Z",
       "source": "api"
@@ -511,9 +570,11 @@
       "tekken_power": 353453,
       "current_character": "Heihachi",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-04T03:51:36Z",
       "last_seen": "2026-06-04T03:51:36Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "nyuu"
     },
     {
       "tekken_id": "5Ta4Et8f8L8y",
@@ -524,9 +585,11 @@
       "tekken_power": 352836,
       "current_character": "King",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-05-31T15:01:10Z",
       "last_seen": "2026-05-31T15:23:39Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "John T. Ekken"
     },
     {
       "tekken_id": "28n38hT3yRHT",
@@ -537,9 +600,11 @@
       "tekken_power": 351448,
       "current_character": "Lars",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": null,
       "last_seen": "2026-06-10T03:18:39Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "Just CO"
     },
     {
       "tekken_id": "5iN6f7GFQFQa",
@@ -550,9 +615,11 @@
       "tekken_power": 350461,
       "current_character": "Alisa",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-11T09:17:40Z",
       "last_seen": "2026-06-11T09:37:12Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "NeedlessFlea19"
     },
     {
       "tekken_id": "5YdERhbJGnMT",
@@ -563,6 +630,7 @@
       "tekken_power": 349031,
       "current_character": "Raven",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-11T16:22:39Z",
       "last_seen": "2026-06-11T16:22:39Z",
       "source": "api"
@@ -576,9 +644,11 @@
       "tekken_power": 347560,
       "current_character": "Victor",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-10T04:42:57Z",
       "last_seen": "2026-06-11T23:15:47Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "CheeseSniffer83"
     },
     {
       "tekken_id": "64ynyFMT3q8B",
@@ -589,6 +659,7 @@
       "tekken_power": 251210,
       "current_character": "Claudio",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-03-31T00:47:34Z",
       "last_seen": "2026-03-31T00:47:34Z",
       "source": "api"
@@ -602,9 +673,11 @@
       "tekken_power": 250665,
       "current_character": "Armor King",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-10T03:00:03Z",
       "last_seen": "2026-06-12T01:21:18Z",
-      "source": "api"
+      "source": "api",
+      "known_name": "Jedah"
     },
     {
       "tekken_id": "5nmeN2g8hRyE",
@@ -615,6 +688,7 @@
       "tekken_power": 241832,
       "current_character": "Jun",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-11T23:28:54Z",
       "last_seen": "2026-06-11T23:31:42Z",
       "source": "api"
@@ -628,6 +702,7 @@
       "tekken_power": 350839,
       "current_character": "Bryan",
       "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": "2026-06-12T06:30:30Z",
       "last_seen": "2026-06-12T06:58:46Z",
       "source": "api"
