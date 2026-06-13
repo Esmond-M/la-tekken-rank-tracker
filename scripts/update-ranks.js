@@ -77,6 +77,7 @@ async function fetchPlayerRank(player) {
   // One API call returns the full page of battles; we scan in memory — no extra calls.
   const bestPerChar = new Map() // character -> best entry for that character
   let mostRecentBattleAt = null // timestamp of the most recent battle (true "last seen")
+  let displayName = null // in-game display name from battle data
 
   for (const battle of battles) {
     if (battle.battle_at) {
@@ -85,6 +86,7 @@ async function fetchPlayerRank(player) {
       }
     }
     const isP1 = battle.p1_tekken_id === player.tekken_id
+    if (!displayName) displayName = isP1 ? battle.p1_name : battle.p2_name
     const entry = {
       rank_name: isP1 ? battle.p1_dan_rank : battle.p2_dan_rank,
       tekken_power: isP1 ? battle.p1_tekken_power : battle.p2_tekken_power,
@@ -147,9 +149,9 @@ async function fetchPlayerRank(player) {
     primary = best
   }
 
-  // Find secondary: best-ranked OTHER character (not the primary) that is within
+  // Find secondary + tertiary: best-ranked OTHER characters (not the primary) within
   // 2 tiers of primary AND at least God of Destruction (base, index 8).
-  let secondary = null
+  const secondaries = []
   if (primary) {
     const primaryTier = rankSortValue(primary.rank_name)
     const godBaseTier = rankSortValue('God of Destruction')
@@ -157,20 +159,23 @@ async function fetchPlayerRank(player) {
       if (char === primary.current_character) continue
       const tier = rankSortValue(entry.rank_name)
       if (tier <= primaryTier + 2 && tier <= godBaseTier) {
-        if (
-          !secondary ||
-          tier < rankSortValue(secondary.rank_name) ||
-          (tier === rankSortValue(secondary.rank_name) &&
-            (entry.tekken_power ?? 0) > (secondary.tekken_power ?? 0))
-        ) {
-          secondary = entry
-        }
+        secondaries.push(entry)
       }
     }
+    secondaries.sort((a, b) =>
+      rankSortValue(a.rank_name) - rankSortValue(b.rank_name) ||
+      (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
+    )
   }
 
   return {
-    rankData: primary ? { ...primary, secondary_character: secondary?.current_character ?? null, last_seen: mostRecentBattleAt } : null,
+    rankData: primary ? {
+      ...primary,
+      display_name: displayName !== player.player_tag ? displayName : null,
+      secondary_character: secondaries[0]?.current_character ?? null,
+      tertiary_character: secondaries[1]?.current_character ?? null,
+      last_seen: mostRecentBattleAt,
+    } : null,
     rawBattles: battles,
   }
 }
@@ -180,6 +185,7 @@ async function fetchPlayerRank(player) {
 function buildRankDataFromBattles(player, battles) {
   const bestPerChar = new Map()
   let mostRecentBattleAt = null
+  let displayName = null
   for (const battle of battles) {
     if (battle.battle_at) {
       if (!mostRecentBattleAt || battle.battle_at > mostRecentBattleAt) {
@@ -187,6 +193,7 @@ function buildRankDataFromBattles(player, battles) {
       }
     }
     const isP1 = battle.p1_tekken_id === player.tekken_id
+    if (!displayName) displayName = isP1 ? battle.p1_name : battle.p2_name
     const entry = {
       rank_name: isP1 ? battle.p1_dan_rank : battle.p2_dan_rank,
       tekken_power: isP1 ? battle.p1_tekken_power : battle.p2_tekken_power,
@@ -239,7 +246,7 @@ function buildRankDataFromBattles(player, battles) {
     primary = best
   }
 
-  let secondary = null
+  const secondaries = []
   if (primary) {
     const primaryTier = rankSortValue(primary.rank_name)
     const godBaseTier = rankSortValue('God of Destruction')
@@ -247,20 +254,23 @@ function buildRankDataFromBattles(player, battles) {
       if (char === primary.current_character) continue
       const tier = rankSortValue(entry.rank_name)
       if (tier <= primaryTier + 2 && tier <= godBaseTier) {
-        if (
-          !secondary ||
-          tier < rankSortValue(secondary.rank_name) ||
-          (tier === rankSortValue(secondary.rank_name) &&
-            (entry.tekken_power ?? 0) > (secondary.tekken_power ?? 0))
-        ) {
-          secondary = entry
-        }
+        secondaries.push(entry)
       }
     }
+    secondaries.sort((a, b) =>
+      rankSortValue(a.rank_name) - rankSortValue(b.rank_name) ||
+      (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
+    )
   }
 
   return primary
-    ? { ...primary, secondary_character: secondary?.current_character ?? null, last_seen: mostRecentBattleAt }
+    ? {
+        ...primary,
+        display_name: displayName !== player.player_tag ? displayName : null,
+        secondary_character: secondaries[0]?.current_character ?? null,
+        tertiary_character: secondaries[1]?.current_character ?? null,
+        last_seen: mostRecentBattleAt,
+      }
     : null
 }
 
@@ -297,12 +307,14 @@ async function reprocessFromCache() {
       results.push({
         tekken_id: player.tekken_id,
         player_tag: player.player_tag,
+        ...(rankData.display_name ? { display_name: rankData.display_name } : {}),
         platform: player.platform,
         main_character: player.main_character,
         rank_name: rankData.rank_name,
         tekken_power: rankData.tekken_power,
         current_character: rankData.current_character,
         secondary_character: rankData.secondary_character,
+        tertiary_character: rankData.tertiary_character,        ...(player.show_tertiary ? { show_tertiary: true } : {}),        ...(player.show_tertiary ? { show_tertiary: true } : {}),
         last_updated: rankData.last_updated,
         last_seen: rankData.last_seen ?? null,
         source: 'api',
@@ -312,6 +324,16 @@ async function reprocessFromCache() {
     } else {
       skipped++
     }
+  }
+
+  // Merge known_name from players.json into each result.
+  // known_name (hand-entered) takes priority; otherwise display_name from battle data is used.
+  const knownNameMap = new Map(players.map(p => [p.tekken_id, p.known_name]))
+  for (const r of results) {
+    const kn = r.tekken_id && knownNameMap.get(r.tekken_id)
+    if (kn) r.known_name = kn
+    else if (r.display_name) r.known_name = r.display_name
+    delete r.display_name
   }
 
   results.sort((a, b) => {
@@ -434,12 +456,14 @@ async function main() {
         results.push({
           tekken_id: player.tekken_id,
           player_tag: player.player_tag,
+          ...(rankData.display_name ? { display_name: rankData.display_name } : {}),
           platform: player.platform,
           main_character: player.main_character,
           rank_name: rankData.rank_name,
           tekken_power: rankData.tekken_power,
           current_character: rankData.current_character,
           secondary_character: rankData.secondary_character,
+          tertiary_character: rankData.tertiary_character,
           last_updated: rankData.last_updated,
           last_seen: rankData.last_seen ?? null,
           source: 'api',
@@ -501,6 +525,16 @@ async function main() {
         failed++
       }
     }
+  }
+
+  // Merge known_name from players.json into each result.
+  // known_name (hand-entered) takes priority; otherwise display_name from battle data is used.
+  const knownNameMapMain = new Map(players.map(p => [p.tekken_id, p.known_name]))
+  for (const r of results) {
+    const kn = r.tekken_id && knownNameMapMain.get(r.tekken_id)
+    if (kn) r.known_name = kn
+    else if (r.display_name) r.known_name = r.display_name
+    delete r.display_name
   }
 
   // Sort: by rank tier first, then by tekken_power desc within the same tier
