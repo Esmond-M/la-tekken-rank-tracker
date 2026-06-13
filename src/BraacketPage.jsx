@@ -315,15 +315,15 @@ export default function BraacketPage({ onOpenPlayer }) {
                       const secondary = ewgfFull?.secondary_character
                       const tertiary = ewgfFull?.show_tertiary ? ewgfFull?.tertiary_character : null
                       return (
-                        <>
+                        <span className="character-cell">
                           <img src={imgUrl} alt={charName} title={charName} className="char-icon" onError={e => { e.currentTarget.style.display = 'none' }} />
-                          {secondary && charImageURL(secondary) && (
-                            <img src={charImageURL(secondary)} alt={secondary} title={secondary} className="char-icon" onError={e => { e.currentTarget.style.display = 'none' }} />
+                          {(secondary || tertiary) && (
+                            <span className="secondary-char">
+                              {secondary && ` / ${secondary}`}
+                              {tertiary && ` / ${tertiary}`}
+                            </span>
                           )}
-                          {tertiary && charImageURL(tertiary) && (
-                            <img src={charImageURL(tertiary)} alt={tertiary} title={tertiary} className="char-icon" onError={e => { e.currentTarget.style.display = 'none' }} />
-                          )}
-                        </>
+                        </span>
                       )
                     })()}
                   </td>
