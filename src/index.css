@@ -271,12 +271,19 @@ tbody td {
   font-size: 0.85rem;
 }
 
+.character-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
 .char-icon {
   width: 36px;
   height: 36px;
   object-fit: cover;
   border-radius: 4px;
   display: block;
+  flex-shrink: 0;
 }
 
 .platform-badge {
