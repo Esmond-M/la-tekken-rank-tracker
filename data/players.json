@@ -13,7 +13,7 @@
   { "tekken_id": "33e7D2r4f9t8", "player_tag": "KOG_Dre",         "platform": "Playstation", "main_character": "Dragunov",    "peak_rank": "God of Destruction III" },
   { "tekken_id": "4fM948dh8AaT", "player_tag": "HBR",             "platform": "Playstation", "main_character": "Jack 8",      "peak_rank": "God of Destruction III" },
   { "tekken_id": "48mghAMDbn6J", "player_tag": "Delirium Heart",  "platform": "Steam",       "main_character": "Raven",       "peak_rank": "God of Destruction III" },
-  { "tekken_id": "3Mtn7ghBHrdQ", "player_tag": "Oishimari",       "platform": "Playstation", "main_character": "Azucena",     "peak_rank": "God of Destruction III" },
+  { "tekken_id": "3Mtn7ghBHrdQ", "player_tag": "Oishimari",       "known_name": "Mason Reigns",  "platform": "Playstation", "main_character": "Azucena",     "peak_rank": "God of Destruction III", "show_tertiary": true },
   { "tekken_id": "5QLJMJEj75ha", "player_tag": "NSF_Istre",       "platform": "Playstation", "main_character": "King",        "peak_rank": "God of Destruction III" },
   { "tekken_id": "25Gqad5ee8qJ", "player_tag": "Creole",          "platform": "Steam",       "main_character": "Kuma",        "peak_rank": "God of Destruction II"  },
   { "tekken_id": "3BEiYffFRRan", "player_tag": "Ihatesainte",     "platform": "Xbox",        "main_character": "King",        "peak_rank": "God of Destruction II"  },
