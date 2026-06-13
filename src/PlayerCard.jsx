@@ -78,6 +78,9 @@ export default function PlayerCard({ tag, ewgf, braacket, onClose }) {
                   {ewgf.secondary_character && (
                     <span className="secondary-char"> / {ewgf.secondary_character}</span>
                   )}
+                  {ewgf.show_tertiary && ewgf.tertiary_character && (
+                    <span className="secondary-char"> / {ewgf.tertiary_character}</span>
+                  )}
                 </dd></div>
                 <div><dt>Platform</dt><dd>{ewgf.platform ?? '—'}</dd></div>
                 <div><dt>Last Seen</dt><dd>{formatDate(ewgf.last_seen ?? ewgf.last_updated)}</dd></div>
