@@ -126,5 +126,15 @@
     "successful": 48,
     "failed": 0,
     "skipped": 0
+  },
+  {
+    "ran_at": "2026-06-15T10:18:10.243Z",
+    "api_calls_this_run": 48,
+    "rate_limit_remaining": 52,
+    "rate_limit_reset": "2026-06-15T10:18:09Z",
+    "tier": "free",
+    "successful": 48,
+    "failed": 0,
+    "skipped": 0
   }
 ]
