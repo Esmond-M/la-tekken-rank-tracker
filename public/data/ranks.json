@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-16T05:32:59.505Z",
+  "updated_at": "2026-06-16T05:53:52.468Z",
   "stats": {
     "successful": 48,
     "failed": 0,
@@ -607,9 +607,23 @@
       "known_name": "Just CO"
     },
     {
+      "tekken_id": "2bhAGQRT2tBQ",
+      "player_tag": "Adude3",
+      "platform": "Steam",
+      "main_character": "Fahkumram",
+      "rank_name": "God of Destruction",
+      "tekken_power": 350839,
+      "current_character": "Fahkumram",
+      "secondary_character": null,
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-06-12T06:58:46Z",
+      "source": "api"
+    },
+    {
       "tekken_id": "2T7Ay7t77iha",
       "player_tag": "Dohma",
-      "platform": null,
+      "platform": "Steam",
       "main_character": "Armor King",
       "rank_name": "God of Destruction",
       "tekken_power": 350582,
@@ -691,20 +705,6 @@
       "tertiary_character": null,
       "last_updated": "2026-06-11T23:28:54Z",
       "last_seen": "2026-06-11T23:31:42Z",
-      "source": "api"
-    },
-    {
-      "tekken_id": "2bhAGQRT2tBQ",
-      "player_tag": "Adude3",
-      "platform": null,
-      "main_character": "Fahkumram",
-      "rank_name": "Tekken Emperor",
-      "tekken_power": 350839,
-      "current_character": "Fahkumram",
-      "secondary_character": null,
-      "tertiary_character": null,
-      "last_updated": null,
-      "last_seen": "2026-06-12T06:58:46Z",
       "source": "api"
     }
   ]
