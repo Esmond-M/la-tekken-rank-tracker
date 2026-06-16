@@ -1,11 +1,9 @@
 {
-  "updated_at": "2026-06-15T10:18:10.230Z",
+  "updated_at": "2026-06-16T05:32:59.505Z",
   "stats": {
     "successful": 48,
     "failed": 0,
-    "skipped": 0,
-    "rate_limit_hit": false,
-    "skipped_rate_limit_count": 0
+    "skipped": 0
   },
   "players": [
     {
@@ -166,6 +164,7 @@
       "current_character": "Azucena",
       "secondary_character": "Eddy",
       "tertiary_character": "Zafina",
+      "show_tertiary": true,
       "last_updated": null,
       "last_seen": "2026-06-13T17:25:31Z",
       "source": "api",
@@ -608,6 +607,21 @@
       "known_name": "Just CO"
     },
     {
+      "tekken_id": "2T7Ay7t77iha",
+      "player_tag": "Dohma",
+      "platform": null,
+      "main_character": "Armor King",
+      "rank_name": "God of Destruction",
+      "tekken_power": 350582,
+      "current_character": "Armor King",
+      "secondary_character": null,
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-06-14T06:33:35Z",
+      "source": "api",
+      "known_name": "Jedah"
+    },
+    {
       "tekken_id": "5iN6f7GFQFQa",
       "player_tag": "FireFury212",
       "platform": "Playstation",
@@ -666,21 +680,6 @@
       "source": "api"
     },
     {
-      "tekken_id": "2T7Ay7t77iha",
-      "player_tag": "Dohma",
-      "platform": null,
-      "main_character": null,
-      "rank_name": "Tekken God",
-      "tekken_power": 350582,
-      "current_character": "Paul",
-      "secondary_character": null,
-      "tertiary_character": null,
-      "last_updated": "2026-06-14T06:33:35Z",
-      "last_seen": "2026-06-14T06:33:35Z",
-      "source": "api",
-      "known_name": "Jedah"
-    },
-    {
       "tekken_id": "5nmeN2g8hRyE",
       "player_tag": "Lemon and Lime",
       "platform": "Steam",
@@ -698,13 +697,13 @@
       "tekken_id": "2bhAGQRT2tBQ",
       "player_tag": "Adude3",
       "platform": null,
-      "main_character": null,
+      "main_character": "Fahkumram",
       "rank_name": "Tekken Emperor",
       "tekken_power": 350839,
-      "current_character": "Bryan",
+      "current_character": "Fahkumram",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-06-12T06:30:30Z",
+      "last_updated": null,
       "last_seen": "2026-06-12T06:58:46Z",
       "source": "api"
     }
