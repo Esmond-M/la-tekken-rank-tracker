@@ -1,50 +1,341 @@
 [
-  { "tekken_id": "556QMQehGYQM", "player_tag": "Allocution",      "platform": "Steam",       "main_character": "Jin",         "peak_rank": "God of Destruction VI"  },
-  { "tekken_id": "5A7M24gt8Y84", "player_tag": "84DaysWithout",   "platform": "Playstation", "main_character": "Jun",         "peak_rank": "God of Destruction VI"  },
-  { "tekken_id": "46LnH6Rbjdyd", "player_tag": "Flex Zero",       "platform": "Playstation", "main_character": "Reina",       "peak_rank": "God of Destruction VI"  },
-  { "tekken_id": "5hj4DTr6RdTJ", "player_tag": "Kevvbmm",         "platform": "Playstation", "main_character": "Nina",        "peak_rank": "God of Destruction V"   },
-  { "tekken_id": "5fHfbDA2BAEQ", "player_tag": "Beware IIlusion", "platform": "Steam",       "main_character": "Law",         "peak_rank": "God of Destruction V"   },
-  { "tekken_id": "5BiLay7M68ja", "player_tag": "Lyvesauce",       "platform": "Steam",       "main_character": "Shaheen",     "peak_rank": "God of Destruction IV"  },
-  { "tekken_id": "34aDeFQimJgn", "player_tag": "TWKO",            "platform": "Playstation", "main_character": "Paul",        "peak_rank": "God of Destruction IV"  },
-  { "tekken_id": "4BHtJmgQAGfM",  "player_tag": "Tombstone",        "platform": "Steam",       "main_character": "Armor King",  "peak_rank": "God of Destruction IV"  },
-  { "tekken_id": "5j2gTqJrEbyr", "player_tag": "Sneak47",         "platform": "Steam",       "main_character": "Lars",        "peak_rank": "God of Destruction III" },
-  { "tekken_id": "2mmdJn74QDFd", "player_tag": "Smoking_Hot_BBQ", "platform": "Steam",       "main_character": "Steve",       "peak_rank": "God of Destruction III" },
-  { "tekken_id": "3Y4GdfdL9HB6", "player_tag": "NicoFasho",       "platform": "Steam",       "main_character": "Kazuya",      "peak_rank": "God of Destruction III" },
-  { "tekken_id": "33e7D2r4f9t8", "player_tag": "KOG_Dre",         "platform": "Playstation", "main_character": "Dragunov",    "peak_rank": "God of Destruction III" },
-  { "tekken_id": "4fM948dh8AaT", "player_tag": "HBR",             "platform": "Playstation", "main_character": "Jack 8",      "peak_rank": "God of Destruction III" },
-  { "tekken_id": "48mghAMDbn6J", "player_tag": "Delirium Heart",  "platform": "Steam",       "main_character": "Raven",       "peak_rank": "God of Destruction III" },
-  { "tekken_id": "3Mtn7ghBHrdQ", "player_tag": "Oishimari",       "known_name": "Mason Reigns",  "platform": "Playstation", "main_character": "Azucena",     "peak_rank": "God of Destruction III", "show_tertiary": true },
-  { "tekken_id": "5QLJMJEj75ha", "player_tag": "NSF_Istre",       "platform": "Playstation", "main_character": "King",        "peak_rank": "God of Destruction III" },
-  { "tekken_id": "25Gqad5ee8qJ", "player_tag": "Creole",          "platform": "Steam",       "main_character": "Kuma",        "peak_rank": "God of Destruction II"  },
-  { "tekken_id": "3BEiYffFRRan", "player_tag": "Ihatesainte",     "platform": "Xbox",        "main_character": "King",        "peak_rank": "God of Destruction II"  },
-  { "tekken_id": "45BYtinY394j", "player_tag": "Raw Potential",   "platform": "Playstation", "main_character": "Paul",        "peak_rank": "God of Destruction II"  },
-  { "tekken_id": "52rBt7NdyDQM", "player_tag": "Dragosiege",      "platform": "Steam",       "main_character": "Hwoarang",    "peak_rank": "God of Destruction II"  },
-  { "tekken_id": "23EgNYiq8MBf", "player_tag": "BBxstaunch",      "platform": "Xbox",        "main_character": "Armor King",  "peak_rank": "God of Destruction II"  },
-  { "tekken_id": "5QNm9gQNja6n", "player_tag": "DJ Symphix",      "platform": "Steam",       "main_character": "Fahkumram",   "peak_rank": "God of Destruction II"  },
-  { "tekken_id": "5fMiHMbtA3Eh", "player_tag": "Lowki9000",       "platform": "Playstation", "main_character": "Raven",       "peak_rank": "God of Destruction II"  },
-  { "tekken_id": "5nFbr9Bni7dQ", "player_tag": "No Juice",        "platform": "Steam",       "main_character": "Law",         "peak_rank": "God of Destruction II"  },
-  { "tekken_id": "5trN9gn3DTaB", "player_tag": "G.O.L. Zenzo",   "platform": "Playstation", "main_character": "Eddy",        "peak_rank": "God of Destruction II"  },
-  { "tekken_id": "63tgim8JT6My", "player_tag": "Jakarogo",        "platform": "Playstation", "main_character": "Victor",      "peak_rank": "God of Destruction I"   },
-  { "tekken_id": "2DEhtt4Yndfj", "player_tag": "ItsSyrix",        "platform": "Steam",       "main_character": "Jin",         "peak_rank": "God of Destruction I"   },
-  { "tekken_id": "3eL532RyBdT2", "player_tag": "ThaQuestion337",  "platform": "Playstation", "main_character": "Eddy",        "peak_rank": "God of Destruction I"   },
-  { "tekken_id": "45gFGNn63nhf", "player_tag": "UDG_TYE",         "platform": "Playstation", "main_character": "King",        "peak_rank": "God of Destruction I"   },
-  { "tekken_id": "3536QnT78bHr", "player_tag": "HK",              "platform": "Playstation", "main_character": "Lili",        "peak_rank": "God of Destruction I"   },
-  { "tekken_id": "4dqLFhHy9Gyd", "player_tag": "YaBoYGunna",      "platform": "Steam",       "main_character": "Paul",        "peak_rank": "God of Destruction"     },
-  { "tekken_id": "4Bm7LLJtB2TB", "player_tag": "Nyuu",            "platform": "Steam",       "main_character": "Heihachi",    "peak_rank": "God of Destruction"     },
-  { "tekken_id": "64ynyFMT3q8B", "player_tag": "KavemanFGC",      "platform": "Playstation", "main_character": "Claudio",     "peak_rank": "God of Destruction"     },
-  { "tekken_id": "4NRAgMFqdnMJ", "player_tag": "7sev.ens",        "platform": "Playstation", "main_character": "Reina",       "peak_rank": "God of Destruction"     },
-  { "tekken_id": "3BqDeimjaJ44", "player_tag": "KennyV",          "platform": "Steam",       "main_character": "Yoshimitsu",  "peak_rank": "God of Destruction"     },
-  { "tekken_id": "28n38hT3yRHT",  "player_tag": "JustCO",           "platform": "Playstation", "main_character": "Lars",        "peak_rank": "God of Destruction"     },
-  { "tekken_id": "5YdERhbJGnMT", "player_tag": "Lazy Nerds",      "platform": "Playstation", "main_character": "Raven",       "peak_rank": "God of Destruction"     },
-  { "tekken_id": "5Ta4Et8f8L8y", "player_tag": "NK30",            "platform": "Steam",       "main_character": "King",        "peak_rank": "God of Destruction"     },
-  { "tekken_id": "3H7D4h29D3Mr", "player_tag": "Zandak",          "platform": "Steam",       "main_character": "Leo",         "peak_rank": "God of Destruction"     },
-  { "tekken_id": "5iN6f7GFQFQa", "player_tag": "FireFury212",     "platform": "Playstation", "main_character": "Alisa",       "peak_rank": "God of Destruction"     },
-  { "tekken_id": "5yNji7nR6Yh4", "player_tag": "Doza",            "platform": "Steam",       "main_character": "Jin",         "peak_rank": "God of Destruction"     },
-  { "tekken_id": "5nmeN2g8hRyE", "player_tag": "Lemon and Lime",  "platform": "Steam",       "main_character": "Jun",         "peak_rank": "God of Destruction"     },
-  { "tekken_id": "5b9JdQ3m5YQr", "player_tag": "28Gramz",         "platform": "Steam",       "main_character": "Lili",        "peak_rank": "God of Destruction"     },
-  { "tekken_id": "36Ejd6YQbeeM",  "player_tag": "Isaac Washington", "platform": "Playstation", "main_character": "Victor",      "peak_rank": "God of Destruction"     },
-  { "tekken_id": "5RH84JBeJTrJ", "player_tag": "KayLay",          "platform": "Steam",       "main_character": "Lidia",       "peak_rank": "God of Destruction"     },
-  { "tekken_id": "4LH7yjnhmi8a", "player_tag": "Juroh",           "platform": "Steam",       "main_character": "Miary Zo",    "peak_rank": "God of Destruction"     },
-  { "tekken_id": "2T7Ay7t77iha", "player_tag": "Dohma",           "platform": "Steam",       "main_character": "Armor King",  "peak_rank": "God of Destruction"     },
-  { "tekken_id": "2bhAGQRT2tBQ", "player_tag": "Adude3",           "platform": "Steam",       "main_character": "Fahkumram",   "peak_rank": "God of Destruction"   }
+  {
+    "tekken_id": "556QMQehGYQM",
+    "player_tag": "Allocution",
+    "platform": "Steam",
+    "main_character": "Jin",
+    "peak_rank": "God of Destruction VI"
+  },
+  {
+    "tekken_id": "5A7M24gt8Y84",
+    "player_tag": "84DaysWithout",
+    "platform": "Playstation",
+    "main_character": "Jun",
+    "peak_rank": "God of Destruction VI"
+  },
+  {
+    "tekken_id": "46LnH6Rbjdyd",
+    "player_tag": "Flex Zero",
+    "platform": "Playstation",
+    "main_character": "Reina",
+    "peak_rank": "God of Destruction VI"
+  },
+  {
+    "tekken_id": "5hj4DTr6RdTJ",
+    "player_tag": "Kevvbmm",
+    "platform": "Playstation",
+    "main_character": "Nina",
+    "peak_rank": "God of Destruction V"
+  },
+  {
+    "tekken_id": "5fHfbDA2BAEQ",
+    "player_tag": "Beware IIlusion",
+    "platform": "Steam",
+    "main_character": "Law",
+    "peak_rank": "God of Destruction V"
+  },
+  {
+    "tekken_id": "5BiLay7M68ja",
+    "player_tag": "Lyvesauce",
+    "platform": "Steam",
+    "main_character": "Shaheen",
+    "peak_rank": "God of Destruction IV"
+  },
+  {
+    "tekken_id": "34aDeFQimJgn",
+    "player_tag": "TWKO",
+    "platform": "Playstation",
+    "main_character": "Paul",
+    "peak_rank": "God of Destruction IV"
+  },
+  {
+    "tekken_id": "4BHtJmgQAGfM",
+    "player_tag": "Tombstone",
+    "platform": "Steam",
+    "main_character": "Armor King",
+    "peak_rank": "God of Destruction IV"
+  },
+  {
+    "tekken_id": "5j2gTqJrEbyr",
+    "player_tag": "Sneak47",
+    "platform": "Steam",
+    "main_character": "Lars",
+    "peak_rank": "God of Destruction III"
+  },
+  {
+    "tekken_id": "2mmdJn74QDFd",
+    "player_tag": "Smoking_Hot_BBQ",
+    "platform": "Steam",
+    "main_character": "Steve",
+    "peak_rank": "God of Destruction III"
+  },
+  {
+    "tekken_id": "3Y4GdfdL9HB6",
+    "player_tag": "NicoFasho",
+    "platform": "Steam",
+    "main_character": "Kazuya",
+    "peak_rank": "God of Destruction III"
+  },
+  {
+    "tekken_id": "33e7D2r4f9t8",
+    "player_tag": "KOG_Dre",
+    "platform": "Playstation",
+    "main_character": "Dragunov",
+    "peak_rank": "God of Destruction III"
+  },
+  {
+    "tekken_id": "4fM948dh8AaT",
+    "player_tag": "HBR",
+    "platform": "Playstation",
+    "main_character": "Jack 8",
+    "peak_rank": "God of Destruction III"
+  },
+  {
+    "tekken_id": "48mghAMDbn6J",
+    "player_tag": "Delirium Heart",
+    "platform": "Steam",
+    "main_character": "Raven",
+    "peak_rank": "God of Destruction III"
+  },
+  {
+    "tekken_id": "3Mtn7ghBHrdQ",
+    "player_tag": "Oishimari",
+    "known_name": "Mason Reigns",
+    "platform": "Playstation",
+    "main_character": "Azucena",
+    "peak_rank": "God of Destruction III",
+    "show_tertiary": true
+  },
+  {
+    "tekken_id": "5QLJMJEj75ha",
+    "player_tag": "NSF_Istre",
+    "platform": "Playstation",
+    "main_character": "King",
+    "peak_rank": "God of Destruction III"
+  },
+  {
+    "tekken_id": "25Gqad5ee8qJ",
+    "player_tag": "Creole",
+    "platform": "Steam",
+    "main_character": "Kuma",
+    "peak_rank": "God of Destruction II"
+  },
+  {
+    "tekken_id": "3BEiYffFRRan",
+    "player_tag": "Ihatesainte",
+    "platform": "Xbox",
+    "main_character": "King",
+    "peak_rank": "God of Destruction II"
+  },
+  {
+    "tekken_id": "45BYtinY394j",
+    "player_tag": "Raw Potential",
+    "platform": "Playstation",
+    "main_character": "Paul",
+    "peak_rank": "God of Destruction II"
+  },
+  {
+    "tekken_id": "52rBt7NdyDQM",
+    "player_tag": "Dragosiege",
+    "platform": "Steam",
+    "main_character": "Hwoarang",
+    "peak_rank": "God of Destruction II"
+  },
+  {
+    "tekken_id": "23EgNYiq8MBf",
+    "player_tag": "BBxstaunch",
+    "platform": "Xbox",
+    "main_character": "Armor King",
+    "peak_rank": "God of Destruction II"
+  },
+  {
+    "tekken_id": "5QNm9gQNja6n",
+    "player_tag": "DJ Symphix",
+    "platform": "Steam",
+    "main_character": "Fahkumram",
+    "peak_rank": "God of Destruction II"
+  },
+  {
+    "tekken_id": "5fMiHMbtA3Eh",
+    "player_tag": "Lowki9000",
+    "platform": "Playstation",
+    "main_character": "Raven",
+    "peak_rank": "God of Destruction II"
+  },
+  {
+    "tekken_id": "5nFbr9Bni7dQ",
+    "player_tag": "No Juice",
+    "platform": "Steam",
+    "main_character": "Law",
+    "peak_rank": "God of Destruction II"
+  },
+  {
+    "tekken_id": "5trN9gn3DTaB",
+    "player_tag": "G.O.L. Zenzo",
+    "platform": "Playstation",
+    "main_character": "Eddy",
+    "peak_rank": "God of Destruction II"
+  },
+  {
+    "tekken_id": "63tgim8JT6My",
+    "player_tag": "Jakarogo",
+    "platform": "Playstation",
+    "main_character": "Victor",
+    "peak_rank": "God of Destruction I"
+  },
+  {
+    "tekken_id": "2DEhtt4Yndfj",
+    "player_tag": "ItsSyrix",
+    "platform": "Steam",
+    "main_character": "Jin",
+    "peak_rank": "God of Destruction I"
+  },
+  {
+    "tekken_id": "3eL532RyBdT2",
+    "player_tag": "ThaQuestion337",
+    "platform": "Playstation",
+    "main_character": "Eddy",
+    "peak_rank": "God of Destruction I"
+  },
+  {
+    "tekken_id": "45gFGNn63nhf",
+    "player_tag": "UDG_TYE",
+    "platform": "Playstation",
+    "main_character": "King",
+    "peak_rank": "God of Destruction I"
+  },
+  {
+    "tekken_id": "3536QnT78bHr",
+    "player_tag": "HK",
+    "platform": "Playstation",
+    "main_character": "Lili",
+    "peak_rank": "God of Destruction I"
+  },
+  {
+    "tekken_id": "4dqLFhHy9Gyd",
+    "player_tag": "YaBoYGunna",
+    "platform": "Steam",
+    "main_character": "Paul",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "4Bm7LLJtB2TB",
+    "player_tag": "Nyuu",
+    "platform": "Steam",
+    "main_character": "Heihachi",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "64ynyFMT3q8B",
+    "player_tag": "KavemanFGC",
+    "platform": "Playstation",
+    "main_character": "Claudio",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "4NRAgMFqdnMJ",
+    "player_tag": "7sev.ens",
+    "platform": "Playstation",
+    "main_character": "Reina",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "3BqDeimjaJ44",
+    "player_tag": "KennyV",
+    "platform": "Steam",
+    "main_character": "Yoshimitsu",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "28n38hT3yRHT",
+    "player_tag": "JustCO",
+    "platform": "Playstation",
+    "main_character": "Lars",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "5YdERhbJGnMT",
+    "player_tag": "Lazy Nerds",
+    "platform": "Playstation",
+    "main_character": "Raven",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "5Ta4Et8f8L8y",
+    "player_tag": "NK30",
+    "platform": "Steam",
+    "main_character": "King",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "3H7D4h29D3Mr",
+    "player_tag": "Zandak",
+    "platform": "Steam",
+    "main_character": "Leo",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "5iN6f7GFQFQa",
+    "player_tag": "FireFury212",
+    "platform": "Playstation",
+    "main_character": "Alisa",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "5yNji7nR6Yh4",
+    "player_tag": "Doza",
+    "platform": "Steam",
+    "main_character": "Jin",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "5nmeN2g8hRyE",
+    "player_tag": "Lemon and Lime",
+    "platform": "Steam",
+    "main_character": "Jun",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "5b9JdQ3m5YQr",
+    "player_tag": "28Gramz",
+    "platform": "Steam",
+    "main_character": "Lili",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "36Ejd6YQbeeM",
+    "player_tag": "Isaac Washington",
+    "platform": "Playstation",
+    "main_character": "Victor",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "5RH84JBeJTrJ",
+    "player_tag": "KayLay",
+    "platform": "Steam",
+    "main_character": "Lidia",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "4LH7yjnhmi8a",
+    "player_tag": "Juroh",
+    "platform": "Steam",
+    "main_character": "Miary Zo",
+    "peak_rank": "God of Destruction"
+  },
+  {
+    "tekken_id": "2T7Ay7t77iha",
+    "player_tag": "Dohma",
+    "platform": "Steam",
+    "main_character": "Armor King",
+    "peak_rank": "God of Destruction",
+    "known_name": "Jedah"
+  },
+  {
+    "tekken_id": "2bhAGQRT2tBQ",
+    "player_tag": "Adude3",
+    "platform": "Steam",
+    "main_character": "Fahkumram",
+    "peak_rank": "God of Destruction"
+  }
 ]
