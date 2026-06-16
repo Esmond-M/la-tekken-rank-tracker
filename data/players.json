@@ -45,6 +45,6 @@
   { "tekken_id": "36Ejd6YQbeeM",  "player_tag": "Isaac Washington", "platform": "Playstation", "main_character": "Victor",      "peak_rank": "God of Destruction"     },
   { "tekken_id": "5RH84JBeJTrJ", "player_tag": "KayLay",          "platform": "Steam",       "main_character": "Lidia",       "peak_rank": "God of Destruction"     },
   { "tekken_id": "4LH7yjnhmi8a", "player_tag": "Juroh",           "platform": "Steam",       "main_character": "Miary Zo",    "peak_rank": "God of Destruction"     },
-  { "tekken_id": "2T7Ay7t77iha", "player_tag": "Dohma",           "platform": null,          "main_character": null,          "peak_rank": null                     },
-  { "tekken_id": "2bhAGQRT2tBQ", "player_tag": "Adude3",           "platform": null,          "main_character": null,          "peak_rank": null                     }
+  { "tekken_id": "2T7Ay7t77iha", "player_tag": "Dohma",           "platform": null,          "main_character": "Armor King",  "peak_rank": "God of Destruction"     },
+  { "tekken_id": "2bhAGQRT2tBQ", "player_tag": "Adude3",           "platform": null,          "main_character": "Fahkumram",   "peak_rank": "Tekken Emperor"       }
 ]
