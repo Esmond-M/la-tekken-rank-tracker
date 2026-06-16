@@ -28,6 +28,7 @@
 - **Primary slot is LOCKED to `main_character` from `players.json`.** The displayed character never drifts based on who they've been grinding lately. Rank shown for the primary = max(`peak_rank` from players.json, API-found rank on that character).
   - If `main_character` doesn't appear in recent battles, fall back to a minimal entry from players.json (peak_rank, null power/timestamp).
   - If `main_character` is missing in players.json (shouldn't happen), fall back to the old "highest-ranked character" pick.
+- **⚠️ Never leave `main_character` as `null`.** Without it, the script falls back to "highest-ranked character in recent battles" — which is unreliable because: (1) tekken_power is account-wide so all characters tie on power, (2) the tie-break is arbitrary insertion order, (3) the player may not have played their main recently. Always fill in `main_character` and `peak_rank` when adding a new player, even if you have to ask the user.
 - **Secondary character** = best-ranked OTHER character within 2 tiers of primary AND at least God of Destruction base. Excluded if same as primary.
 - `last_seen` = most recent `battle_at` across all returned battles (true "last played"). `last_updated` = timestamp of the best-rank battle for the displayed character.
 - Falls back to peak_rank from `players.json` if API didn't return battles or player has no Tekken ID.
