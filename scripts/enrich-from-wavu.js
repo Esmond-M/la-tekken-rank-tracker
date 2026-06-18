@@ -4,6 +4,12 @@
  * Fills missing platform data in data/players.json by scraping wavu.wank player pages.
  * Also grabs display names for potential known_name fallback.
  *
+ * ╔══════════════════════════════════════════════════════════════╗
+ * ║  THIS SCRIPT DOES NOT RUN AUTOMATICALLY.                    ║
+ * ║  Run it manually from the terminal when you need to update  ║
+ * ║  player platform info from wavu.wank.                       ║
+ * ╚══════════════════════════════════════════════════════════════╝
+ *
  * wavu.wank platform info is embedded in the HTML:
  *   <svg class="platform-icon"><title>steam</title>...</svg>
  *   <svg class="platform-icon"><title>psn</title>...</svg>

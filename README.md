@@ -50,6 +50,17 @@ Runs daily at 08:00 UTC (~3:00 AM Central).
 2. Update `public/data/braacket-rankings.json` with the new data.
 3. Commit and push — the deploy workflow will pick it up.
 
+### Enriching player platform data from wavu.wank
+
+> **⚠️ NOT AUTOMATIC — manual only.** The `enrich-from-wavu.js` script scrapes [wank.wavu.wiki](https://wank.wavu.wiki) to fill in missing `platform` values in `data/players.json`. It is not run by any GitHub Action or cron job — you must run it locally when needed.
+
+```bash
+node scripts/enrich-from-wavu.js              # fill platform=null players
+node scripts/enrich-from-wavu.js --all         # re-check ALL players
+node scripts/enrich-from-wavu.js --dry-run     # show what would change
+node scripts/enrich-from-wavu.js --player <ids> # specific players
+```
+
 ## Adding or editing players
 
 Edit [`data/players.json`](data/players.json) and open a PR (or push directly if you have access). Each entry:
@@ -106,9 +117,10 @@ public/data/
   ranks.json              Generated EWGF leaderboard data (committed by workflow)
   braacket-rankings.json  Tournament standings (updated manually)
 scripts/
-  update-ranks.js         Node script that calls the EWGF API
-  fetch-braacket.js       HTML scraper for Braacket (manual use only — see ToS note)
-  fetch-braacket-player-ids.js  One-time UUID map builder for Braacket profile links
+  update-ranks.js              Node script that calls the EWGF API
+  enrich-from-wavu.js          Manual-only script to fill missing platform data from wavu.wank
+  fetch-braacket.js            HTML scraper for Braacket (manual use only — see ToS note)
+  fetch-braacket-player-ids.js One-time UUID map builder for Braacket profile links
 src/
   App.jsx                 Main app shell, tab routing, PlayerCard state
   BraacketPage.jsx        Tournament Rankings tab
