@@ -1,11 +1,9 @@
 {
-  "updated_at": "2026-06-20T01:43:21.872Z",
+  "updated_at": "2026-06-20T01:44:38.493Z",
   "stats": {
-    "successful": 1,
+    "successful": 50,
     "failed": 0,
-    "skipped": 0,
-    "rate_limit_hit": false,
-    "skipped_rate_limit_count": 0
+    "skipped": 0
   },
   "players": [
     {
@@ -69,7 +67,7 @@
     {
       "tekken_id": "4NEQhQeMf7yQ",
       "player_tag": "Pandora",
-      "platform": null,
+      "platform": "Xbox",
       "main_character": "Lars",
       "rank_name": "God of Destruction V",
       "tekken_power": 429956,
@@ -209,6 +207,7 @@
       "current_character": "Azucena",
       "secondary_character": "Zafina",
       "tertiary_character": "Eddy",
+      "show_tertiary": true,
       "last_updated": "2026-06-17T21:41:43Z",
       "last_seen": "2026-06-18T05:35:56Z",
       "source": "api",
