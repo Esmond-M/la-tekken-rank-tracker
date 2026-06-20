@@ -162,8 +162,17 @@ async function main() {
     writeFileSync(PLAYERS_PATH, JSON.stringify(players, null, 2) + '\n')
     console.log(`\n✓ Wrote changes to data/players.json`)
 
-    // Suggest regeneration of ranks.json
-    console.log(`  Run 'node scripts/update-ranks.js --from-cache' to regenerate ranks.json`)
+    // Big reminder — the site only reads ranks.json, NOT players.json.
+    // Until the user regenerates ranks.json, their changes are invisible.
+    console.log('\n' + '═'.repeat(62))
+    console.log('  ⚠  YOUR CHANGES WON\'T SHOW UP YET!')
+    console.log('  ═'.repeat(62))
+    console.log('  The site reads public/data/ranks.json — NOT players.json.')
+    console.log('  Run the command below (zero API calls) to regenerate it now:')
+    console.log('')
+    console.log('    node scripts/update-ranks.js --from-cache')
+    console.log('')
+    console.log('═'.repeat(62))
   } else if (DRY_RUN && changed > 0) {
     console.log(`\n[DRY RUN] No files were modified. Remove --dry-run to apply.`)
   } else {
