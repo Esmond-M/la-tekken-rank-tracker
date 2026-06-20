@@ -344,5 +344,12 @@
     "platform": "playstation",
     "main_character": "Clive",
     "peak_rank": "God of Destruction"
-  }
+  },
+  {
+    "tekken_id": "4NEQhQeMf7yQ",
+    "player_tag": "Pandora",
+    "platform": null,
+    "main_character": "Lars",
+    "peak_rank": "God of Destruction V"
+  }  
 ]
