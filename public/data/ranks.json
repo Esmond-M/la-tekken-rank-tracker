@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-23T09:19:12.085Z",
+  "updated_at": "2026-06-23T14:32:36.504Z",
   "stats": {
     "successful": 50,
     "failed": 0,
@@ -116,12 +116,12 @@
       "platform": "Playstation",
       "main_character": "Dragunov",
       "rank_name": "God of Destruction IV",
-      "tekken_power": 397601,
+      "tekken_power": 395845,
       "current_character": "Dragunov",
       "secondary_character": "Kunimitsu",
       "tertiary_character": null,
-      "last_updated": "2026-06-19T03:57:13Z",
-      "last_seen": "2026-06-22T09:14:41Z",
+      "last_updated": "2026-06-22T09:42:23Z",
+      "last_seen": "2026-06-22T09:42:23Z",
       "source": "api",
       "known_name": "KOGDRE"
     },
@@ -296,8 +296,8 @@
       "current_character": "King",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-06-11T03:22:16Z",
-      "last_seen": "2026-06-11T03:22:16Z",
+      "last_updated": "2026-06-22T14:31:56Z",
+      "last_seen": "2026-06-22T14:31:56Z",
       "source": "api",
       "known_name": "AFilthyKingMain"
     },
@@ -337,12 +337,12 @@
       "platform": "Playstation",
       "main_character": "Raven",
       "rank_name": "God of Destruction II",
-      "tekken_power": 380759,
+      "tekken_power": 380910,
       "current_character": "Raven",
       "secondary_character": "King",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-06-22T04:22:35Z",
+      "last_seen": "2026-06-22T13:55:54Z",
       "source": "api"
     },
     {
@@ -530,7 +530,7 @@
       "secondary_character": "Feng",
       "tertiary_character": null,
       "last_updated": "2026-06-21T03:14:24Z",
-      "last_seen": "2026-06-21T14:23:55Z",
+      "last_seen": "2026-06-22T12:40:51Z",
       "source": "api"
     },
     {
