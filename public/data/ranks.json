@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-25T09:16:21.224Z",
+  "updated_at": "2026-06-26T01:02:49.463Z",
   "stats": {
-    "successful": 50,
+    "successful": 1,
     "failed": 0,
     "skipped": 0,
     "rate_limit_hit": false,
@@ -171,6 +171,20 @@
       "known_name": "Professor Juice"
     },
     {
+      "tekken_id": "5j2gTqJrEbyr",
+      "player_tag": "Sneak47",
+      "platform": "Steam",
+      "main_character": "Lars",
+      "rank_name": "God of Destruction IV",
+      "tekken_power": 380035,
+      "current_character": "Lars",
+      "secondary_character": null,
+      "tertiary_character": null,
+      "last_updated": "2026-06-24T23:17:32Z",
+      "last_seen": "2026-06-24T23:17:32Z",
+      "source": "api"
+    },
+    {
       "tekken_id": "4BHtJmgQAGfM",
       "player_tag": "Tombstone",
       "platform": "Steam",
@@ -270,20 +284,6 @@
       "tertiary_character": null,
       "last_updated": "2026-06-18T22:33:15Z",
       "last_seen": "2026-06-22T07:32:14Z",
-      "source": "api"
-    },
-    {
-      "tekken_id": "5j2gTqJrEbyr",
-      "player_tag": "Sneak47",
-      "platform": "Steam",
-      "main_character": "Lars",
-      "rank_name": "God of Destruction III",
-      "tekken_power": 373356,
-      "current_character": "Lars",
-      "secondary_character": null,
-      "tertiary_character": null,
-      "last_updated": "2026-06-21T17:26:47Z",
-      "last_seen": "2026-06-21T17:35:13Z",
       "source": "api"
     },
     {
