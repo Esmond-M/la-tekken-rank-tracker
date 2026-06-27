@@ -1,11 +1,9 @@
 {
-  "updated_at": "2026-06-27T09:03:54.125Z",
+  "updated_at": "2026-06-27T21:24:54.776Z",
   "stats": {
     "successful": 50,
     "failed": 0,
-    "skipped": 0,
-    "rate_limit_hit": false,
-    "skipped_rate_limit_count": 0
+    "skipped": 0
   },
   "players": [
     {
@@ -68,6 +66,20 @@
       "source": "api"
     },
     {
+      "tekken_id": "4NEQhQeMf7yQ",
+      "player_tag": "Pandora",
+      "platform": "Xbox",
+      "main_character": "Lars",
+      "rank_name": "God of Destruction V",
+      "tekken_power": 429351,
+      "current_character": "Lars",
+      "secondary_character": "Kunimitsu",
+      "tertiary_character": null,
+      "last_updated": "2026-06-25T17:49:54Z",
+      "last_seen": "2026-06-25T18:32:20Z",
+      "source": "api"
+    },
+    {
       "tekken_id": "5hj4DTr6RdTJ",
       "player_tag": "Kevvbmm",
       "platform": "Playstation",
@@ -81,20 +93,6 @@
       "last_seen": "2026-06-19T11:39:55Z",
       "source": "api",
       "known_name": "STOPKICHARGINGM"
-    },
-    {
-      "tekken_id": "4NEQhQeMf7yQ",
-      "player_tag": "Pandora",
-      "platform": "Xbox",
-      "main_character": "Lars",
-      "rank_name": "God of Destruction IV",
-      "tekken_power": 429351,
-      "current_character": "Lars",
-      "secondary_character": "Kunimitsu",
-      "tertiary_character": null,
-      "last_updated": "2026-06-25T17:49:54Z",
-      "last_seen": "2026-06-25T18:32:20Z",
-      "source": "api"
     },
     {
       "tekken_id": "33e7D2r4f9t8",
@@ -140,6 +138,20 @@
       "last_seen": "2026-06-26T06:54:35Z",
       "source": "api",
       "known_name": "Twko"
+    },
+    {
+      "tekken_id": "5j2gTqJrEbyr",
+      "player_tag": "Sneak47",
+      "platform": "Steam",
+      "main_character": "Lars",
+      "rank_name": "God of Destruction IV",
+      "tekken_power": 386267,
+      "current_character": "Lars",
+      "secondary_character": "Alisa",
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-06-26T06:15:06Z",
+      "source": "api"
     },
     {
       "tekken_id": "5nFbr9Bni7dQ",
@@ -225,24 +237,11 @@
       "current_character": "Azucena",
       "secondary_character": "Zafina",
       "tertiary_character": "Eddy",
+      "show_tertiary": true,
       "last_updated": "2026-06-25T20:01:12Z",
       "last_seen": "2026-06-25T20:45:44Z",
       "source": "api",
       "known_name": "Mason Reigns"
-    },
-    {
-      "tekken_id": "5j2gTqJrEbyr",
-      "player_tag": "Sneak47",
-      "platform": "Steam",
-      "main_character": "Lars",
-      "rank_name": "God of Destruction III",
-      "tekken_power": 386267,
-      "current_character": "Lars",
-      "secondary_character": "Alisa",
-      "tertiary_character": null,
-      "last_updated": null,
-      "last_seen": "2026-06-26T06:15:06Z",
-      "source": "api"
     },
     {
       "tekken_id": "3Y4GdfdL9HB6",
@@ -714,7 +713,7 @@
       "player_tag": "KavemanFGC",
       "platform": "Playstation",
       "main_character": "Claudio",
-      "rank_name": "Tekken God Supreme",
+      "rank_name": "God of Destruction",
       "tekken_power": 251210,
       "current_character": "Claudio",
       "secondary_character": null,
@@ -728,7 +727,7 @@
       "player_tag": "Lemon and Lime",
       "platform": "Steam",
       "main_character": "Jun",
-      "rank_name": "Tekken God",
+      "rank_name": "God of Destruction",
       "tekken_power": 241832,
       "current_character": "Jun",
       "secondary_character": null,

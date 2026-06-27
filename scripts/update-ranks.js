@@ -128,8 +128,13 @@ async function fetchPlayerRank(player) {
   if (player.main_character) {
     const mainEntry = bestPerChar.get(player.main_character)
     if (mainEntry) {
-      // Trust the API — show current rank on main, even if it's below peak.
-      primary = { ...mainEntry }
+      // Never demote below peak_rank — if API shows a lower rank, keep the stored peak.
+      const apiTier = rankSortValue(mainEntry.rank_name)
+      const peakTier = rankSortValue(player.peak_rank)
+      primary = {
+        ...mainEntry,
+        rank_name: apiTier <= peakTier ? mainEntry.rank_name : player.peak_rank,
+      }
     } else {
       // main_character not in recent battles — use peak_rank but borrow the best
       // tekken_power from any character (power is account-wide, not character-specific).
@@ -229,7 +234,13 @@ function buildRankDataFromBattles(player, battles) {
   if (player.main_character) {
     const mainEntry = bestPerChar.get(player.main_character)
     if (mainEntry) {
-      primary = { ...mainEntry }
+      // Never demote below peak_rank — if API shows a lower rank, keep the stored peak.
+      const apiTier = rankSortValue(mainEntry.rank_name)
+      const peakTier = rankSortValue(player.peak_rank)
+      primary = {
+        ...mainEntry,
+        rank_name: apiTier <= peakTier ? mainEntry.rank_name : player.peak_rank,
+      }
     } else {
       let bestPower = null
       for (const entry of bestPerChar.values()) {
