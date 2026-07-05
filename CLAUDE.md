@@ -75,6 +75,18 @@ Sorting: rank tier first, then `tekken_power` desc as tiebreaker within the same
 - The Actions `Commit updated ranks.json` step must `git add` BOTH `public/data/ranks.json` AND `data/api-cache.json`. Easy to forget.
 - `--god-7` and `--god-8` CSS variables exist in `:root` for future high-rank players.
 - The `Inter` font reference was removed — uses a system font stack now. Don't add Inter back without also loading it from Google Fonts.
+- **Character name spelling must match exactly what the API returns.** The API uses `"Jack-8"` (hyphen), not `"Jack 8"` (space). If `main_character` in `players.json` doesn't match the API spelling, `bestPerChar.get(main_character)` returns undefined and the character can appear as both primary AND secondary. Always verify against `data/api-cache.json` before setting `main_character`.
+
+---
+
+## Open Items / Future Improvements
+
+### Auto-updating `peak_rank` in `players.json`
+Currently `peak_rank` is static — hand-maintained in `players.json`. The display is correct because the script already does `max(api_rank, peak_rank)`, so a player will never show *lower* than their stored peak. But `players.json` itself doesn't auto-update when a player climbs higher.
+
+**The gap this creates:** If a player's main character stops appearing in recent battles (e.g. they switched to an alt), the fallback is the stored `peak_rank`. If that stored value is stale/too low, the displayed rank will be too low — exactly the bug we audited and fixed manually on 2026-07-05.
+
+**Potential fix:** At the end of each `update-ranks.js` run, write back updated `peak_rank` values to `players.json` whenever `api_rank > stored_peak_rank`. This would keep `players.json` in sync automatically after every daily run. Not yet implemented — would need care around the git commit step (currently only commits `ranks.json` and `api-cache.json`).
 
 ---
 

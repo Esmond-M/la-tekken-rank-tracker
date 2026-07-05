@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-05T17:29:41.830Z",
+  "updated_at": "2026-07-05T17:34:29.891Z",
   "stats": {
     "successful": 50,
     "failed": 0,
@@ -128,13 +128,13 @@
       "tekken_id": "4fM948dh8AaT",
       "player_tag": "HBR",
       "platform": "Playstation",
-      "main_character": "Jack 8",
+      "main_character": "Jack-8",
       "rank_name": "God of Destruction IV",
       "tekken_power": 419594,
-      "current_character": "Jack 8",
-      "secondary_character": "Jack-8",
-      "tertiary_character": "Feng",
-      "last_updated": null,
+      "current_character": "Jack-8",
+      "secondary_character": "Feng",
+      "tertiary_character": "Kunimitsu",
+      "last_updated": "2026-07-04T01:04:56Z",
       "last_seen": "2026-07-04T01:10:02Z",
       "source": "api",
       "known_name": "T8 terrible"
