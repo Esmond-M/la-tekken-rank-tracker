@@ -1,11 +1,9 @@
 {
-  "updated_at": "2026-07-05T09:09:06.885Z",
+  "updated_at": "2026-07-05T17:29:41.830Z",
   "stats": {
     "successful": 50,
     "failed": 0,
-    "skipped": 0,
-    "rate_limit_hit": false,
-    "skipped_rate_limit_count": 0
+    "skipped": 0
   },
   "players": [
     {
@@ -127,6 +125,21 @@
       "known_name": "Twko"
     },
     {
+      "tekken_id": "4fM948dh8AaT",
+      "player_tag": "HBR",
+      "platform": "Playstation",
+      "main_character": "Jack 8",
+      "rank_name": "God of Destruction IV",
+      "tekken_power": 419594,
+      "current_character": "Jack 8",
+      "secondary_character": "Jack-8",
+      "tertiary_character": "Feng",
+      "last_updated": null,
+      "last_seen": "2026-07-04T01:10:02Z",
+      "source": "api",
+      "known_name": "T8 terrible"
+    },
+    {
       "tekken_id": "5BiLay7M68ja",
       "player_tag": "Lyvesauce",
       "platform": "Steam",
@@ -200,21 +213,6 @@
       "source": "api"
     },
     {
-      "tekken_id": "4fM948dh8AaT",
-      "player_tag": "HBR",
-      "platform": "Playstation",
-      "main_character": "Jack 8",
-      "rank_name": "God of Destruction III",
-      "tekken_power": 419594,
-      "current_character": "Jack 8",
-      "secondary_character": "Jack-8",
-      "tertiary_character": "Feng",
-      "last_updated": null,
-      "last_seen": "2026-07-04T01:10:02Z",
-      "source": "api",
-      "known_name": "T8 terrible"
-    },
-    {
       "tekken_id": "48mghAMDbn6J",
       "player_tag": "Delirium Heart",
       "platform": "Steam",
@@ -239,6 +237,7 @@
       "current_character": "Azucena",
       "secondary_character": "Zafina",
       "tertiary_character": "Eddy",
+      "show_tertiary": true,
       "last_updated": "2026-07-03T01:27:55Z",
       "last_seen": "2026-07-03T18:37:53Z",
       "source": "api",
