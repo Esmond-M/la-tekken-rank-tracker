@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-07-06T09:31:14.999Z",
+  "updated_at": "2026-07-06T21:49:54.421Z",
   "stats": {
-    "successful": 50,
+    "successful": 1,
     "failed": 0,
     "skipped": 0,
     "rate_limit_hit": false,
@@ -679,6 +679,20 @@
       "last_seen": "2026-07-03T18:19:45Z",
       "source": "api",
       "known_name": "Just CO"
+    },
+    {
+      "tekken_id": "5JbtfYgyQ9QQ",
+      "player_tag": "ULTRA",
+      "platform": null,
+      "main_character": "Lars",
+      "rank_name": "God of Destruction",
+      "tekken_power": 350206,
+      "current_character": "Lars",
+      "secondary_character": null,
+      "tertiary_character": null,
+      "last_updated": "2026-07-05T14:29:21Z",
+      "last_seen": "2026-07-05T14:38:55Z",
+      "source": "api"
     },
     {
       "tekken_id": "5YdERhbJGnMT",
