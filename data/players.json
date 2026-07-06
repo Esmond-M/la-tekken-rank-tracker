@@ -362,8 +362,9 @@
   {
     "tekken_id": "3BYQGFeQAE8f",
     "player_tag": "Isco",
-    "platform": null,
+    "platform": "playstation",
     "main_character": "Claudio",
-    "peak_rank": "God of Destruction"
+    "peak_rank": "God of Destruction",
+    "known_name": "Paper Trail$"
   }
-]  
+]
