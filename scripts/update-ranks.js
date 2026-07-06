@@ -25,6 +25,28 @@ function normalizePlatform(raw) {
   return raw.charAt(0).toUpperCase() + raw.slice(1)
 }
 
+// If the API or cache found a higher rank than what's stored in players.json,
+// write the improved peak_rank back so the fallback stays accurate over time.
+function writePeakRankUpdates(players, results) {
+  const resultMap = new Map(results.filter(r => r.tekken_id).map(r => [r.tekken_id, r]))
+  let count = 0
+  for (const player of players) {
+    if (!player.tekken_id || !player.peak_rank) continue
+    const result = resultMap.get(player.tekken_id)
+    if (!result || !result.rank_name) continue
+    if (rankSortValue(result.rank_name) < rankSortValue(player.peak_rank)) {
+      console.log(`  [peak↑] ${player.player_tag}: ${player.peak_rank} → ${result.rank_name}`)
+      player.peak_rank = result.rank_name
+      count++
+    }
+  }
+  if (count > 0) {
+    writeFileSync(join(ROOT, 'data/players.json'), JSON.stringify(players, null, 2))
+    console.log(`Updated data/players.json — ${count} peak rank(s) improved.`)
+  }
+  return count
+}
+
 const RANK_ORDER = [
   'God of Destruction VIII',
   'God of Destruction VII',
@@ -364,6 +386,9 @@ async function reprocessFromCache() {
     return (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
   })
 
+  // Write back any peak_rank improvements to players.json so the fallback stays accurate.
+  writePeakRankUpdates(players, results)
+
   const output = {
     updated_at: new Date().toISOString(),
     stats: { successful, failed: 0, skipped },
@@ -601,6 +626,9 @@ async function main() {
       console.log(`API cache merged into data/api-cache.json`)
     } catch { /* no existing cache — will be written fresh below */ }
   }
+
+  // Write back any peak_rank improvements to players.json so the fallback stays accurate.
+  writePeakRankUpdates(players, finalResults)
 
   const output = {
     updated_at: new Date().toISOString(),

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-06T22:41:55.381Z",
+  "updated_at": "2026-07-06T22:58:00.085Z",
   "stats": {
     "successful": 52,
     "failed": 0,
@@ -95,6 +95,21 @@
       "known_name": "STOPKICHARGINGM"
     },
     {
+      "tekken_id": "48mghAMDbn6J",
+      "player_tag": "Delirium Heart",
+      "platform": "Steam",
+      "main_character": "Raven",
+      "rank_name": "God of Destruction V",
+      "tekken_power": 411305,
+      "current_character": "Raven",
+      "secondary_character": "Kunimitsu",
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-07-05T05:48:55Z",
+      "source": "api",
+      "known_name": "TVDeliriumheart"
+    },
+    {
       "tekken_id": "33e7D2r4f9t8",
       "player_tag": "KOG_Dre",
       "platform": "Playstation",
@@ -108,6 +123,22 @@
       "last_seen": "2026-07-03T15:56:12Z",
       "source": "api",
       "known_name": "KOGDRE"
+    },
+    {
+      "tekken_id": "3Mtn7ghBHrdQ",
+      "player_tag": "Oishimari",
+      "platform": "Playstation",
+      "main_character": "Azucena",
+      "rank_name": "God of Destruction V",
+      "tekken_power": 403617,
+      "current_character": "Azucena",
+      "secondary_character": "Zafina",
+      "tertiary_character": "Eddy",
+      "show_tertiary": true,
+      "last_updated": "2026-07-03T01:27:55Z",
+      "last_seen": "2026-07-04T20:52:50Z",
+      "source": "api",
+      "known_name": "Mason Reigns"
     },
     {
       "tekken_id": "34aDeFQimJgn",
@@ -153,6 +184,20 @@
       "last_seen": "2026-07-05T00:49:04Z",
       "source": "api",
       "known_name": "TjM | Lyvesauce"
+    },
+    {
+      "tekken_id": "3Y4GdfdL9HB6",
+      "player_tag": "NicoFasho",
+      "platform": "Steam",
+      "main_character": "Kazuya",
+      "rank_name": "God of Destruction IV",
+      "tekken_power": 389781,
+      "current_character": "Kazuya",
+      "secondary_character": "Reina",
+      "tertiary_character": null,
+      "last_updated": "2026-07-03T02:40:25Z",
+      "last_seen": "2026-07-05T03:28:56Z",
+      "source": "api"
     },
     {
       "tekken_id": "5j2gTqJrEbyr",
@@ -210,51 +255,6 @@
       "tertiary_character": null,
       "last_updated": "2026-07-02T00:58:12Z",
       "last_seen": "2026-07-02T00:58:12Z",
-      "source": "api"
-    },
-    {
-      "tekken_id": "48mghAMDbn6J",
-      "player_tag": "Delirium Heart",
-      "platform": "Steam",
-      "main_character": "Raven",
-      "rank_name": "God of Destruction III",
-      "tekken_power": 411305,
-      "current_character": "Raven",
-      "secondary_character": "Kunimitsu",
-      "tertiary_character": "Armor King",
-      "last_updated": null,
-      "last_seen": "2026-07-05T05:48:55Z",
-      "source": "api",
-      "known_name": "TVDeliriumheart"
-    },
-    {
-      "tekken_id": "3Mtn7ghBHrdQ",
-      "player_tag": "Oishimari",
-      "platform": "Playstation",
-      "main_character": "Azucena",
-      "rank_name": "God of Destruction III",
-      "tekken_power": 403617,
-      "current_character": "Azucena",
-      "secondary_character": "Zafina",
-      "tertiary_character": "Eddy",
-      "show_tertiary": true,
-      "last_updated": "2026-07-03T01:27:55Z",
-      "last_seen": "2026-07-04T20:52:50Z",
-      "source": "api",
-      "known_name": "Mason Reigns"
-    },
-    {
-      "tekken_id": "3Y4GdfdL9HB6",
-      "player_tag": "NicoFasho",
-      "platform": "Steam",
-      "main_character": "Kazuya",
-      "rank_name": "God of Destruction III",
-      "tekken_power": 389781,
-      "current_character": "Kazuya",
-      "secondary_character": "Reina",
-      "tertiary_character": null,
-      "last_updated": "2026-07-03T02:40:25Z",
-      "last_seen": "2026-07-05T03:28:56Z",
       "source": "api"
     },
     {
