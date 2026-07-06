@@ -296,6 +296,7 @@ tbody td {
   border: 1px solid var(--border);
   color: var(--text-muted);
   white-space: nowrap;
+  text-transform: capitalize;
 }
 
 .platform-badge.steam { color: #7ec8e3; border-color: #7ec8e333; }

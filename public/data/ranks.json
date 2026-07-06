@@ -1,11 +1,9 @@
 {
-  "updated_at": "2026-07-06T22:37:30.891Z",
+  "updated_at": "2026-07-06T22:41:55.381Z",
   "stats": {
-    "successful": 1,
+    "successful": 52,
     "failed": 0,
-    "skipped": 0,
-    "rate_limit_hit": false,
-    "skipped_rate_limit_count": 0
+    "skipped": 0
   },
   "players": [
     {
@@ -741,7 +739,7 @@
     {
       "tekken_id": "3BYQGFeQAE8f",
       "player_tag": "Isco",
-      "platform": null,
+      "platform": "Playstation",
       "main_character": "Claudio",
       "rank_name": "God of Destruction",
       "tekken_power": 249185,

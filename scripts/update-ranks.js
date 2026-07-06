@@ -14,6 +14,17 @@ let lastRateLimitMeta = null
 let apiCallsThisRun = 0
 
 // Rank order for sorting players (highest first = index 0)
+// Normalize platform string to title-case convention: steam→Steam, psn/playstation→Playstation, xbox→Xbox
+function normalizePlatform(raw) {
+  if (!raw) return raw
+  const lower = raw.toLowerCase()
+  if (lower === 'steam') return 'Steam'
+  if (lower === 'psn' || lower === 'playstation') return 'Playstation'
+  if (lower === 'xbox') return 'Xbox'
+  // Unknown platform — capitalize first letter as a fallback
+  return raw.charAt(0).toUpperCase() + raw.slice(1)
+}
+
 const RANK_ORDER = [
   'God of Destruction VIII',
   'God of Destruction VII',
@@ -300,7 +311,7 @@ async function reprocessFromCache() {
       results.push({
         tekken_id: player.tekken_id ?? null,
         player_tag: player.player_tag,
-        platform: player.platform,
+        platform: normalizePlatform(player.platform),
         main_character: player.main_character,
         rank_name: player.peak_rank,
         tekken_power: null,
@@ -319,7 +330,7 @@ async function reprocessFromCache() {
         tekken_id: player.tekken_id,
         player_tag: player.player_tag,
         ...(rankData.display_name ? { display_name: rankData.display_name } : {}),
-        platform: player.platform,
+        platform: normalizePlatform(player.platform),
         main_character: player.main_character,
         rank_name: rankData.rank_name,
         tekken_power: rankData.tekken_power,
@@ -420,7 +431,7 @@ async function main() {
       results.push({
         tekken_id: null,
         player_tag: player.player_tag,
-        platform: player.platform,
+        platform: normalizePlatform(player.platform),
         main_character: player.main_character,
         rank_name: player.peak_rank,
         tekken_power: null,
@@ -438,7 +449,7 @@ async function main() {
       results.push({
         tekken_id: player.tekken_id,
         player_tag: player.player_tag,
-        platform: player.platform,
+        platform: normalizePlatform(player.platform),
         main_character: player.main_character,
         rank_name: player.peak_rank,
         tekken_power: null,
@@ -468,7 +479,7 @@ async function main() {
           tekken_id: player.tekken_id,
           player_tag: player.player_tag,
           ...(rankData.display_name ? { display_name: rankData.display_name } : {}),
-          platform: player.platform,
+          platform: normalizePlatform(player.platform),
           main_character: player.main_character,
           rank_name: rankData.rank_name,
           tekken_power: rankData.tekken_power,
@@ -486,7 +497,7 @@ async function main() {
         results.push({
           tekken_id: player.tekken_id,
           player_tag: player.player_tag,
-          platform: player.platform,
+          platform: normalizePlatform(player.platform),
           main_character: player.main_character,
           rank_name: player.peak_rank,
           tekken_power: null,
@@ -509,7 +520,7 @@ async function main() {
         results.push({
           tekken_id: player.tekken_id,
           player_tag: player.player_tag,
-          platform: player.platform,
+          platform: normalizePlatform(player.platform),
           main_character: player.main_character,
           rank_name: player.peak_rank,
           tekken_power: null,
@@ -524,7 +535,7 @@ async function main() {
         results.push({
           tekken_id: player.tekken_id,
           player_tag: player.player_tag,
-          platform: player.platform,
+          platform: normalizePlatform(player.platform),
           main_character: player.main_character,
           rank_name: player.peak_rank,
           tekken_power: null,
