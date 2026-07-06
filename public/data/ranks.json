@@ -1,9 +1,11 @@
 {
-  "updated_at": "2026-07-06T22:00:54.016Z",
+  "updated_at": "2026-07-06T22:37:30.891Z",
   "stats": {
-    "successful": 51,
+    "successful": 1,
     "failed": 0,
-    "skipped": 0
+    "skipped": 0,
+    "rate_limit_hit": false,
+    "skipped_rate_limit_count": 0
   },
   "players": [
     {
@@ -735,6 +737,21 @@
       "last_updated": "2026-03-31T00:47:34Z",
       "last_seen": "2026-03-31T00:47:34Z",
       "source": "api"
+    },
+    {
+      "tekken_id": "3BYQGFeQAE8f",
+      "player_tag": "Isco",
+      "platform": null,
+      "main_character": "Claudio",
+      "rank_name": "God of Destruction",
+      "tekken_power": 249185,
+      "current_character": "Claudio",
+      "secondary_character": null,
+      "tertiary_character": null,
+      "last_updated": "2026-06-27T16:06:09Z",
+      "last_seen": "2026-07-01T02:06:33Z",
+      "source": "api",
+      "known_name": "Paper Trail$"
     },
     {
       "tekken_id": "5nmeN2g8hRyE",
