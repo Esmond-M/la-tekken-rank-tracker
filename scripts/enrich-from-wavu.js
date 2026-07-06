@@ -35,6 +35,7 @@ import { dirname, join } from 'path'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..')
 const PLAYERS_PATH = join(ROOT, 'data/players.json')
+const RANKS_PATH = join(ROOT, 'public/data/ranks.json')
 
 const DRY_RUN = process.argv.includes('--dry-run')
 const FORCE_ALL = process.argv.includes('--all')
@@ -162,17 +163,27 @@ async function main() {
     writeFileSync(PLAYERS_PATH, JSON.stringify(players, null, 2) + '\n')
     console.log(`\n✓ Wrote changes to data/players.json`)
 
-    // Big reminder — the site only reads ranks.json, NOT players.json.
-    // Until the user regenerates ranks.json, their changes are invisible.
-    console.log('\n' + '═'.repeat(62))
-    console.log('  ⚠  YOUR CHANGES WON\'T SHOW UP YET!')
-    console.log('  ═'.repeat(62))
-    console.log('  The site reads public/data/ranks.json — NOT players.json.')
-    console.log('  Run the command below (zero API calls) to regenerate it now:')
-    console.log('')
-    console.log('    node scripts/update-ranks.js --from-cache')
-    console.log('')
-    console.log('═'.repeat(62))
+    // Also update platform (and normalize casing) in public/data/ranks.json
+    try {
+      const ranksData = JSON.parse(readFileSync(RANKS_PATH, 'utf8'))
+      const platformMap = new Map(players.map(p => [p.tekken_id, p.platform]))
+      let ranksChanged = 0
+      for (const r of ranksData.players) {
+        const newPlatform = r.tekken_id && platformMap.get(r.tekken_id)
+        if (newPlatform !== undefined && r.platform !== newPlatform) {
+          r.platform = newPlatform
+          ranksChanged++
+        }
+      }
+      if (ranksChanged > 0) {
+        writeFileSync(RANKS_PATH, JSON.stringify(ranksData, null, 2) + '\n')
+        console.log(`✓ Updated platform for ${ranksChanged} player(s) in public/data/ranks.json`)
+      } else {
+        console.log(`  (ranks.json platform values already up to date)`)
+      }
+    } catch (err) {
+      console.warn(`  [warn] Could not update ranks.json: ${err.message}`)
+    }
   } else if (DRY_RUN && changed > 0) {
     console.log(`\n[DRY RUN] No files were modified. Remove --dry-run to apply.`)
   } else {
