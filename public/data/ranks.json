@@ -1,11 +1,9 @@
 {
-  "updated_at": "2026-07-06T21:49:54.421Z",
+  "updated_at": "2026-07-06T22:00:54.016Z",
   "stats": {
-    "successful": 1,
+    "successful": 51,
     "failed": 0,
-    "skipped": 0,
-    "rate_limit_hit": false,
-    "skipped_rate_limit_count": 0
+    "skipped": 0
   },
   "players": [
     {
@@ -239,6 +237,7 @@
       "current_character": "Azucena",
       "secondary_character": "Zafina",
       "tertiary_character": "Eddy",
+      "show_tertiary": true,
       "last_updated": "2026-07-03T01:27:55Z",
       "last_seen": "2026-07-04T20:52:50Z",
       "source": "api",
@@ -495,7 +494,7 @@
     {
       "tekken_id": "5AT6RgLQ2NQG",
       "player_tag": "Lie Ren",
-      "platform": "playstation",
+      "platform": "Playstation",
       "main_character": "Clive",
       "rank_name": "God of Destruction",
       "tekken_power": 368840,
@@ -683,7 +682,7 @@
     {
       "tekken_id": "5JbtfYgyQ9QQ",
       "player_tag": "ULTRA",
-      "platform": null,
+      "platform": "Playstation",
       "main_character": "Lars",
       "rank_name": "God of Destruction",
       "tekken_power": 350206,
