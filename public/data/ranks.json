@@ -1,11 +1,9 @@
 {
-  "updated_at": "2026-07-06T22:59:25.348Z",
+  "updated_at": "2026-07-07T23:40:48.708Z",
   "stats": {
-    "successful": 1,
+    "successful": 52,
     "failed": 0,
-    "skipped": 0,
-    "rate_limit_hit": false,
-    "skipped_rate_limit_count": 0
+    "skipped": 0
   },
   "players": [
     {

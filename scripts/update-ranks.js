@@ -155,8 +155,11 @@ async function fetchPlayerRank(player) {
   // Lock the primary slot to the player's main_character from players.json.
   // The API only refreshes tekken_power / rank for that character; the displayed
   // character itself never gets overridden by whoever they've been grinding lately.
-  // If main_character appears in recent battles, use that entry. Otherwise fall back
-  // to a minimal entry built from players.json (peak_rank, no power, no timestamp).
+  // If main_character appears in recent battles, use that entry and never demote it
+  // below the stored peak_rank.
+  // If main_character does not appear, keep the main_character as the displayed
+  // primary with stored peak_rank and borrow the account's best tekken_power.
+  // If another character is stronger, surface that char as secondary/tertiary only.
   let primary = null
   if (player.main_character) {
     const mainEntry = bestPerChar.get(player.main_character)
@@ -169,8 +172,8 @@ async function fetchPlayerRank(player) {
         rank_name: apiTier <= peakTier ? mainEntry.rank_name : player.peak_rank,
       }
     } else {
-      // main_character not in recent battles — use peak_rank but borrow the best
-      // tekken_power from any character (power is account-wide, not character-specific).
+      // main_character not in recent battles — keep the main_character as primary,
+      // preserve the stored peak_rank, and borrow the best available tekken_power.
       let bestPower = null
       for (const entry of bestPerChar.values()) {
         if ((entry.tekken_power ?? 0) > (bestPower ?? 0)) bestPower = entry.tekken_power

@@ -26,8 +26,13 @@
 ## Rank Logic
 - For each player, `fetchPlayerRank` calls the API **once** and scans the entire returned page of battles, tracking the best rank per character.
 - **Primary slot is LOCKED to `main_character` from `players.json`.** The displayed character never drifts based on who they've been grinding lately. Rank shown for the primary = max(`peak_rank` from players.json, API-found rank on that character).
-  - If `main_character` doesn't appear in recent battles, fall back to a minimal entry from players.json (peak_rank, null power/timestamp).
+  - If `main_character` appears in recent battles, use that entry and never demote it below `peak_rank`.
+  - If `main_character` doesn't appear in recent battles, keep it as the displayed character with the stored `peak_rank` and borrow the best available account-wide power; do not switch the primary to another currently-active character.
+  - If another character is currently higher than the main character, show that character as secondary/tertiary but leave the primary character locked to `main_character`.
+  - The goal is peak-rank tracking first, not current-character ranking. Do not downgrade `main_character` because an alt is temporarily higher.
   - If `main_character` is missing in players.json (shouldn't happen), fall back to the old "highest-ranked character" pick.
+- **Peak rank is the authoritative rank metric for this project.** Always preserve or improve it; never allow the primary display to show a lower tier than the stored `peak_rank` for `main_character`.
+- `data/players.json` is the source of truth for `main_character`, `peak_rank`, and `show_tertiary` flags. Updates to those values should be made manually in `players.json` and then reprocessed via the workflow or `--from-cache`.
 - **⚠️ Never leave `main_character` as `null`.** Without it, the script falls back to "highest-ranked character in recent battles" — which is unreliable because: (1) tekken_power is account-wide so all characters tie on power, (2) the tie-break is arbitrary insertion order, (3) the player may not have played their main recently. Always fill in `main_character` and `peak_rank` when adding a new player, even if you have to ask the user.
 - **⚠️ Always verify `main_character` against the API cache before setting it.** Run `node -e "..."` against `data/api-cache.json` to see which characters actually appear in that player's battles. Never guess — if you set a character that has NO battles in the cache, the script falls back to showing that character at the stale `peak_rank`, which is wrong. When in doubt, check the cache or ask the user.
 - **Secondary character** = best-ranked OTHER character within 2 tiers of primary AND at least God of Destruction base. Excluded if same as primary.
