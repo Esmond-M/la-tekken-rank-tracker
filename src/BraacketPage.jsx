@@ -7,7 +7,6 @@ function formatPoints(pts) {
 
 // Character name → ewgf.gg icon slug (keep in sync with App.jsx)
 const CHAR_SLUG_OVERRIDES = {
-  'Jack 8':     'Jack-8',
   'Armor King': 'Armor_King',
   'Devil Jin':  'Devil_Jin',
   'Miary Zo':   'Miary_Zo',
