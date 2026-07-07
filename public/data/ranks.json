@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-07T23:40:48.708Z",
+  "updated_at": "2026-07-07T23:48:05.631Z",
   "stats": {
     "successful": 52,
     "failed": 0,
@@ -16,7 +16,7 @@
       "current_character": "Jun",
       "secondary_character": "Fahkumram",
       "tertiary_character": "Kunimitsu",
-      "last_updated": "2026-07-06T04:12:26Z",
+      "last_updated": null,
       "last_seen": "2026-07-06T06:36:29Z",
       "source": "api",
       "known_name": "Active"
@@ -46,7 +46,7 @@
       "current_character": "Jin",
       "secondary_character": "Heihachi",
       "tertiary_character": "Devil Jin",
-      "last_updated": "2026-07-06T07:03:31Z",
+      "last_updated": null,
       "last_seen": "2026-07-06T07:30:14Z",
       "source": "api"
     },
@@ -90,7 +90,7 @@
       "current_character": "Nina",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-06-16T07:49:09Z",
+      "last_updated": null,
       "last_seen": "2026-06-19T11:39:55Z",
       "source": "api",
       "known_name": "STOPKICHARGINGM"
@@ -105,7 +105,7 @@
       "current_character": "Raven",
       "secondary_character": "Kunimitsu",
       "tertiary_character": null,
-      "last_updated": "2026-07-06T02:23:07Z",
+      "last_updated": null,
       "last_seen": "2026-07-06T05:22:48Z",
       "source": "api",
       "known_name": "TVDeliriumheart"
@@ -120,7 +120,7 @@
       "current_character": "Dragunov",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-03T15:52:34Z",
+      "last_updated": null,
       "last_seen": "2026-07-03T15:56:12Z",
       "source": "api",
       "known_name": "KOGDRE"
@@ -136,7 +136,7 @@
       "secondary_character": "Zafina",
       "tertiary_character": "Eddy",
       "show_tertiary": true,
-      "last_updated": "2026-07-06T05:05:11Z",
+      "last_updated": null,
       "last_seen": "2026-07-06T05:05:11Z",
       "source": "api",
       "known_name": "Mason Reigns"
@@ -151,7 +151,7 @@
       "current_character": "Paul",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-03T04:39:58Z",
+      "last_updated": null,
       "last_seen": "2026-07-04T15:11:52Z",
       "source": "api",
       "known_name": "Twko"
@@ -166,7 +166,7 @@
       "current_character": "Lars",
       "secondary_character": "Alisa",
       "tertiary_character": null,
-      "last_updated": "2026-07-06T02:12:08Z",
+      "last_updated": null,
       "last_seen": "2026-07-06T05:02:16Z",
       "source": "api"
     },
@@ -180,7 +180,7 @@
       "current_character": "Jack-8",
       "secondary_character": "Kunimitsu",
       "tertiary_character": "Anna",
-      "last_updated": "2026-07-05T05:21:27Z",
+      "last_updated": null,
       "last_seen": "2026-07-05T06:33:50Z",
       "source": "api",
       "known_name": "T8 terrible"
@@ -195,7 +195,7 @@
       "current_character": "Shaheen",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-02T10:01:29Z",
+      "last_updated": null,
       "last_seen": "2026-07-05T14:18:16Z",
       "source": "api",
       "known_name": "TjM | Lyvesauce"
@@ -210,7 +210,7 @@
       "current_character": "Kazuya",
       "secondary_character": "Reina",
       "tertiary_character": null,
-      "last_updated": "2026-07-03T02:40:25Z",
+      "last_updated": null,
       "last_seen": "2026-07-05T03:28:56Z",
       "source": "api"
     },
@@ -224,7 +224,7 @@
       "current_character": "Kuma",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-05T16:54:56Z",
+      "last_updated": null,
       "last_seen": "2026-07-05T17:30:03Z",
       "source": "api"
     },
@@ -238,7 +238,7 @@
       "current_character": "Law",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-04T16:39:02Z",
+      "last_updated": null,
       "last_seen": "2026-07-04T16:52:47Z",
       "source": "api",
       "known_name": "Professor Juice"
@@ -253,7 +253,7 @@
       "current_character": "Armor King",
       "secondary_character": "King",
       "tertiary_character": null,
-      "last_updated": "2026-07-05T22:18:45Z",
+      "last_updated": null,
       "last_seen": "2026-07-05T22:42:32Z",
       "source": "api",
       "known_name": "Fear Magneto"
@@ -268,8 +268,22 @@
       "current_character": "Steve",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-06T04:12:26Z",
+      "last_updated": null,
       "last_seen": "2026-07-06T04:12:26Z",
+      "source": "api"
+    },
+    {
+      "tekken_id": "3H7D4h29D3Mr",
+      "player_tag": "Zandak",
+      "platform": "Steam",
+      "main_character": "Leo",
+      "rank_name": "God of Destruction III",
+      "tekken_power": 379732,
+      "current_character": "Leo",
+      "secondary_character": "Kunimitsu",
+      "tertiary_character": null,
+      "last_updated": "2026-07-05T19:41:20Z",
+      "last_seen": "2026-07-06T02:44:27Z",
       "source": "api"
     },
     {
@@ -282,7 +296,7 @@
       "current_character": "Fahkumram",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-05T03:55:33Z",
+      "last_updated": null,
       "last_seen": "2026-07-05T03:55:33Z",
       "source": "api",
       "known_name": "DJSymphix"
@@ -297,7 +311,7 @@
       "current_character": "Hwoarang",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-01T05:23:03Z",
+      "last_updated": null,
       "last_seen": "2026-07-01T05:23:03Z",
       "source": "api",
       "known_name": "Dojo337 | Drago"
@@ -312,7 +326,7 @@
       "current_character": "King",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-05T04:01:38Z",
+      "last_updated": null,
       "last_seen": "2026-07-05T04:01:38Z",
       "source": "api",
       "known_name": "AFilthyKingMain"
@@ -327,7 +341,7 @@
       "current_character": "Paul",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-01T04:19:43Z",
+      "last_updated": null,
       "last_seen": "2026-07-02T04:19:16Z",
       "source": "api",
       "known_name": "Rawpotential"
@@ -356,7 +370,7 @@
       "current_character": "Jin",
       "secondary_character": "Clive",
       "tertiary_character": "Jun",
-      "last_updated": "2026-07-05T23:50:20Z",
+      "last_updated": null,
       "last_seen": "2026-07-06T04:53:03Z",
       "source": "api",
       "known_name": "ItsSyrixTT"
@@ -371,7 +385,7 @@
       "current_character": "King",
       "secondary_character": "Victor",
       "tertiary_character": null,
-      "last_updated": "2026-07-05T22:22:23Z",
+      "last_updated": null,
       "last_seen": "2026-07-05T22:25:01Z",
       "source": "api"
     },
@@ -399,7 +413,7 @@
       "current_character": "Armor King",
       "secondary_character": "Fahkumram",
       "tertiary_character": null,
-      "last_updated": "2026-07-04T03:39:11Z",
+      "last_updated": null,
       "last_seen": "2026-07-04T03:42:25Z",
       "source": "api",
       "known_name": "Dojo337xstaunch"
@@ -414,7 +428,7 @@
       "current_character": "Eddy",
       "secondary_character": "Devil Jin",
       "tertiary_character": "Hwoarang",
-      "last_updated": "2026-07-04T15:35:35Z",
+      "last_updated": null,
       "last_seen": "2026-07-04T21:26:05Z",
       "source": "api"
     },
@@ -443,7 +457,7 @@
       "current_character": "Yoshimitsu",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-05T22:15:21Z",
+      "last_updated": null,
       "last_seen": "2026-07-05T22:24:08Z",
       "source": "api"
     },
@@ -457,7 +471,7 @@
       "current_character": "Victor",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-04T22:03:32Z",
+      "last_updated": null,
       "last_seen": "2026-07-04T22:03:32Z",
       "source": "api",
       "known_name": "Dojo337Jakarogo"
@@ -472,7 +486,7 @@
       "current_character": "Reina",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-01T22:45:19Z",
+      "last_updated": null,
       "last_seen": "2026-07-03T03:57:18Z",
       "source": "api",
       "known_name": "TH|7sev.ens"
@@ -487,7 +501,7 @@
       "current_character": "King",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-05T23:20:23Z",
+      "last_updated": null,
       "last_seen": "2026-07-05T23:20:23Z",
       "source": "api",
       "known_name": "UDG_KING"
@@ -502,24 +516,10 @@
       "current_character": "Victor",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-06T01:56:19Z",
+      "last_updated": null,
       "last_seen": "2026-07-06T01:56:19Z",
       "source": "api",
       "known_name": "CheeseSniffer83"
-    },
-    {
-      "tekken_id": "3H7D4h29D3Mr",
-      "player_tag": "Zandak",
-      "platform": "Steam",
-      "main_character": "Leo",
-      "rank_name": "God of Destruction",
-      "tekken_power": 379732,
-      "current_character": "Leo",
-      "secondary_character": "Kunimitsu",
-      "tertiary_character": null,
-      "last_updated": null,
-      "last_seen": "2026-07-06T02:44:27Z",
-      "source": "api"
     },
     {
       "tekken_id": "5AT6RgLQ2NQG",
@@ -531,7 +531,7 @@
       "current_character": "Clive",
       "secondary_character": "Kunimitsu",
       "tertiary_character": null,
-      "last_updated": "2026-07-04T18:01:41Z",
+      "last_updated": null,
       "last_seen": "2026-07-04T18:01:41Z",
       "source": "api"
     },
@@ -545,7 +545,7 @@
       "current_character": "Paul",
       "secondary_character": "Feng",
       "tertiary_character": "Law",
-      "last_updated": "2026-07-03T17:55:36Z",
+      "last_updated": null,
       "last_seen": "2026-07-03T18:19:45Z",
       "source": "api"
     },
@@ -559,7 +559,7 @@
       "current_character": "Lidia",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-06-02T00:58:38Z",
+      "last_updated": null,
       "last_seen": "2026-06-18T03:13:54Z",
       "source": "api"
     },
@@ -587,7 +587,7 @@
       "current_character": "Lili",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-04T17:40:12Z",
+      "last_updated": null,
       "last_seen": "2026-07-06T05:55:11Z",
       "source": "api",
       "known_name": "28gramz"
@@ -602,7 +602,7 @@
       "current_character": "Jin",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-06-09T18:36:24Z",
+      "last_updated": null,
       "last_seen": "2026-06-09T18:45:24Z",
       "source": "api"
     },
@@ -616,7 +616,7 @@
       "current_character": "Armor King",
       "secondary_character": "Devil Jin",
       "tertiary_character": null,
-      "last_updated": "2026-06-28T22:07:39Z",
+      "last_updated": null,
       "last_seen": "2026-07-05T17:48:27Z",
       "source": "api",
       "known_name": "Jedah"
@@ -631,7 +631,7 @@
       "current_character": "Heihachi",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-06-15T01:23:23Z",
+      "last_updated": null,
       "last_seen": "2026-06-15T01:23:23Z",
       "source": "api",
       "known_name": "nyuu"
@@ -646,7 +646,7 @@
       "current_character": "King",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-06-28T02:27:10Z",
+      "last_updated": null,
       "last_seen": "2026-07-05T03:32:42Z",
       "source": "api",
       "known_name": "John T. Ekken"
@@ -675,7 +675,7 @@
       "current_character": "Alisa",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-06-11T09:17:40Z",
+      "last_updated": null,
       "last_seen": "2026-06-11T09:37:12Z",
       "source": "api",
       "known_name": "NeedlessFlea19"
@@ -690,7 +690,7 @@
       "current_character": "Lars",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-03T18:19:45Z",
+      "last_updated": null,
       "last_seen": "2026-07-03T18:19:45Z",
       "source": "api",
       "known_name": "Just CO"
@@ -705,7 +705,7 @@
       "current_character": "Lars",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-06T01:44:56Z",
+      "last_updated": null,
       "last_seen": "2026-07-06T01:44:56Z",
       "source": "api"
     },
@@ -719,7 +719,7 @@
       "current_character": "Jun",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-07-06T01:14:25Z",
+      "last_updated": null,
       "last_seen": "2026-07-06T01:14:25Z",
       "source": "api"
     },
@@ -733,7 +733,7 @@
       "current_character": "Raven",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-06-22T05:25:01Z",
+      "last_updated": null,
       "last_seen": "2026-06-22T05:25:01Z",
       "source": "api"
     },
@@ -747,7 +747,7 @@
       "current_character": "Claudio",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-03-31T00:47:34Z",
+      "last_updated": null,
       "last_seen": "2026-03-31T00:47:34Z",
       "source": "api"
     },
@@ -761,7 +761,7 @@
       "current_character": "Claudio",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-06-27T16:06:09Z",
+      "last_updated": null,
       "last_seen": "2026-07-01T02:06:33Z",
       "source": "api",
       "known_name": "Paper Trail$"
