@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "update-ranks": "node scripts/update-ranks.js",
+    "update-ranks:from-cache": "node scripts/update-ranks.js --from-cache",
     "lint": "eslint .",
     "format": "prettier --write ."
   },

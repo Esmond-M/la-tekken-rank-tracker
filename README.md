@@ -97,7 +97,7 @@ $env:EWGF_API_KEY="your_key"   # PowerShell
 npm run update-ranks
 
 # Reprocess ranks.json from cached battle data (zero API calls)
-node scripts/update-ranks.js --from-cache
+npm run update-ranks:from-cache
 ```
 
 ## API rate limits
