@@ -14,6 +14,23 @@ let lastRateLimitMeta = null
 let apiCallsThisRun = 0
 
 // Rank order for sorting players (highest first = index 0)
+// Merge two battle arrays, deduplicate on (battle_at+p1_tekken_id+p2_tekken_id),
+// sort newest-first, and cap at maxBattles to prevent unbounded cache growth.
+function mergeBattles(existing, incoming, maxBattles = 200) {
+  const seen = new Set()
+  const all = [...incoming, ...existing]
+  const deduped = []
+  for (const b of all) {
+    const key = `${b.battle_at}|${b.p1_tekken_id}|${b.p2_tekken_id}`
+    if (!seen.has(key)) {
+      seen.add(key)
+      deduped.push(b)
+    }
+  }
+  deduped.sort((a, b) => (a.battle_at > b.battle_at ? -1 : a.battle_at < b.battle_at ? 1 : 0))
+  return deduped.slice(0, maxBattles)
+}
+
 // Normalize platform string to title-case convention: steam→Steam, psn/playstation→Playstation, xbox→Xbox
 function normalizePlatform(raw) {
   if (!raw) return raw
@@ -497,11 +514,18 @@ async function main() {
       const { rankData, rawBattles } = await fetchPlayerRank(player)
 
       if (rawBattles.length > 0) {
+        // Load existing battles for this player from the current cache so we can
+        // accumulate history across runs instead of only keeping the latest 50.
+        let existingBattles = []
+        try {
+          const existing = JSON.parse(readFileSync(join(ROOT, 'data/api-cache.json'), 'utf8'))
+          existingBattles = (existing.players ?? []).find(p => p.tekken_id === player.tekken_id)?.battles ?? []
+        } catch { /* no cache yet — start fresh */ }
         apiCache.push({
           tekken_id: player.tekken_id,
           player_tag: player.player_tag,
           fetched_at: new Date().toISOString(),
-          battles: rawBattles,
+          battles: mergeBattles(existingBattles, rawBattles),
         })
       }
 
@@ -620,7 +644,7 @@ async function main() {
       return (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
     })
 
-    // Merge api-cache entries too
+    // Merge api-cache entries too — accumulate battles rather than replacing them
     const cachePath2 = join(ROOT, 'data/api-cache.json')
     try {
       const existingCache = JSON.parse(readFileSync(cachePath2, 'utf8'))
@@ -657,14 +681,29 @@ async function main() {
   // In --player mode the cache was already merged above; skip the full overwrite.
   const cachePath = join(ROOT, 'data/api-cache.json')
   if (!targetIds) {
+    // Full run: merge new battles into existing cache to preserve history beyond 50-battle window.
+    let existingPlayers = []
+    try {
+      existingPlayers = JSON.parse(readFileSync(cachePath, 'utf8')).players ?? []
+    } catch { /* first run */ }
+    const existingByTekkenId = new Map(existingPlayers.map(p => [p.tekken_id, p]))
+    const mergedPlayers = apiCache.map(entry => ({
+      ...entry,
+      battles: mergeBattles(existingByTekkenId.get(entry.tekken_id)?.battles ?? [], entry.battles),
+    }))
+    // Preserve entries for players we didn't fetch this run (e.g. rate-limited)
+    const freshIds = new Set(apiCache.map(p => p.tekken_id))
+    for (const p of existingPlayers) {
+      if (!freshIds.has(p.tekken_id)) mergedPlayers.push(p)
+    }
     const cacheOutput = {
       generated_at: new Date().toISOString(),
       note: 'Raw battle data from EWGF API. Do not commit sensitive info. Re-run update-ranks.js to refresh.',
-      players: apiCache,
+      players: mergedPlayers,
     }
     mkdirSync(join(ROOT, 'data'), { recursive: true })
     writeFileSync(cachePath, JSON.stringify(cacheOutput, null, 2))
-    console.log(`API cache written to data/api-cache.json (${apiCache.length} players)`)
+    console.log(`API cache written to data/api-cache.json (${mergedPlayers.length} players)`)
   }
 
   // Write a private rate-limit log (gitignored) so you can keep an eye on usage.
