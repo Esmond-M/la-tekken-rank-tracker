@@ -3,10 +3,22 @@
 ## ⚠️ API Calls — Be Careful
 - The EWGF API (`api.ewgf.gg`) requires `EWGF_API_KEY` (stored as a GitHub Actions secret).
 - **Do NOT trigger or simulate API calls locally** without confirming with the user first.
-- **Rate limit: 100 calls per day** on the free tier. The roster is ~48 players = 48 calls per run. That means roughly **2 runs per day max**.
+- **Rate limit: 100 calls per day** on the free tier. The roster is ~52 players = 52 calls per run. That means roughly **1 full run per day** with ~48 calls to spare for targeted `--player` runs.
 - **Rate limit resets at midnight UTC** (7 PM Central / 6 PM Central during DST). So if you burn the limit, it's available again the next UTC day.
 - The scheduled run fires daily at 8 AM UTC (3 AM Central). Manual runs via the Actions tab count against the same daily limit.
 - The update script is `scripts/update-ranks.js` and runs via GitHub Actions only (`update-ranks.yml`). Never run it locally unless the user explicitly asks.
+
+## ⚠️ EWGF API Tier Limitations (confirmed 2026-07-11)
+| Feature | Free | Pro ($10/mo) |
+|---|---|---|
+| Rate limit | 100 req/day | 1,000 req/day |
+| Battle history | Last **50**, **24h delay** | Last **100**, no delay |
+| Profile Metadata endpoint | ❌ **NOT available** | ✅ |
+
+- **`/external/profile/{tekkenId}` returns HTTP 500 on the free tier** — it is a Pro-only endpoint. Do NOT attempt to call it or suggest it as a solution unless the user has upgraded.
+- **Battle data has a 24-hour delay on free tier.** Ranks fetched today reflect battles up to ~24h ago.
+- **Only the `/external/battles/{tekkenId}` endpoint is usable on the free tier.**
+- If the user upgrades to Pro: profile endpoint unlocks (gives current rank + most-played character), battle window doubles to 100, and delay is eliminated — all three significantly improve peak rank accuracy.
 
 ## Architecture (there IS a backend — it's GitHub Actions)
 - **Front-end:** Vite + React static site, served by **GitHub Pages**.
