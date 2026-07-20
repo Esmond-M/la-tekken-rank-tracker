@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream
   "updated_at": "2026-07-20T09:11:31.694Z",
+=======
+  "updated_at": "2026-07-20T19:55:05.382Z",
+>>>>>>> Stashed changes
   "stats": {
     "successful": 52,
     "failed": 0,
@@ -98,6 +102,53 @@
       "known_name": "BewareIIIusion"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "tekken_id": "556QMQehGYQM",
+      "player_tag": "Allocution",
+      "platform": "Steam",
+      "main_character": "Jin",
+      "rank_name": "God of Destruction VI",
+      "tekken_power": 425213,
+      "current_character": "Jin",
+      "secondary_character": "Heihachi",
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-07-10T06:40:51Z",
+      "source": "api",
+      "known_name": "Stagger Lee"
+    },
+    {
+      "tekken_id": "33e7D2r4f9t8",
+      "player_tag": "KOG_Dre",
+      "platform": "Playstation",
+      "main_character": "Dragunov",
+      "rank_name": "God of Destruction VI",
+      "tekken_power": 404779,
+      "current_character": "Dragunov",
+      "secondary_character": null,
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-07-07T15:23:53Z",
+      "source": "api",
+      "known_name": "KOGDRE"
+    },
+    {
+      "tekken_id": "4NEQhQeMf7yQ",
+      "player_tag": "Pandora",
+      "platform": "Xbox",
+      "main_character": "Lars",
+      "rank_name": "God of Destruction V",
+      "tekken_power": 434045,
+      "current_character": "Lars",
+      "secondary_character": "Kunimitsu",
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-07-10T07:20:52Z",
+      "source": "api"
+    },
+    {
+>>>>>>> Stashed changes
       "tekken_id": "4fM948dh8AaT",
       "player_tag": "HBR",
       "platform": "Playstation",
@@ -128,6 +179,7 @@
       "known_name": "TVDeliriumheart"
     },
     {
+<<<<<<< Updated upstream
       "tekken_id": "33e7D2r4f9t8",
       "player_tag": "KOG_Dre",
       "platform": "Playstation",
@@ -143,6 +195,8 @@
       "known_name": "KOGDRE"
     },
     {
+=======
+>>>>>>> Stashed changes
       "tekken_id": "3Mtn7ghBHrdQ",
       "player_tag": "Oishimari",
       "platform": "Playstation",
@@ -303,6 +357,20 @@
       "source": "api"
     },
     {
+      "tekken_id": "3BEiYffFRRan",
+      "player_tag": "Ihatesainte",
+      "platform": "Xbox",
+      "main_character": "King",
+      "rank_name": "God of Destruction IV",
+      "tekken_power": 377743,
+      "current_character": "King",
+      "secondary_character": null,
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-07-05T22:25:01Z",
+      "source": "api"
+    },
+    {
       "tekken_id": "3H7D4h29D3Mr",
       "player_tag": "Zandak",
       "platform": "Steam",
@@ -377,6 +445,7 @@
       "known_name": "ItsSyrixTT"
     },
     {
+<<<<<<< Updated upstream
       "tekken_id": "3536QnT78bHr",
       "player_tag": "HK",
       "platform": "Playstation",
@@ -421,6 +490,8 @@
       "known_name": "Dojo337Jakarogo"
     },
     {
+=======
+>>>>>>> Stashed changes
       "tekken_id": "5trN9gn3DTaB",
       "player_tag": "G.O.L. Zenzo",
       "platform": "Playstation",
