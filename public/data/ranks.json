@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-21T09:00:43.310Z",
+  "updated_at": "2026-07-22T08:59:36.831Z",
   "stats": {
     "successful": 52,
     "failed": 0,
@@ -16,10 +16,10 @@
       "rank_name": "God of Destruction VI",
       "tekken_power": 447503,
       "current_character": "Nina",
-      "secondary_character": null,
+      "secondary_character": "Lee",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-20T08:57:46Z",
+      "last_seen": "2026-07-20T20:34:50Z",
       "source": "api",
       "known_name": "kevvbmm"
     },
@@ -31,10 +31,10 @@
       "rank_name": "God of Destruction VI",
       "tekken_power": 446499,
       "current_character": "Jun",
-      "secondary_character": "Fahkumram",
-      "tertiary_character": "Kunimitsu",
+      "secondary_character": "Kunimitsu",
+      "tertiary_character": "Fahkumram",
       "last_updated": null,
-      "last_seen": "2026-07-20T01:43:33Z",
+      "last_seen": "2026-07-21T01:30:45Z",
       "source": "api",
       "known_name": "Podcast Enjoyer"
     },
@@ -44,12 +44,12 @@
       "platform": "Xbox",
       "main_character": "Lars",
       "rank_name": "God of Destruction VI",
-      "tekken_power": 446368,
+      "tekken_power": 446489,
       "current_character": "Lars",
-      "secondary_character": null,
+      "secondary_character": "Kunimitsu",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-20T01:21:29Z",
+      "last_seen": "2026-07-20T22:48:03Z",
       "source": "api"
     },
     {
@@ -73,12 +73,12 @@
       "platform": "Steam",
       "main_character": "Jin",
       "rank_name": "God of Destruction VI",
-      "tekken_power": 438047,
+      "tekken_power": 438591,
       "current_character": "Jin",
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-20T07:05:51Z",
+      "last_seen": "2026-07-21T07:53:00Z",
       "source": "api",
       "known_name": "Stagger Lee"
     },
@@ -88,12 +88,12 @@
       "platform": "Steam",
       "main_character": "Law",
       "rank_name": "God of Destruction VI",
-      "tekken_power": 435633,
+      "tekken_power": 435766,
       "current_character": "Law",
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-20T08:58:27Z",
+      "last_seen": "2026-07-21T08:57:06Z",
       "source": "api",
       "known_name": "BewareIIIusion"
     },
@@ -103,12 +103,12 @@
       "platform": "Playstation",
       "main_character": "Dragunov",
       "rank_name": "God of Destruction VI",
-      "tekken_power": 405438,
+      "tekken_power": 412526,
       "current_character": "Dragunov",
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-19T20:56:55Z",
+      "last_seen": "2026-07-21T02:46:09Z",
       "source": "api",
       "known_name": "KOGDRE"
     },
@@ -154,7 +154,7 @@
       "tertiary_character": "Eddy",
       "show_tertiary": true,
       "last_updated": null,
-      "last_seen": "2026-07-20T04:08:25Z",
+      "last_seen": "2026-07-20T16:06:23Z",
       "source": "api",
       "known_name": "Mason Reigns"
     },
@@ -169,7 +169,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-20T01:02:43Z",
+      "last_seen": "2026-07-21T03:03:07Z",
       "source": "api"
     },
     {
@@ -311,9 +311,9 @@
       "tekken_power": 392039,
       "current_character": "Jin",
       "secondary_character": "Jun",
-      "tertiary_character": "Clive",
-      "last_updated": "2026-07-20T02:54:39Z",
-      "last_seen": "2026-07-20T03:50:38Z",
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-07-21T08:24:36Z",
       "source": "api",
       "known_name": "ItsSyrixTT"
     },
@@ -323,12 +323,12 @@
       "platform": "Playstation",
       "main_character": "Raven",
       "rank_name": "God of Destruction III",
-      "tekken_power": 383419,
+      "tekken_power": 384468,
       "current_character": "Raven",
       "secondary_character": "King",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-20T02:22:56Z",
+      "last_seen": "2026-07-21T02:56:02Z",
       "source": "api"
     },
     {
@@ -342,7 +342,7 @@
       "secondary_character": "Kunimitsu",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-19T03:42:09Z",
+      "last_seen": "2026-07-21T01:09:27Z",
       "source": "api"
     },
     {
@@ -356,7 +356,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-19T00:56:58Z",
+      "last_seen": "2026-07-21T00:57:00Z",
       "source": "api",
       "known_name": "DJSymphix"
     },
@@ -396,12 +396,12 @@
       "platform": "Playstation",
       "main_character": "Lili",
       "rank_name": "God of Destruction II",
-      "tekken_power": 383585,
+      "tekken_power": 384439,
       "current_character": "Lili",
       "secondary_character": "Xiaoyu",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-19T08:53:20Z",
+      "last_seen": "2026-07-21T08:58:15Z",
       "source": "api",
       "known_name": "ILearnStick"
     },
@@ -469,12 +469,12 @@
       "platform": "Playstation",
       "main_character": "Clive",
       "rank_name": "God of Destruction I",
-      "tekken_power": 380401,
+      "tekken_power": 381051,
       "current_character": "Clive",
-      "secondary_character": "Kunimitsu",
+      "secondary_character": "Fahkumram",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-20T00:13:38Z",
+      "last_seen": "2026-07-20T21:37:40Z",
       "source": "api"
     },
     {
@@ -483,12 +483,12 @@
       "platform": "Steam",
       "main_character": "Yoshimitsu",
       "rank_name": "God of Destruction I",
-      "tekken_power": 374298,
+      "tekken_power": 373941,
       "current_character": "Yoshimitsu",
-      "secondary_character": "Bryan",
-      "tertiary_character": "Jin",
+      "secondary_character": "Jin",
+      "tertiary_character": "Bryan",
       "last_updated": null,
-      "last_seen": "2026-07-19T07:18:49Z",
+      "last_seen": "2026-07-20T20:52:06Z",
       "source": "api"
     },
     {
@@ -526,12 +526,12 @@
       "platform": "Steam",
       "main_character": "Lili",
       "rank_name": "God of Destruction I",
-      "tekken_power": 363235,
+      "tekken_power": 364187,
       "current_character": "Lili",
       "secondary_character": "Zafina",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-20T00:34:56Z",
+      "last_seen": "2026-07-21T05:43:28Z",
       "source": "api",
       "known_name": "28gramz"
     },
@@ -560,7 +560,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-11T06:10:12Z",
+      "last_seen": "2026-07-20T21:05:55Z",
       "source": "api",
       "known_name": "UDG_KING"
     },
@@ -589,7 +589,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-19T04:23:48Z",
+      "last_seen": "2026-07-21T01:30:45Z",
       "source": "api",
       "known_name": "CheeseSniffer83"
     },
@@ -604,7 +604,7 @@
       "secondary_character": "Law",
       "tertiary_character": "Feng",
       "last_updated": null,
-      "last_seen": "2026-07-20T01:43:35Z",
+      "last_seen": "2026-07-21T00:19:47Z",
       "source": "api"
     },
     {
@@ -634,6 +634,21 @@
       "last_updated": null,
       "last_seen": "2026-06-09T18:45:24Z",
       "source": "api"
+    },
+    {
+      "tekken_id": "28n38hT3yRHT",
+      "player_tag": "JustCO",
+      "platform": "Playstation",
+      "main_character": "Lars",
+      "rank_name": "God of Destruction",
+      "tekken_power": 354545,
+      "current_character": "Lars",
+      "secondary_character": null,
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-07-21T02:45:14Z",
+      "source": "api",
+      "known_name": "Just CO"
     },
     {
       "tekken_id": "2bhAGQRT2tBQ",
@@ -680,21 +695,6 @@
       "known_name": "nyuu"
     },
     {
-      "tekken_id": "28n38hT3yRHT",
-      "player_tag": "JustCO",
-      "platform": "Playstation",
-      "main_character": "Lars",
-      "rank_name": "God of Destruction",
-      "tekken_power": 352907,
-      "current_character": "Lars",
-      "secondary_character": null,
-      "tertiary_character": null,
-      "last_updated": null,
-      "last_seen": "2026-07-19T05:43:19Z",
-      "source": "api",
-      "known_name": "Just CO"
-    },
-    {
       "tekken_id": "5Ta4Et8f8L8y",
       "player_tag": "NK30",
       "platform": "Steam",
@@ -735,7 +735,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-07-20T07:41:08Z",
+      "last_seen": "2026-07-20T17:25:23Z",
       "source": "api"
     },
     {
