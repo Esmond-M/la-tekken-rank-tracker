@@ -5,12 +5,12 @@
   "ranking_id": "7D81E3FE-6B24-4332-B660-9E5FB9F9F421",
   "ranking_period": "17 March 2026 – 16 March 2027",
   "pages_fetched": 2,
-  "updated_at": "2026-07-20T10:00:27.550Z",
+  "updated_at": "2026-07-27T10:16:35.148Z",
   "players": [
     {
       "rank": 1,
       "player_tag": "Allocution",
-      "points": 1700,
+      "points": 1789,
       "braacket_url": "https://braacket.com/league/LATK8/player/5A677743-9635-47C7-962E-A04D6944AE32?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
@@ -27,138 +27,174 @@
     },
     {
       "rank": 4,
+      "player_tag": "Sneak47",
+      "points": 1545,
+      "braacket_url": "https://braacket.com/league/LATK8/player/F2F0DB7C-B0E0-4E79-8D90-EB47B4FAB0ED?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
+    },
+    {
+      "rank": 5,
       "player_tag": "FireFury212",
       "points": 1508,
       "braacket_url": "https://braacket.com/league/LATK8/player/9C1C94AB-A20C-4919-B8DA-DD2F756EC33F?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 5,
+      "rank": 6,
       "player_tag": "DJSymphix",
       "points": 1408,
       "braacket_url": "https://braacket.com/league/LATK8/player/8BDCC854-03E7-43FA-A7AA-ADCE581DD4AF?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 6,
-      "player_tag": "Sneak47",
-      "points": 1402,
-      "braacket_url": "https://braacket.com/league/LATK8/player/F2F0DB7C-B0E0-4E79-8D90-EB47B4FAB0ED?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
+      "rank": 7,
+      "player_tag": "NO Juice",
+      "points": 1397,
+      "braacket_url": "https://braacket.com/league/LATK8/player/FFCCAA44-239B-4C2C-8A6B-9412BF35C47F?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 7,
+      "rank": 8,
       "player_tag": "ItsSyrix",
       "points": 1346,
       "braacket_url": "https://braacket.com/league/LATK8/player/48D7C052-63F8-4A3D-8F34-BF08B9263A3C?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 8,
-      "player_tag": "NO Juice",
-      "points": 1292,
-      "braacket_url": "https://braacket.com/league/LATK8/player/FFCCAA44-239B-4C2C-8A6B-9412BF35C47F?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
+      "rank": 9,
+      "player_tag": "B.I.A | Dohma",
+      "points": 1305,
+      "braacket_url": "https://braacket.com/league/LATK8/player/5200192D-8483-4F4C-8426-DD30D39317C8?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 9,
+      "rank": 10,
       "player_tag": "ThickyMcNick",
       "points": 1267,
       "braacket_url": "https://braacket.com/league/LATK8/player/C624356F-4A77-47A6-8885-7B4CE6F6F572?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 10,
+      "rank": 11,
       "player_tag": "Zandak",
-      "points": 1218,
+      "points": 1259,
       "braacket_url": "https://braacket.com/league/LATK8/player/16983F45-BF28-4035-AA88-8556FC9A722F?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 11,
+      "rank": 12,
+      "player_tag": "lyvesauce",
+      "points": 1207,
+      "braacket_url": "https://braacket.com/league/LATK8/player/07A51354-CFDB-40F0-A486-E24B8511B2A4?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
+    },
+    {
+      "rank": 13,
       "player_tag": "LND| | NK30",
       "points": 1179,
       "braacket_url": "https://braacket.com/league/LATK8/player/3F286F3A-2ABE-49FC-BA70-8C744C1A3C59?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 12,
+      "rank": 14,
       "player_tag": "UDG_Tye",
       "points": 1135,
       "braacket_url": "https://braacket.com/league/LATK8/player/19BB43AC-B032-472B-B569-22230BF7D4A1?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 13,
+      "rank": 15,
       "player_tag": "SeaCaveArcade | Savion",
       "points": 1074,
       "braacket_url": "https://braacket.com/league/LATK8/player/6CECB02A-296E-4E2F-BB66-4ED799A0A990?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 14,
+      "rank": 16,
       "player_tag": "SaltAndBatteries",
       "points": 1053,
       "braacket_url": "https://braacket.com/league/LATK8/player/2422867F-D69D-4250-866C-2FF13F944AFD?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 15,
+      "rank": 17,
+      "player_tag": "LB1",
+      "points": 1033,
+      "braacket_url": "https://braacket.com/league/LATK8/player/642EFFFF-A28A-4430-B5A0-BFFF9DD4D4B8?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
+    },
+    {
+      "rank": 18,
+      "player_tag": "ZatouSyrene",
+      "points": 1011,
+      "braacket_url": "https://braacket.com/league/LATK8/player/C052C361-F79F-4231-A2D9-B35FDB346D42?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
+    },
+    {
+      "rank": 19,
+      "player_tag": "Im_blank",
+      "points": 978,
+      "braacket_url": "https://braacket.com/league/LATK8/player/79D04C53-1269-4C3B-9337-A520B6D9C4B7?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
+    },
+    {
+      "rank": 20,
       "player_tag": "OmniFade",
       "points": 977,
       "braacket_url": "https://braacket.com/league/LATK8/player/74B440EF-3772-4E3E-A6CC-90A9A76E5F25?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 16,
-      "player_tag": "ZatouSyrene",
-      "points": 940,
-      "braacket_url": "https://braacket.com/league/LATK8/player/C052C361-F79F-4231-A2D9-B35FDB346D42?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
-    },
-    {
-      "rank": 17,
+      "rank": 21,
       "player_tag": "ZexySwami",
       "points": 936,
       "braacket_url": "https://braacket.com/league/LATK8/player/5A541F44-1589-4D63-819C-2A06121B28E4?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 18,
+      "rank": 22,
       "player_tag": "Dojo337 | Drago",
       "points": 848,
       "braacket_url": "https://braacket.com/league/LATK8/player/339DD67D-4F6A-4D19-8138-48842806A620?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 19,
+      "rank": 23,
       "player_tag": "The Bakery | Dohma",
       "points": 837,
       "braacket_url": "https://braacket.com/league/LATK8/player/D81B26AE-2203-499E-BADC-161669DC7763?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 20,
+      "rank": 24,
       "player_tag": "Ryu6694",
       "points": 814,
       "braacket_url": "https://braacket.com/league/LATK8/player/CFFA2209-55F7-4F97-8316-7D089933FBA3?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 21,
-      "player_tag": "Huey",
-      "points": 751,
-      "braacket_url": "https://braacket.com/league/LATK8/player/83243322-583D-41B0-AFBE-A2312CCD2527?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
+      "rank": 25,
+      "player_tag": "NYFT",
+      "points": 778,
+      "braacket_url": "https://braacket.com/league/LATK8/player/91BCF102-FDC6-453C-8608-185419B9E8C1?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 22,
+      "rank": 26,
+      "player_tag": "Bezy Boi",
+      "points": 777,
+      "braacket_url": "https://braacket.com/league/LATK8/player/48DCD481-DAF7-40CB-9757-23AA42344EEE?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
+    },
+    {
+      "rank": 27,
       "player_tag": "Crimbly",
       "points": 751,
       "braacket_url": "https://braacket.com/league/LATK8/player/D7CE8027-1AD4-4B6B-9A27-F351EEA6FF3C?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 23,
+      "rank": 28,
       "player_tag": "EDLN | drunkmonkey",
       "points": 751,
       "braacket_url": "https://braacket.com/league/LATK8/player/C7756AC8-5607-4570-B5BB-AD64B3C4C40D?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 24,
+      "rank": 29,
+      "player_tag": "Huey",
+      "points": 751,
+      "braacket_url": "https://braacket.com/league/LATK8/player/83243322-583D-41B0-AFBE-A2312CCD2527?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
+    },
+    {
+      "rank": 30,
       "player_tag": "ColdRamune",
       "points": 725,
       "braacket_url": "https://braacket.com/league/LATK8/player/947DAF82-71C0-4BFC-8A60-62FAEC7374C5?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 25,
+      "rank": 31,
       "player_tag": "Smokey",
       "points": 713,
       "braacket_url": "https://braacket.com/league/LATK8/player/0E6165F0-FBE6-4EE7-AF4E-131B23B1F501?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
     },
     {
-      "rank": 26,
+      "rank": 32,
       "player_tag": "Gor1lla_",
       "points": 713,
       "braacket_url": "https://braacket.com/league/LATK8/player/DBC7A1DA-550D-4DD8-909F-8DA521927559?ranking=7D81E3FE-6B24-4332-B660-9E5FB9F9F421"
