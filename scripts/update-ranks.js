@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'fs'
 import { fileURLToPath } from 'url'
-import { dirname, join } from 'path'
+import { dirname, join, resolve } from 'path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..')
@@ -87,6 +87,47 @@ const RANK_ORDER = [
 function rankSortValue(rankName) {
   const idx = RANK_ORDER.indexOf(rankName)
   return idx === -1 ? RANK_ORDER.length : idx
+}
+
+function resolveSecondaryCharacters(player, bestPerChar, primary) {
+  const configuredSecondary = player.secondary_character?.trim()
+  if (configuredSecondary) {
+    if (configuredSecondary === primary?.current_character) {
+      return {
+        secondary_character: null,
+        tertiary_character: null,
+      }
+    }
+    const configuredEntry = bestPerChar.get(configuredSecondary)
+    if (configuredEntry) {
+      return {
+        secondary_character: configuredSecondary,
+        tertiary_character: null,
+      }
+    }
+  }
+
+  const secondaries = []
+  if (primary) {
+    const primaryTier = rankSortValue(primary.rank_name)
+    const godBaseTier = rankSortValue('God of Destruction')
+    for (const [char, entry] of bestPerChar.entries()) {
+      if (char === primary.current_character) continue
+      const tier = rankSortValue(entry.rank_name)
+      if (tier <= primaryTier + 2 && tier <= godBaseTier) {
+        secondaries.push(entry)
+      }
+    }
+    secondaries.sort((a, b) =>
+      rankSortValue(a.rank_name) - rankSortValue(b.rank_name) ||
+      (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
+    )
+  }
+
+  return {
+    secondary_character: secondaries[0]?.current_character ?? null,
+    tertiary_character: secondaries[1]?.current_character ?? null,
+  }
 }
 
 async function sleep(ms) {
@@ -205,31 +246,14 @@ async function fetchPlayerRank(player) {
     primary = best
   }
 
-  // Find secondary + tertiary: best-ranked OTHER characters (not the primary) within
-  // 2 tiers of primary AND at least God of Destruction (base, index 8).
-  const secondaries = []
-  if (primary) {
-    const primaryTier = rankSortValue(primary.rank_name)
-    const godBaseTier = rankSortValue('God of Destruction')
-    for (const [char, entry] of bestPerChar.entries()) {
-      if (char === primary.current_character) continue
-      const tier = rankSortValue(entry.rank_name)
-      if (tier <= primaryTier + 2 && tier <= godBaseTier) {
-        secondaries.push(entry)
-      }
-    }
-    secondaries.sort((a, b) =>
-      rankSortValue(a.rank_name) - rankSortValue(b.rank_name) ||
-      (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
-    )
-  }
+  const secondaryCharacters = resolveSecondaryCharacters(player, bestPerChar, primary)
 
   return {
     rankData: primary ? {
       ...primary,
       display_name: displayName !== player.player_tag ? displayName : null,
-      secondary_character: secondaries[0]?.current_character ?? null,
-      tertiary_character: secondaries[1]?.current_character ?? null,
+      secondary_character: secondaryCharacters.secondary_character,
+      tertiary_character: secondaryCharacters.tertiary_character,
       last_seen: mostRecentBattleAt,
     } : null,
     rawBattles: battles,
@@ -312,29 +336,14 @@ function buildRankDataFromBattles(player, battles) {
     primary = best
   }
 
-  const secondaries = []
-  if (primary) {
-    const primaryTier = rankSortValue(primary.rank_name)
-    const godBaseTier = rankSortValue('God of Destruction')
-    for (const [char, entry] of bestPerChar.entries()) {
-      if (char === primary.current_character) continue
-      const tier = rankSortValue(entry.rank_name)
-      if (tier <= primaryTier + 2 && tier <= godBaseTier) {
-        secondaries.push(entry)
-      }
-    }
-    secondaries.sort((a, b) =>
-      rankSortValue(a.rank_name) - rankSortValue(b.rank_name) ||
-      (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
-    )
-  }
+  const secondaryCharacters = resolveSecondaryCharacters(player, bestPerChar, primary)
 
   return primary
     ? {
         ...primary,
         display_name: displayName !== player.player_tag ? displayName : null,
-        secondary_character: secondaries[0]?.current_character ?? null,
-        tertiary_character: secondaries[1]?.current_character ?? null,
+        secondary_character: secondaryCharacters.secondary_character,
+        tertiary_character: secondaryCharacters.tertiary_character,
         last_seen: mostRecentBattleAt,
       }
     : null
@@ -772,7 +781,12 @@ async function main() {
   console.log('─'.repeat(50))
 }
 
-main().catch(err => {
-  console.error('Fatal error:', err)
-  process.exit(1)
-})
+export { resolveSecondaryCharacters }
+
+const isDirectRun = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+if (isDirectRun) {
+  main().catch(err => {
+    console.error('Fatal error:', err)
+    process.exit(1)
+  })
+}
