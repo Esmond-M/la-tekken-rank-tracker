@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-01T20:55:26.505Z",
+  "updated_at": "2026-08-01T20:58:34.229Z",
   "stats": {
     "successful": 52,
     "failed": 0,
@@ -73,7 +73,7 @@
       "tekken_power": 446499,
       "current_character": "Jun",
       "secondary_character": "Fahkumram",
-      "tertiary_character": null,
+      "tertiary_character": "Kunimitsu",
       "last_updated": null,
       "last_seen": "2026-07-30T03:41:44Z",
       "source": "api",

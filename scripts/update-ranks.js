@@ -91,28 +91,14 @@ function rankSortValue(rankName) {
 
 function resolveSecondaryCharacters(player, bestPerChar, primary) {
   const configuredSecondary = player.secondary_character?.trim()
-  if (configuredSecondary) {
-    if (configuredSecondary === primary?.current_character) {
-      return {
-        secondary_character: null,
-        tertiary_character: null,
-      }
-    }
-    const configuredEntry = bestPerChar.get(configuredSecondary)
-    if (configuredEntry) {
-      return {
-        secondary_character: configuredSecondary,
-        tertiary_character: null,
-      }
-    }
-  }
-
   const secondaries = []
+
   if (primary) {
     const primaryTier = rankSortValue(primary.rank_name)
     const godBaseTier = rankSortValue('God of Destruction')
     for (const [char, entry] of bestPerChar.entries()) {
       if (char === primary.current_character) continue
+      if (configuredSecondary && char === configuredSecondary) continue
       const tier = rankSortValue(entry.rank_name)
       if (tier <= primaryTier + 2 && tier <= godBaseTier) {
         secondaries.push(entry)
@@ -122,6 +108,16 @@ function resolveSecondaryCharacters(player, bestPerChar, primary) {
       rankSortValue(a.rank_name) - rankSortValue(b.rank_name) ||
       (b.tekken_power ?? 0) - (a.tekken_power ?? 0)
     )
+  }
+
+  if (configuredSecondary && configuredSecondary !== primary?.current_character) {
+    const configuredEntry = bestPerChar.get(configuredSecondary)
+    if (configuredEntry) {
+      return {
+        secondary_character: configuredSecondary,
+        tertiary_character: secondaries[0]?.current_character ?? null,
+      }
+    }
   }
 
   return {
