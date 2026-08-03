@@ -1,9 +1,11 @@
 {
-  "updated_at": "2026-08-03T20:26:09.206Z",
+  "updated_at": "2026-08-03T20:28:49.569Z",
   "stats": {
-    "successful": 52,
+    "successful": 1,
     "failed": 0,
-    "skipped": 1
+    "skipped": 0,
+    "rate_limit_hit": false,
+    "skipped_rate_limit_count": 0
   },
   "players": [
     {
@@ -707,6 +709,20 @@
       "known_name": "nyuu"
     },
     {
+      "tekken_id": "2EiHfdnJE9EJ",
+      "player_tag": "True_Loki",
+      "platform": "Steam",
+      "main_character": "Jun",
+      "rank_name": "God of Destruction",
+      "tekken_power": 352097,
+      "current_character": "Jun",
+      "secondary_character": null,
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-08-01T20:49:57Z",
+      "source": "api"
+    },
+    {
       "tekken_id": "5JbtfYgyQ9QQ",
       "player_tag": "ULTRA",
       "platform": "Playstation",
@@ -763,17 +779,6 @@
       "last_updated": null,
       "last_seen": "2026-03-31T00:47:34Z",
       "source": "api"
-    },
-    {
-      "tekken_id": "2EiHfdnJE9EJ",
-      "player_tag": "True_Loki",
-      "platform": "Steam",
-      "main_character": "Jun",
-      "rank_name": "God of Destruction",
-      "tekken_power": null,
-      "current_character": null,
-      "last_updated": null,
-      "source": "manual"
     }
   ]
 }
