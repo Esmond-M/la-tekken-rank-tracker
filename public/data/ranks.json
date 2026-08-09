@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-08T17:05:34.261Z",
+  "updated_at": "2026-08-09T06:09:09.099Z",
   "stats": {
     "successful": 53,
     "failed": 0,
@@ -110,6 +110,20 @@
       "known_name": "KOGDRE"
     },
     {
+      "tekken_id": "5j2gTqJrEbyr",
+      "player_tag": "Sneak47",
+      "platform": "Steam",
+      "main_character": "Lars",
+      "rank_name": "God of Destruction VI",
+      "tekken_power": 394473,
+      "current_character": "Lars",
+      "secondary_character": "Alisa",
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-08-06T06:17:06Z",
+      "source": "api"
+    },
+    {
       "tekken_id": "4fM948dh8AaT",
       "player_tag": "HBR",
       "platform": "Playstation",
@@ -197,20 +211,6 @@
       "last_seen": "2026-08-03T22:52:03Z",
       "source": "api",
       "known_name": "Twko"
-    },
-    {
-      "tekken_id": "5j2gTqJrEbyr",
-      "player_tag": "Sneak47",
-      "platform": "Steam",
-      "main_character": "Lars",
-      "rank_name": "God of Destruction V",
-      "tekken_power": 394473,
-      "current_character": "Lars",
-      "secondary_character": "Alisa",
-      "tertiary_character": null,
-      "last_updated": null,
-      "last_seen": "2026-08-06T06:17:06Z",
-      "source": "api"
     },
     {
       "tekken_id": "2mmdJn74QDFd",
