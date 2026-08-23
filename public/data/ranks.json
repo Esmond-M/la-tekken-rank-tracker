@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22T08:10:08.003Z",
+  "updated_at": "2026-08-23T08:10:35.570Z",
   "stats": {
     "successful": 53,
     "failed": 0,
@@ -16,10 +16,10 @@
       "rank_name": "God of Destruction VII",
       "tekken_power": 460412,
       "current_character": "Jin",
-      "secondary_character": "Fahkumram",
+      "secondary_character": "Kazuya",
       "tertiary_character": "Heihachi",
       "last_updated": null,
-      "last_seen": "2026-08-21T07:27:37Z",
+      "last_seen": "2026-08-22T05:49:57Z",
       "source": "api"
     },
     {
@@ -28,12 +28,12 @@
       "platform": "Xbox",
       "main_character": "Lars",
       "rank_name": "God of Destruction VI",
-      "tekken_power": 459396,
+      "tekken_power": 460191,
       "current_character": "Lars",
-      "secondary_character": null,
+      "secondary_character": "Kunimitsu",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-21T00:39:13Z",
+      "last_seen": "2026-08-21T21:30:10Z",
       "source": "api",
       "known_name": "Mikasa"
     },
@@ -53,34 +53,34 @@
       "known_name": "kevvbmm"
     },
     {
-      "tekken_id": "46LnH6Rbjdyd",
-      "player_tag": "Flex Zero",
-      "platform": "Playstation",
-      "main_character": "Reina",
-      "rank_name": "God of Destruction VI",
-      "tekken_power": 455103,
-      "current_character": "Reina",
-      "secondary_character": null,
-      "tertiary_character": null,
-      "last_updated": null,
-      "last_seen": "2026-08-15T19:01:20Z",
-      "source": "api",
-      "known_name": "Flex"
-    },
-    {
       "tekken_id": "5A7M24gt8Y84",
       "player_tag": "84DaysWithout",
       "platform": "Playstation",
       "main_character": "Jun",
       "rank_name": "God of Destruction VI",
-      "tekken_power": 452895,
+      "tekken_power": 457679,
       "current_character": "Jun",
-      "secondary_character": "Fahkumram",
+      "secondary_character": "Bob",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-21T02:23:07Z",
+      "last_seen": "2026-08-22T06:51:45Z",
       "source": "api",
       "known_name": "Tserriednich"
+    },
+    {
+      "tekken_id": "46LnH6Rbjdyd",
+      "player_tag": "Flex Zero",
+      "platform": "Playstation",
+      "main_character": "Reina",
+      "rank_name": "God of Destruction VI",
+      "tekken_power": 454542,
+      "current_character": "Reina",
+      "secondary_character": "Kunimitsu",
+      "tertiary_character": "Armor King",
+      "last_updated": null,
+      "last_seen": "2026-08-21T21:04:24Z",
+      "source": "api",
+      "known_name": "Flex"
     },
     {
       "tekken_id": "5fHfbDA2BAEQ",
@@ -147,12 +147,12 @@
       "platform": "Steam",
       "main_character": "Shaheen",
       "rank_name": "God of Destruction V",
-      "tekken_power": 417736,
+      "tekken_power": 418646,
       "current_character": "Shaheen",
-      "secondary_character": "Lee",
+      "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-13T03:16:33Z",
+      "last_seen": "2026-08-22T07:24:41Z",
       "source": "api"
     },
     {
@@ -161,12 +161,12 @@
       "platform": "Steam",
       "main_character": "Raven",
       "rank_name": "God of Destruction V",
-      "tekken_power": 415805,
+      "tekken_power": 415830,
       "current_character": "Raven",
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-21T08:08:38Z",
+      "last_seen": "2026-08-22T08:07:52Z",
       "source": "api",
       "known_name": "TVDeliriumheart"
     },
@@ -176,13 +176,13 @@
       "platform": "Playstation",
       "main_character": "Azucena",
       "rank_name": "God of Destruction V",
-      "tekken_power": 405176,
+      "tekken_power": 406400,
       "current_character": "Azucena",
       "secondary_character": null,
       "tertiary_character": null,
       "show_tertiary": true,
       "last_updated": null,
-      "last_seen": "2026-08-20T23:45:10Z",
+      "last_seen": "2026-08-22T08:05:18Z",
       "source": "api",
       "known_name": "Mason Reigns"
     },
@@ -197,7 +197,7 @@
       "secondary_character": "Reina",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-06T22:46:37Z",
+      "last_seen": "2026-08-22T00:44:57Z",
       "source": "api"
     },
     {
@@ -211,7 +211,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-19T05:13:48Z",
+      "last_seen": "2026-08-21T22:41:49Z",
       "source": "api",
       "known_name": "Twko"
     },
@@ -249,12 +249,12 @@
       "platform": "Steam",
       "main_character": "Armor King",
       "rank_name": "God of Destruction V",
-      "tekken_power": 390170,
+      "tekken_power": 390173,
       "current_character": "Armor King",
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-21T01:01:32Z",
+      "last_seen": "2026-08-21T15:10:52Z",
       "source": "api",
       "known_name": "Fear Magneto"
     },
@@ -273,6 +273,21 @@
       "source": "api"
     },
     {
+      "tekken_id": "5nFbr9Bni7dQ",
+      "player_tag": "No Juice",
+      "platform": "Steam",
+      "main_character": "Law",
+      "rank_name": "God of Destruction IV",
+      "tekken_power": 386739,
+      "current_character": "Law",
+      "secondary_character": null,
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-08-21T16:54:24Z",
+      "source": "api",
+      "known_name": "Professor Juice"
+    },
+    {
       "tekken_id": "3BEiYffFRRan",
       "player_tag": "Ihatesainte",
       "platform": "Xbox",
@@ -285,21 +300,6 @@
       "last_updated": null,
       "last_seen": "2026-08-17T09:20:50Z",
       "source": "api"
-    },
-    {
-      "tekken_id": "5nFbr9Bni7dQ",
-      "player_tag": "No Juice",
-      "platform": "Steam",
-      "main_character": "Law",
-      "rank_name": "God of Destruction IV",
-      "tekken_power": 385969,
-      "current_character": "Law",
-      "secondary_character": null,
-      "tertiary_character": null,
-      "last_updated": null,
-      "last_seen": "2026-07-23T02:49:36Z",
-      "source": "api",
-      "known_name": "Professor Juice"
     },
     {
       "tekken_id": "3H7D4h29D3Mr",
@@ -386,7 +386,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-21T03:46:02Z",
+      "last_seen": "2026-08-22T00:16:23Z",
       "source": "api",
       "known_name": "UDG_KING"
     },
@@ -398,10 +398,10 @@
       "rank_name": "God of Destruction III",
       "tekken_power": 392195,
       "current_character": "Jin",
-      "secondary_character": "Clive",
-      "tertiary_character": "Jun",
+      "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-19T02:38:37Z",
+      "last_seen": "2026-08-22T06:01:57Z",
       "source": "api",
       "known_name": "ItsSyrixTT"
     },
@@ -431,7 +431,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-21T03:30:40Z",
+      "last_seen": "2026-08-22T05:12:14Z",
       "source": "api",
       "known_name": "Dojo337Jakarogo"
     },
@@ -471,12 +471,12 @@
       "platform": "Steam",
       "main_character": "Paul",
       "rank_name": "God of Destruction II",
-      "tekken_power": 379747,
+      "tekken_power": 379759,
       "current_character": "Paul",
-      "secondary_character": "Hwoarang",
+      "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-21T00:16:15Z",
+      "last_seen": "2026-08-22T05:14:39Z",
       "source": "api"
     },
     {
@@ -487,10 +487,10 @@
       "rank_name": "God of Destruction II",
       "tekken_power": 368281,
       "current_character": "Eddy",
-      "secondary_character": "Azucena",
-      "tertiary_character": "Reina",
+      "secondary_character": "Reina",
+      "tertiary_character": "Azucena",
       "last_updated": null,
-      "last_seen": "2026-08-18T05:05:03Z",
+      "last_seen": "2026-08-21T20:06:23Z",
       "source": "api"
     },
     {
@@ -504,7 +504,7 @@
       "secondary_character": "Law",
       "tertiary_character": "Feng",
       "last_updated": null,
-      "last_seen": "2026-08-21T01:19:43Z",
+      "last_seen": "2026-08-22T01:11:50Z",
       "source": "api"
     },
     {
@@ -541,12 +541,12 @@
       "platform": "Playstation",
       "main_character": "Reina",
       "rank_name": "God of Destruction I",
-      "tekken_power": 369315,
+      "tekken_power": 368717,
       "current_character": "Reina",
       "secondary_character": "Devil Jin",
       "tertiary_character": "Lee",
       "last_updated": null,
-      "last_seen": "2026-08-20T15:38:30Z",
+      "last_seen": "2026-08-21T19:22:18Z",
       "source": "api",
       "known_name": "TH|7sev.ens"
     },
@@ -635,7 +635,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-04T06:42:00Z",
+      "last_seen": "2026-08-22T01:33:28Z",
       "source": "api"
     },
     {
@@ -706,7 +706,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-17T01:11:18Z",
+      "last_seen": "2026-08-22T05:14:39Z",
       "source": "api",
       "known_name": "Just CO"
     },
@@ -718,10 +718,10 @@
       "rank_name": "God of Destruction",
       "tekken_power": 354159,
       "current_character": "Armor King",
-      "secondary_character": null,
+      "secondary_character": "Devil Jin",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-20T21:55:17Z",
+      "last_seen": "2026-08-21T23:55:46Z",
       "source": "api",
       "known_name": "Jedah"
     },
@@ -779,7 +779,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-08-19T02:18:22Z",
+      "last_seen": "2026-08-22T02:42:47Z",
       "source": "api",
       "known_name": "Paper Trail$"
     }
