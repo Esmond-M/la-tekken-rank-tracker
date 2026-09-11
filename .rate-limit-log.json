@@ -1,15 +1,5 @@
 [
   {
-    "ran_at": "2026-08-12T08:35:20.086Z",
-    "api_calls_this_run": 53,
-    "rate_limit_remaining": 47,
-    "rate_limit_reset": "2026-08-12T08:35:19Z",
-    "tier": "free",
-    "successful": 53,
-    "failed": 0,
-    "skipped": 0
-  },
-  {
     "ran_at": "2026-08-13T08:36:42.623Z",
     "api_calls_this_run": 53,
     "rate_limit_remaining": 47,
@@ -294,6 +284,16 @@
     "api_calls_this_run": 53,
     "rate_limit_remaining": 47,
     "rate_limit_reset": "2026-09-10T08:24:02Z",
+    "tier": "free",
+    "successful": 53,
+    "failed": 0,
+    "skipped": 0
+  },
+  {
+    "ran_at": "2026-09-11T08:23:41.122Z",
+    "api_calls_this_run": 53,
+    "rate_limit_remaining": 68,
+    "rate_limit_reset": "2026-09-11T08:23:40Z",
     "tier": "free",
     "successful": 53,
     "failed": 0,
