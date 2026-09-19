@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-18T08:23:23.768Z",
+  "updated_at": "2026-09-19T08:21:00.008Z",
   "stats": {
     "successful": 53,
     "failed": 0,
@@ -16,11 +16,26 @@
       "rank_name": "God of Destruction VII",
       "tekken_power": 460420,
       "current_character": "Jin",
-      "secondary_character": "Dragunov",
+      "secondary_character": "Devil Jin",
+      "tertiary_character": "Kazuya",
+      "last_updated": null,
+      "last_seen": "2026-09-18T05:13:09Z",
+      "source": "api"
+    },
+    {
+      "tekken_id": "46LnH6Rbjdyd",
+      "player_tag": "Flex Zero",
+      "platform": "Playstation",
+      "main_character": "Reina",
+      "rank_name": "God of Destruction VI",
+      "tekken_power": 467116,
+      "current_character": "Reina",
+      "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-09-17T03:53:49Z",
-      "source": "api"
+      "last_seen": "2026-09-18T01:46:23Z",
+      "source": "api",
+      "known_name": "Flex"
     },
     {
       "tekken_id": "4NEQhQeMf7yQ",
@@ -36,21 +51,6 @@
       "last_seen": "2026-09-17T03:14:58Z",
       "source": "api",
       "known_name": "Mikasa"
-    },
-    {
-      "tekken_id": "46LnH6Rbjdyd",
-      "player_tag": "Flex Zero",
-      "platform": "Playstation",
-      "main_character": "Reina",
-      "rank_name": "God of Destruction VI",
-      "tekken_power": 464458,
-      "current_character": "Reina",
-      "secondary_character": null,
-      "tertiary_character": null,
-      "last_updated": null,
-      "last_seen": "2026-09-16T21:20:52Z",
-      "source": "api",
-      "known_name": "Flex"
     },
     {
       "tekken_id": "5A7M24gt8Y84",
@@ -90,10 +90,10 @@
       "rank_name": "God of Destruction VI",
       "tekken_power": 443541,
       "current_character": "Law",
-      "secondary_character": "Lee",
+      "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-09-17T05:02:10Z",
+      "last_seen": "2026-09-18T08:18:03Z",
       "source": "api",
       "known_name": "BewareIIIusion"
     },
@@ -122,7 +122,7 @@
       "secondary_character": "Feng",
       "tertiary_character": "Kunimitsu",
       "last_updated": null,
-      "last_seen": "2026-09-17T05:12:57Z",
+      "last_seen": "2026-09-18T04:17:50Z",
       "source": "api",
       "known_name": "T5DR"
     },
@@ -269,7 +269,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-09-17T03:53:49Z",
+      "last_seen": "2026-09-18T06:48:11Z",
       "source": "api",
       "known_name": "ItsSyrixTT"
     },
@@ -405,21 +405,6 @@
       "known_name": "DJSymphix"
     },
     {
-      "tekken_id": "52rBt7NdyDQM",
-      "player_tag": "Dragosiege",
-      "platform": "Steam",
-      "main_character": "Hwoarang",
-      "rank_name": "God of Destruction IV",
-      "tekken_power": 381520,
-      "current_character": "Hwoarang",
-      "secondary_character": null,
-      "tertiary_character": null,
-      "last_updated": null,
-      "last_seen": "2026-09-17T07:09:01Z",
-      "source": "api",
-      "known_name": "Dojo337 | Drago"
-    },
-    {
       "tekken_id": "23EgNYiq8MBf",
       "player_tag": "BBxstaunch",
       "platform": "Xbox",
@@ -435,17 +420,32 @@
       "known_name": "Dojo337xstaunch"
     },
     {
+      "tekken_id": "52rBt7NdyDQM",
+      "player_tag": "Dragosiege",
+      "platform": "Steam",
+      "main_character": "Hwoarang",
+      "rank_name": "God of Destruction IV",
+      "tekken_power": 381172,
+      "current_character": "Hwoarang",
+      "secondary_character": null,
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-09-18T07:08:12Z",
+      "source": "api",
+      "known_name": "Dojo337 | Drago"
+    },
+    {
       "tekken_id": "3eL532RyBdT2",
       "player_tag": "ThaQuestion337",
       "platform": "Playstation",
       "main_character": "Eddy",
       "rank_name": "God of Destruction IV",
-      "tekken_power": 379721,
+      "tekken_power": 379967,
       "current_character": "Eddy",
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-09-17T04:29:16Z",
+      "last_seen": "2026-09-18T02:02:43Z",
       "source": "api"
     },
     {
@@ -499,12 +499,12 @@
       "platform": "Steam",
       "main_character": "Paul",
       "rank_name": "God of Destruction II",
-      "tekken_power": 382643,
+      "tekken_power": 381397,
       "current_character": "Paul",
       "secondary_character": "Feng",
-      "tertiary_character": "Hwoarang",
+      "tertiary_character": "Bryan",
       "last_updated": null,
-      "last_seen": "2026-09-16T23:21:07Z",
+      "last_seen": "2026-09-18T04:57:34Z",
       "source": "api"
     },
     {
@@ -548,7 +548,7 @@
       "secondary_character": "Kunimitsu",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-09-17T04:24:43Z",
+      "last_seen": "2026-09-17T16:59:05Z",
       "source": "api"
     },
     {
@@ -557,12 +557,12 @@
       "platform": "Steam",
       "main_character": "Yoshimitsu",
       "rank_name": "God of Destruction I",
-      "tekken_power": 371864,
+      "tekken_power": 371767,
       "current_character": "Yoshimitsu",
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-09-15T02:23:18Z",
+      "last_seen": "2026-09-17T15:19:26Z",
       "source": "api"
     },
     {
@@ -605,7 +605,7 @@
       "secondary_character": "Zafina",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-09-16T22:33:56Z",
+      "last_seen": "2026-09-18T02:43:21Z",
       "source": "api",
       "known_name": "HaradasFuneral"
     },
@@ -693,7 +693,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-09-16T01:00:48Z",
+      "last_seen": "2026-09-18T04:57:34Z",
       "source": "api",
       "known_name": "Just CO"
     },
