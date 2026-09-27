@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-09-27T15:14:52.825Z",
+  "updated_at": "2026-09-27T15:58:44.748Z",
   "stats": {
     "successful": 54,
     "failed": 0,
-    "skipped": 1
+    "skipped": 2
   },
   "players": [
     {
@@ -805,6 +805,17 @@
       "last_updated": null,
       "last_seen": "2026-09-25T04:15:24Z",
       "source": "api"
+    },
+    {
+      "tekken_id": "258RFnLG9rjM",
+      "player_tag": "LB1.",
+      "platform": "Steam",
+      "main_character": "Fahkumram",
+      "rank_name": "God of Destruction",
+      "tekken_power": null,
+      "current_character": null,
+      "last_updated": null,
+      "source": "manual"
     }
   ]
 }
