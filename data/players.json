@@ -323,7 +323,7 @@
     "player_tag": "Juroh",
     "platform": "Steam",
     "main_character": "Miary Zo",
-    "peak_rank": "God of Destruction I"
+    "peak_rank": "God of Destruction II"
   },
   {
     "tekken_id": "2T7Ay7t77iha",
@@ -377,18 +377,18 @@
     "peak_rank": "God of Destruction"
   },
   {
-  "tekken_id": "4TqyijLm2j2j",
-  "player_tag": "Choppa",
-  "platform": "Steam",
-  "main_character": "Reina",
-  "peak_rank": "God of Destruction III"
+    "tekken_id": "4TqyijLm2j2j",
+    "player_tag": "Choppa",
+    "platform": "Steam",
+    "main_character": "Reina",
+    "peak_rank": "God of Destruction III"
   },
   {
     "tekken_id": "2iy8dDFt9eRE",
     "player_tag": "Nyft",
     "platform": "Steam",
     "main_character": "Miary Zo",
-    "peak_rank": "God of Destruction III" 
+    "peak_rank": "God of Destruction III"
   },
   {
     "tekken_id": "258RFnLG9rjM",
@@ -396,5 +396,5 @@
     "platform": "Steam",
     "main_character": "Fahkumram",
     "peak_rank": "God of Destruction"
-  }      
+  }
 ]
