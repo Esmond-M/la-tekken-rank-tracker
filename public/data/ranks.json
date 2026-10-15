@@ -1,11 +1,27 @@
 {
-  "updated_at": "2026-10-15T05:09:26.009Z",
+  "updated_at": "2026-10-15T05:11:06.924Z",
   "stats": {
-    "successful": 56,
+    "successful": 1,
     "failed": 0,
-    "skipped": 1
+    "skipped": 0,
+    "rate_limit_hit": false,
+    "skipped_rate_limit_count": 0
   },
   "players": [
+    {
+      "tekken_id": "4aGfqq4RQmEM",
+      "player_tag": "black",
+      "platform": "Steam",
+      "main_character": "Feng",
+      "rank_name": "God of Destruction VII",
+      "tekken_power": 493578,
+      "current_character": "Feng",
+      "secondary_character": "Azucena",
+      "tertiary_character": "Lars",
+      "last_updated": null,
+      "last_seen": "2026-10-12T21:48:06Z",
+      "source": "api"
+    },
     {
       "tekken_id": "46LnH6Rbjdyd",
       "player_tag": "Flex Zero",
@@ -48,17 +64,6 @@
       "last_updated": null,
       "last_seen": "2026-10-13T03:45:29Z",
       "source": "api"
-    },
-    {
-      "tekken_id": "4aGfqq4RQmEM",
-      "player_tag": "black",
-      "platform": "Steam",
-      "main_character": "Feng",
-      "rank_name": "God of Destruction VII",
-      "tekken_power": null,
-      "current_character": null,
-      "last_updated": null,
-      "source": "manual"
     },
     {
       "tekken_id": "5hj4DTr6RdTJ",
