@@ -168,6 +168,7 @@ export default function BraacketPage({ onOpenPlayer }) {
         hour: 'numeric', minute: '2-digit', timeZoneName: 'short',
       })
     : 'Unknown'
+  const updateLabel = data.source === 'braacket-csv-export' ? 'Imported' : 'Updated'
 
   return (
     <>
@@ -200,7 +201,7 @@ export default function BraacketPage({ onOpenPlayer }) {
           >
             braacket.com/league/LATK8
           </a>
-          {' · '}Updated {updatedAt}
+          {' · '}{updateLabel} {updatedAt}
         </div>
       </div>
 

@@ -112,14 +112,33 @@ Currently `peak_rank` is static — hand-maintained in `players.json`. The displ
 See `BRAACKET.md` for the full integration writeup. Summary of current state:
 
 ### What exists
-- `scripts/fetch-braacket.js` — HTML scraper for the LATK8 rankings page. Fetches **2 pages × 100 rows = up to 200 players**. Increase `PAGES_TO_FETCH` if the league grows beyond that.
-- `.github/workflows/fetch-braacket.yml` — runs the scraper **weekly on Mondays at 9 AM UTC**. Commits result to `public/data/braacket-rankings.json`. No secrets required (public page).
-- `public/data/braacket-rankings.json` — scraped output, committed each weekly run.
+- `data/braacket-rankings.csv` — manual CSV export from the LATK8 rankings page; replace it after each tournament.
+- `scripts/import-braacket-rankings.js` — validates the CSV and generates tournament rankings without contacting Braacket.
+- `.github/workflows/import-braacket.yml` — runs on CSV uploads, commits `public/data/braacket-rankings.json`, and deploys the result. No secrets required.
+- `public/data/braacket-rankings.json` — generated tournament rankings served to the front-end.
 - `public/data/braacket_league-ranking_*.csv` — legacy reference CSV export (page 1 only, kept for reference).
 - `src/BraacketPage.jsx` + Tournament Rankings tab in `App.jsx`.
 
-### ✅ Scraping approval
-Scraping permission was obtained from braacket.com in **June 2026**. The weekly cron is intentionally light (2 requests/week). No further ToS concerns.
+### Manual CSV updates
+Braacket now presents a Cloudflare challenge to unattended requests, so the integration uses the
+CSV export uploaded to `data/braacket-rankings.csv`. The importer preserves existing manual fields
+for matching player tags and uses `data/braacket-player-ids.json` to fill missing direct profile links.
+
+### Braacket data preferences (do not change without user approval)
+- Do not restore HTML scraping, add Cloudflare-challenge workarounds, or make Braacket requests from
+  scheduled automation. Use only the manually exported CSV.
+- Treat `data/braacket-rankings.csv` as the source of current standings. It may update `rank`,
+  `player_tag`, `points`, `country`, and `characters` only.
+- Preserve every other field already attached to a matching player in
+  `public/data/braacket-rankings.json`; these can be hand-maintained metadata.
+- Never guess, replace, or delete a `braacket_url`. Preserve an existing direct URL first; otherwise
+  derive one only from the explicit name-to-UUID mapping in `data/braacket-player-ids.json`.
+- If a player has no saved UUID, leave `braacket_url` absent. The UI's Braacket name-search fallback
+  is intentional and safer than inventing an ID.
+- Keep every player present in the uploaded CSV, not only people in the curated EWGF roster. EWGF
+  cross-links are resolved separately and must not filter tournament standings.
+- Keep the CSV-import workflow self-contained: it validates, generates committed site data, then
+  deploys. It must not call EWGF or require an API key.
 
 ### Known bugs (not yet fixed)
 1. **Braacket tab unreachable on EWGF failure.** `App.jsx` early-returns on EWGF `loading`/`error` before tab nav renders. Move tab nav above the early-return guards, OR render `BraacketPage` directly when `view === 'braacket'` before EWGF state checks.
@@ -132,6 +151,6 @@ Scraping permission was obtained from braacket.com in **June 2026**. The weekly 
 - Which season — current S3 only, or include All-Time / S2?
 
 ### Not yet built
-- Player tag → braacket profile linking. The `braacket_url` field is now populated in the scraped JSON (from the `<a href>` on each row), but `BraacketPage.jsx` doesn't yet render it as a link.
+- Player tag → Braacket profile linking is retained through existing `braacket_url` values and
+  `data/braacket-player-ids.json`; the CSV itself does not contain profile URLs.
 - Cross-reference braacket player tags with `players.json` `tekken_id` to deep-link to ewgf.gg profiles from the Braacket tab.
-

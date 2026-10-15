@@ -13,7 +13,7 @@ Community leaderboard for Louisiana Tekken 8 players. Tracks **online ranked** p
 4. GitHub Pages serves the built site.
 
 ### Tournament Rankings tab
-Tournament standings come from the [LATK8 Braacket league](https://braacket.com/league/LATK8). The data in `public/data/braacket-rankings.json` gets updated after each tournament.
+Tournament standings come from the [LATK8 Braacket league](https://braacket.com/league/LATK8). Export the rankings CSV from Braacket and replace `data/braacket-rankings.csv`; the import workflow validates it, regenerates `public/data/braacket-rankings.json`, and deploys the site.
 
 ### Player cards
 Click any player name to open a card showing their data from both sources — online rank + Tekken Power from EWGF, and tournament rank + points from Braacket.
@@ -47,7 +47,7 @@ Runs daily at 08:00 UTC (~3:00 AM Central).
 
 ### Updating tournament data (Braacket)
 1. Export standings from [braacket.com/league/LATK8](https://braacket.com/league/LATK8) (Export CSV on the rankings page).
-2. Update `public/data/braacket-rankings.json`.
+2. Export the Braacket rankings CSV and replace `data/braacket-rankings.csv`.
 3. Commit and push.
 
 ### Enriching player platform data from wavu.wank
@@ -123,7 +123,7 @@ public/data/
 scripts/
   update-ranks.js              Calls the EWGF API and writes ranks.json
   enrich-from-wavu.js          Fills missing platform data from wavu.wank (manual)
-  fetch-braacket.js            Scrapes Braacket standings (manual)
+  import-braacket-rankings.js  Converts the manual Braacket CSV export
   fetch-braacket-player-ids.js Builds UUID map for Braacket profile links
 src/
   App.jsx                 Main app, tab routing, PlayerCard state

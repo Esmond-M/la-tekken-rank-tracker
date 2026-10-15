@@ -33,15 +33,16 @@ for Louisiana FGC players. Two data sources: EWGF (online ranks) and Braacket (l
 data/players.json          ← hand-edited roster (source of truth for who we track)
 data/api-cache.json        ← raw battle data from EWGF API, committed after each run
 public/data/ranks.json     ← processed output served to the front-end
-public/data/braacket-rankings.json  ← scraped Braacket tournament rankings
+data/braacket-rankings.csv          ← manual Braacket rankings export
+public/data/braacket-rankings.json  ← generated Braacket tournament rankings
 src/App.jsx                ← main UI (EWGF tab)
 src/BraacketPage.jsx       ← tournament rankings tab
 src/PlayerCard.jsx         ← modal shown when clicking a player name
 src/index.css              ← all styles
 scripts/update-ranks.js    ← EWGF data pipeline (API fetch + rank processing)
-scripts/fetch-braacket.js  ← Braacket HTML scraper
+scripts/import-braacket-rankings.js  ← CSV importer
 .github/workflows/update-ranks.yml    ← daily cron at 8 AM UTC (3 AM Central)
-.github/workflows/fetch-braacket.yml  ← weekly Monday 9 AM UTC
+.github/workflows/import-braacket.yml ← runs when the exported CSV changes
 .github/workflows/deploy.yml          ← builds + deploys to Pages on push to main
 ```
 
@@ -175,11 +176,22 @@ Bushin → Kishin → Raijin → Fujin
 
 ## Braacket Integration
 
-- **Scraper:** `scripts/fetch-braacket.js` — fetches 2 pages × 100 rows from braacket.com/league/LATK8
-- **Schedule:** Weekly, Mondays 9 AM UTC
-- **No API key needed** — public page
-- **Scraping approved** by braacket.com (June 2026)
+- **Manual source:** `data/braacket-rankings.csv` — upload an export from the LATK8 ranking page
+- **Importer:** `scripts/import-braacket-rankings.js` validates it and preserves existing manual player fields
+- **Workflow:** Runs when the CSV changes, then commits the generated output and deploys it
 - Output: `public/data/braacket-rankings.json`
+
+### Preservation rules
+- Never reintroduce scheduled Braacket scraping or Cloudflare-challenge workarounds. Braacket data
+  comes only from the uploaded CSV.
+- The CSV controls standings fields only: `rank`, `player_tag`, `points`, `country`, and `characters`.
+  Existing fields for a matching player are manual metadata and must survive imports.
+- Preserve `braacket_url` values. Add one only from the explicit
+  `data/braacket-player-ids.json` UUID map; never infer a UUID. A missing URL intentionally uses the
+  existing Braacket name-search fallback.
+- Display all players in the exported CSV. The curated EWGF roster is used only for cross-linking and
+  must never filter the tournament table.
+- The importer and its workflow must remain API-key-free and must not call EWGF.
 
 ### Known bugs (not yet fixed)
 1. Braacket tab unreachable if EWGF data fails to load (`App.jsx` early-returns before tab nav renders)

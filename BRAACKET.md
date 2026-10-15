@@ -13,28 +13,34 @@ The LATK8 league has **409 players** across **94 tournaments** and is currently 
 
 ---
 
-## Is There a Public API?
+## Data Updates
 
-**No official REST/JSON API is documented on braacket.com.** There is no developer portal,
-API key system, or JSON endpoints. The site has:
+Braacket does not offer a publicly documented rankings API. Its Cloudflare challenge blocks
+unattended requests, so rankings are updated from Braacket's manual CSV export.
 
-- A manual **Export** button on ranking pages (downloads CSV — not automated)
-- No `?format=json` or similar query parameter
+1. On the LATK8 ranking page, select **Export** and download the CSV.
+2. Replace `data/braacket-rankings.csv` through GitHub's web uploader.
+3. The **Import Braacket Rankings** workflow validates the CSV, regenerates
+   `public/data/braacket-rankings.json`, and deploys the site.
 
-**The only programmatic option is HTML scraping.** The ranking page is publicly accessible
-with no login wall, and the URL supports `?rows=100` to return all players in one request.
+The importer requires `Rank`, `Player`, and `Points` columns. It preserves all manually maintained
+fields for matching player tags, including existing `braacket_url` values. When a player is present
+in `data/braacket-player-ids.json` but has no existing direct URL, the importer creates a profile
+link from that saved UUID. The CSV has no profile-URL column, so players without a saved UUID keep
+the normal Braacket name-search fallback.
 
----
+### Data preservation rules
 
-## How the Scraping Works
+- The CSV is authoritative only for `rank`, `player_tag`, `points`, `country`, and `characters`.
+- Other fields already stored for the same player tag are manual metadata and are preserved.
+- Never guess or fabricate a profile UUID. Keep a saved `braacket_url`; otherwise, create one only
+  from `data/braacket-player-ids.json`.
+- If no UUID is saved, keep `braacket_url` absent and allow the UI to use its name-search fallback.
+- The export is the complete tournament table. Do not remove players because they do not appear in
+  the curated EWGF roster; matching to EWGF is only for cross-linking.
 
-1. Fetch `https://braacket.com/league/LATK8/ranking/{RANKING_ID}?rows=100` as plain HTML
-2. Parse the `<table>` rows with regex to extract: rank position, player name, Glicko points
-3. Player profile URLs (`/league/LATK8/player/{id}`) are also extractable from the anchor tags
-4. Write results to `public/data/braacket-rankings.json`
-5. No API key needed — entirely public data
-
-Script: `scripts/fetch-braacket.js`
+Script: `scripts/import-braacket-rankings.js`
+Input: `data/braacket-rankings.csv`
 Output: `public/data/braacket-rankings.json`
 
 ---
@@ -47,7 +53,7 @@ Output: `public/data/braacket-rankings.json`
 | **Ranking unit** | Tekken Power + Rank tier (God of Destruction, etc.) | Glicko points |
 | **Updated** | Daily (GitHub Actions cron) | After each local tournament |
 | **Players** | ~46 tracked roster | 409 registered players |
-| **API type** | Official REST API (100 calls/day limit) | HTML scrape (no limit) |
+| **API type** | Official REST API (100 calls/day limit) | Manual CSV export |
 | **Auth required** | Yes — EWGF_API_KEY secret | No |
 
 ---
@@ -63,9 +69,7 @@ Before fully wiring this in, figure out the intent:
    the current tracker follows a curated ~46-player roster. Show all 409, or just the
    tracked players who also appear on braacket?
 
-3. **Automation** — Braacket doesn't need an API key, so `fetch-braacket.js` could run
-   on the same daily cron schedule, or on a different schedule (e.g., weekly, or only after
-   a tournament is reported).
+3. **Automation** — The import runs automatically after an exported CSV is uploaded to the repository.
 
 4. **Season** — There are multiple rankings (S1/S2/S3, Overall). Which one(s) to display?
    Currently targeting S3 (active season).
@@ -75,10 +79,7 @@ Before fully wiring this in, figure out the intent:
 ## Current Status (Demo)
 
 A working example tab is included in the site using pre-seeded S3 data (26 players as of 2026-06-03).
-The scraper script is ready — it just needs to be wired into the GitHub Actions workflow
-once the above decisions are made.
-
-To run the scraper locally (zero API calls):
+Run the importer locally after replacing the CSV:
 ```
-node scripts/fetch-braacket.js
+node scripts/import-braacket-rankings.js
 ```
