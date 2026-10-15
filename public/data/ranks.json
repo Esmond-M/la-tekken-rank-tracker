@@ -1,11 +1,9 @@
 {
-  "updated_at": "2026-10-15T05:11:06.924Z",
+  "updated_at": "2026-10-15T05:19:26.626Z",
   "stats": {
-    "successful": 1,
+    "successful": 57,
     "failed": 0,
-    "skipped": 0,
-    "rate_limit_hit": false,
-    "skipped_rate_limit_count": 0
+    "skipped": 0
   },
   "players": [
     {
@@ -550,6 +548,20 @@
       "known_name": "Dojo337Jakarogo"
     },
     {
+      "tekken_id": "5AT6RgLQ2NQG",
+      "player_tag": "Lie Ren",
+      "platform": "Playstation",
+      "main_character": "Clive",
+      "rank_name": "God of Destruction II",
+      "tekken_power": 380608,
+      "current_character": "Clive",
+      "secondary_character": "Kunimitsu",
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-10-12T17:42:13Z",
+      "source": "api"
+    },
+    {
       "tekken_id": "4NRAgMFqdnMJ",
       "player_tag": "7sev.ens",
       "platform": "Playstation",
@@ -608,20 +620,6 @@
       "last_seen": "2026-10-13T06:58:05Z",
       "source": "api",
       "known_name": "NeedlessFlea19"
-    },
-    {
-      "tekken_id": "5AT6RgLQ2NQG",
-      "player_tag": "Lie Ren",
-      "platform": "Playstation",
-      "main_character": "Clive",
-      "rank_name": "God of Destruction I",
-      "tekken_power": 380608,
-      "current_character": "Clive",
-      "secondary_character": "Kunimitsu",
-      "tertiary_character": null,
-      "last_updated": null,
-      "last_seen": "2026-10-12T17:42:13Z",
-      "source": "api"
     },
     {
       "tekken_id": "3BqDeimjaJ44",
