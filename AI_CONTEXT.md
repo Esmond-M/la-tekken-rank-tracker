@@ -1,7 +1,8 @@
-# AI_CONTEXT.md — Project Notes for AI Assistants
+# AI_CONTEXT.md — Primary Guide for AI Assistants
 
-> This file is the single source of truth for any AI working on this project.
-> Read it fully before making any changes.
+> This is the single source of truth for AI assistants working on this project.
+> Read it fully before making changes. Detailed Braacket operating instructions live in
+> [docs/braacket.md](docs/braacket.md).
 
 ---
 
@@ -24,6 +25,18 @@ for Louisiana FGC players. Two data sources: EWGF (online ranks) and Braacket (l
 4. **Never leave `main_character` as `null`** — causes the wrong character to display (see Rank Logic section).
 5. **Commit files individually** with descriptive messages unless the user says otherwise.
 6. **Always run `--from-cache` after changing `players.json` or rank logic** to regenerate `public/data/ranks.json` before committing.
+
+---
+
+## EWGF API limits
+
+The free EWGF tier permits 100 requests per day, returns only the most recent 50 battles after a
+24-hour delay, and supports only `/external/battles/{tekkenId}`. Do not call or recommend the
+Pro-only `/external/profile/{tekkenId}` endpoint; it returns HTTP 500 on the free tier.
+
+The quota resets at midnight UTC. A full roster update uses about 52 calls, so prefer
+`node scripts/update-ranks.js --from-cache` whenever cached data can answer the task. For a
+newly added player, use the Actions workflow's targeted `player_ids` input rather than a full run.
 
 ---
 
@@ -78,6 +91,8 @@ so they don't waste build minutes.
 - If `main_character` appears in recent battles → use API rank for that character.
 - If `main_character` is NOT in recent battles → show `peak_rank` from `players.json` with borrowed tekken_power (account-wide stat).
 - If `main_character` is `null` → falls back to "highest-ranked character in recent battles." **This is unreliable** — tekken_power is account-wide so all characters tie, and the tiebreak is arbitrary insertion order. A player grinding alts will show the wrong character.
+- **Peak rank is authoritative.** Preserve or improve it; never display a lower tier than the
+  configured `peak_rank` for the primary character.
 
 ### ⚠️ Critical: setting main_character
 **Always verify against the cache before setting `main_character`.** Run this to see what characters actually appear in a player's battles:
@@ -176,10 +191,12 @@ Bushin → Kishin → Raijin → Fujin
 
 ## Braacket Integration
 
-- **Manual source:** `data/braacket-rankings.csv` — upload an export from the LATK8 ranking page
-- **Importer:** `scripts/import-braacket-rankings.js` validates it and preserves existing manual player fields
-- **Workflow:** Runs when the CSV changes, then commits the generated output and deploys it
-- Output: `public/data/braacket-rankings.json`
+- See [docs/braacket.md](docs/braacket.md) for the full import procedure and data contract.
+- **Manual source:** `data/braacket-rankings.csv` — upload an export from the LATK8 ranking page.
+- **Importer:** `scripts/import-braacket-rankings.js` validates it and preserves existing manual
+  player fields.
+- **Workflow:** Runs when the CSV changes, then commits the generated output and deploys it.
+- **Output:** `public/data/braacket-rankings.json`.
 
 ### Preservation rules
 - Never reintroduce scheduled Braacket scraping or Cloudflare-challenge workarounds. Braacket data
@@ -192,6 +209,13 @@ Bushin → Kishin → Raijin → Fujin
 - Display all players in the exported CSV. The curated EWGF roster is used only for cross-linking and
   must never filter the tournament table.
 - The importer and its workflow must remain API-key-free and must not call EWGF.
+
+### Future improvement
+
+`peak_rank` is hand-maintained. The display cannot regress because the rank pipeline takes the
+maximum of cached/API data and the configured peak, but the source roster is not automatically
+raised when a player improves. Any future automatic writeback must update `data/players.json`
+alongside the generated rank data.
 
 ### Known bugs (not yet fixed)
 1. Braacket tab unreachable if EWGF data fails to load (`App.jsx` early-returns before tab nav renders)

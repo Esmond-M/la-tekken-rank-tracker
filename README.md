@@ -4,6 +4,8 @@ Community leaderboard for Louisiana Tekken 8 players. Tracks **online ranked** p
 
 **Live site:** https://esmond-m.github.io/la-tekken-rank-tracker/
 
+See [Braacket data updates](docs/braacket.md) for the manual tournament-import process.
+
 ## How it works
 
 ### Online Ranks tab

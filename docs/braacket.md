@@ -1,4 +1,4 @@
-# Braacket.com Integration Notes
+# Braacket Integration
 
 ## What is Braacket.com?
 
