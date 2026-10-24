@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23T08:22:44.285Z",
+  "updated_at": "2026-10-24T08:20:38.324Z",
   "stats": {
     "successful": 57,
     "failed": 0,
@@ -14,12 +14,12 @@
       "platform": "Steam",
       "main_character": "Feng",
       "rank_name": "God of Destruction VII",
-      "tekken_power": 501720,
+      "tekken_power": 499543,
       "current_character": "Feng",
-      "secondary_character": "Claudio",
-      "tertiary_character": "Fahkumram",
+      "secondary_character": "Kunimitsu",
+      "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-10-21T22:05:25Z",
+      "last_seen": "2026-10-23T00:52:44Z",
       "source": "api"
     },
     {
@@ -43,12 +43,12 @@
       "platform": "Playstation",
       "main_character": "Jun",
       "rank_name": "God of Destruction VII",
-      "tekken_power": 482143,
+      "tekken_power": 481664,
       "current_character": "Jun",
-      "secondary_character": "Armor King",
-      "tertiary_character": null,
+      "secondary_character": "Fahkumram",
+      "tertiary_character": "Armor King",
       "last_updated": null,
-      "last_seen": "2026-10-20T01:16:02Z",
+      "last_seen": "2026-10-23T01:09:44Z",
       "source": "api"
     },
     {
@@ -88,10 +88,10 @@
       "rank_name": "God of Destruction VI",
       "tekken_power": 475928,
       "current_character": "Lars",
-      "secondary_character": "Jin",
+      "secondary_character": "Dragunov",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-10-22T02:03:02Z",
+      "last_seen": "2026-10-23T01:27:46Z",
       "source": "api"
     },
     {
@@ -102,10 +102,10 @@
       "rank_name": "God of Destruction VI",
       "tekken_power": 456794,
       "current_character": "Law",
-      "secondary_character": "Fahkumram",
+      "secondary_character": "Lee",
       "tertiary_character": "Paul",
       "last_updated": null,
-      "last_seen": "2026-10-22T07:09:23Z",
+      "last_seen": "2026-10-23T05:05:22Z",
       "source": "api",
       "known_name": "BewareIIIusion"
     },
@@ -164,7 +164,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-10-18T21:38:05Z",
+      "last_seen": "2026-10-23T01:26:28Z",
       "source": "api",
       "known_name": "T0mbstone"
     },
@@ -179,7 +179,7 @@
       "secondary_character": "Alisa",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-10-22T02:02:07Z",
+      "last_seen": "2026-10-22T23:03:28Z",
       "source": "api"
     },
     {
@@ -219,12 +219,12 @@
       "platform": "Steam",
       "main_character": "Kazuya",
       "rank_name": "God of Destruction V",
-      "tekken_power": 400381,
+      "tekken_power": 403608,
       "current_character": "Kazuya",
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-10-22T01:24:23Z",
+      "last_seen": "2026-10-23T03:38:22Z",
       "source": "api"
     },
     {
@@ -281,7 +281,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-10-20T13:57:22Z",
+      "last_seen": "2026-10-22T13:43:36Z",
       "source": "api",
       "known_name": "Professor Juice"
     },
@@ -370,7 +370,7 @@
       "current_character": "Reina",
       "secondary_character": null,
       "tertiary_character": null,
-      "last_updated": "2026-10-22T04:26:49Z",
+      "last_updated": null,
       "last_seen": "2026-10-22T04:26:49Z",
       "source": "api",
       "known_name": "B.I.A. | smak2"
@@ -467,12 +467,12 @@
       "platform": "Playstation",
       "main_character": "Eddy",
       "rank_name": "God of Destruction IV",
-      "tekken_power": 380376,
+      "tekken_power": 379570,
       "current_character": "Eddy",
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-10-22T03:06:38Z",
+      "last_seen": "2026-10-23T03:51:27Z",
       "source": "api"
     },
     {
@@ -604,7 +604,7 @@
       "secondary_character": "Dragunov",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-10-20T23:51:56Z",
+      "last_seen": "2026-10-23T01:26:28Z",
       "source": "api"
     },
     {
@@ -657,12 +657,26 @@
       "platform": "Steam",
       "main_character": "Fahkumram",
       "rank_name": "God of Destruction I",
-      "tekken_power": 362053,
+      "tekken_power": 362355,
       "current_character": "Fahkumram",
       "secondary_character": "Bryan",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-10-21T03:44:30Z",
+      "last_seen": "2026-10-23T07:20:35Z",
+      "source": "api"
+    },
+    {
+      "tekken_id": "5JbtfYgyQ9QQ",
+      "player_tag": "ULTRA",
+      "platform": "Playstation",
+      "main_character": "Lars",
+      "rank_name": "God of Destruction I",
+      "tekken_power": 361300,
+      "current_character": "Lars",
+      "secondary_character": "Reina",
+      "tertiary_character": null,
+      "last_updated": "2026-10-22T21:09:09Z",
+      "last_seen": "2026-10-22T21:09:09Z",
       "source": "api"
     },
     {
@@ -763,7 +777,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-10-22T05:12:18Z",
+      "last_seen": "2026-10-23T03:20:24Z",
       "source": "api",
       "known_name": "Just CO"
     },
@@ -809,20 +823,6 @@
       "last_seen": "2026-10-17T15:35:00Z",
       "source": "api",
       "known_name": "Jedah"
-    },
-    {
-      "tekken_id": "5JbtfYgyQ9QQ",
-      "player_tag": "ULTRA",
-      "platform": "Playstation",
-      "main_character": "Lars",
-      "rank_name": "God of Destruction",
-      "tekken_power": 354240,
-      "current_character": "Lars",
-      "secondary_character": "Reina",
-      "tertiary_character": null,
-      "last_updated": null,
-      "last_seen": "2026-10-22T05:23:10Z",
-      "source": "api"
     },
     {
       "tekken_id": "4Bm7LLJtB2TB",
