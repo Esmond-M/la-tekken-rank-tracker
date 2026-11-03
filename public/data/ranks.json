@@ -1,9 +1,11 @@
 {
-  "updated_at": "2026-11-03T02:38:46.999Z",
+  "updated_at": "2026-11-03T02:42:55.880Z",
   "stats": {
-    "successful": 57,
+    "successful": 1,
     "failed": 0,
-    "skipped": 1
+    "skipped": 0,
+    "rate_limit_hit": false,
+    "skipped_rate_limit_count": 0
   },
   "players": [
     {
@@ -843,10 +845,14 @@
       "platform": "Steam",
       "main_character": "Leroy",
       "rank_name": "God of Destruction",
-      "tekken_power": null,
-      "current_character": null,
+      "tekken_power": 242040,
+      "current_character": "Leroy",
+      "secondary_character": null,
+      "tertiary_character": null,
       "last_updated": null,
-      "source": "manual"
+      "last_seen": "2026-11-02T01:18:52Z",
+      "source": "api",
+      "known_name": "Noremak"
     }
   ]
 }
