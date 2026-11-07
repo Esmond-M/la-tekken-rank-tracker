@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-06T08:15:45.975Z",
+  "updated_at": "2026-11-07T08:13:17.219Z",
   "stats": {
     "successful": 58,
     "failed": 0,
@@ -19,7 +19,7 @@
       "secondary_character": "Fahkumram",
       "tertiary_character": "Claudio",
       "last_updated": null,
-      "last_seen": "2026-11-04T02:28:04Z",
+      "last_seen": "2026-11-05T18:45:39Z",
       "source": "api"
     },
     {
@@ -91,7 +91,7 @@
       "secondary_character": "Lili",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-10-31T02:28:30Z",
+      "last_seen": "2026-11-05T21:33:41Z",
       "source": "api"
     },
     {
@@ -129,12 +129,12 @@
       "platform": "Playstation",
       "main_character": "Dragunov",
       "rank_name": "God of Destruction VI",
-      "tekken_power": 441404,
+      "tekken_power": 443120,
       "current_character": "Dragunov",
-      "secondary_character": null,
+      "secondary_character": "Clive",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-04T10:30:26Z",
+      "last_seen": "2026-11-06T08:10:24Z",
       "source": "api",
       "known_name": "KOGDRE"
     },
@@ -194,7 +194,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-03T03:17:54Z",
+      "last_seen": "2026-11-06T04:27:52Z",
       "source": "api",
       "known_name": "3 Bar Law"
     },
@@ -336,12 +336,12 @@
       "platform": "Steam",
       "main_character": "Jin",
       "rank_name": "God of Destruction IV",
-      "tekken_power": 403742,
+      "tekken_power": 403625,
       "current_character": "Jin",
       "secondary_character": "Miary Zo",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-05T07:23:06Z",
+      "last_seen": "2026-11-06T08:11:38Z",
       "source": "api",
       "known_name": "ItsSyrixTT"
     },
@@ -457,7 +457,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-04T06:30:35Z",
+      "last_seen": "2026-11-06T03:52:27Z",
       "source": "api",
       "known_name": "Dojo337xstaunch"
     },
@@ -487,7 +487,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-04T08:27:08Z",
+      "last_seen": "2026-11-06T04:03:56Z",
       "source": "api"
     },
     {
@@ -545,7 +545,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-05T04:37:58Z",
+      "last_seen": "2026-11-06T03:52:27Z",
       "source": "api",
       "known_name": "Dojo337Jakarogo"
     },
@@ -613,12 +613,12 @@
       "platform": "Playstation",
       "main_character": "Reina",
       "rank_name": "God of Destruction II",
-      "tekken_power": 376150,
+      "tekken_power": 376873,
       "current_character": "Reina",
-      "secondary_character": "Law",
-      "tertiary_character": "Bob",
+      "secondary_character": "Lee",
+      "tertiary_character": "Dragunov",
       "last_updated": null,
-      "last_seen": "2026-11-04T05:22:26Z",
+      "last_seen": "2026-11-06T07:40:39Z",
       "source": "api",
       "known_name": "TH|7sev.ens"
     },
@@ -691,7 +691,7 @@
       "secondary_character": "Reina",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-04T23:08:44Z",
+      "last_seen": "2026-11-05T23:18:37Z",
       "source": "api"
     },
     {
@@ -749,7 +749,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-05T03:18:00Z",
+      "last_seen": "2026-11-06T04:02:55Z",
       "source": "api"
     },
     {
