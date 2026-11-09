@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T08:14:05.717Z",
+  "updated_at": "2026-11-09T08:17:43.899Z",
   "stats": {
     "successful": 58,
     "failed": 0,
@@ -14,12 +14,12 @@
       "platform": "Steam",
       "main_character": "Feng",
       "rank_name": "God of Destruction VII",
-      "tekken_power": 508644,
+      "tekken_power": 507227,
       "current_character": "Feng",
-      "secondary_character": "Steve",
-      "tertiary_character": "Dragunov",
+      "secondary_character": "Dragunov",
+      "tertiary_character": "Kunimitsu",
       "last_updated": null,
-      "last_seen": "2026-11-07T02:48:01Z",
+      "last_seen": "2026-11-08T01:17:00Z",
       "source": "api"
     },
     {
@@ -43,12 +43,12 @@
       "platform": "Playstation",
       "main_character": "Jun",
       "rank_name": "God of Destruction VII",
-      "tekken_power": 489588,
+      "tekken_power": 491633,
       "current_character": "Jun",
-      "secondary_character": "Fahkumram",
-      "tertiary_character": "Kuma",
+      "secondary_character": "Feng",
+      "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-07T06:00:49Z",
+      "last_seen": "2026-11-07T20:10:54Z",
       "source": "api"
     },
     {
@@ -91,7 +91,7 @@
       "secondary_character": "Lili",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-07T01:05:25Z",
+      "last_seen": "2026-11-07T21:30:58Z",
       "source": "api"
     },
     {
@@ -129,12 +129,12 @@
       "platform": "Playstation",
       "main_character": "Dragunov",
       "rank_name": "God of Destruction VI",
-      "tekken_power": 443120,
+      "tekken_power": 443452,
       "current_character": "Dragunov",
-      "secondary_character": "Clive",
+      "secondary_character": "Lidia",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-06T09:58:02Z",
+      "last_seen": "2026-11-07T17:23:29Z",
       "source": "api",
       "known_name": "KOGDRE"
     },
@@ -144,12 +144,12 @@
       "platform": "Playstation",
       "main_character": "Jack-8",
       "rank_name": "God of Destruction VI",
-      "tekken_power": 439968,
+      "tekken_power": 438792,
       "current_character": "Jack-8",
       "secondary_character": "Fahkumram",
       "tertiary_character": "Dragunov",
       "last_updated": null,
-      "last_seen": "2026-11-04T10:10:12Z",
+      "last_seen": "2026-11-07T12:09:49Z",
       "source": "api",
       "known_name": "HBR_T5dr"
     },
@@ -174,12 +174,12 @@
       "platform": "Steam",
       "main_character": "Lars",
       "rank_name": "God of Destruction VI",
-      "tekken_power": 404878,
+      "tekken_power": 406516,
       "current_character": "Lars",
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-07T08:11:23Z",
+      "last_seen": "2026-11-08T01:28:56Z",
       "source": "api"
     },
     {
@@ -193,7 +193,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-06T22:28:30Z",
+      "last_seen": "2026-11-07T20:10:54Z",
       "source": "api",
       "known_name": "T0mbstone"
     },
@@ -218,13 +218,13 @@
       "platform": "Playstation",
       "main_character": "Azucena",
       "rank_name": "God of Destruction V",
-      "tekken_power": 410491,
+      "tekken_power": 410159,
       "current_character": "Azucena",
       "secondary_character": "Eddy",
       "tertiary_character": "Zafina",
       "show_tertiary": true,
       "last_updated": null,
-      "last_seen": "2026-11-04T06:24:58Z",
+      "last_seen": "2026-11-07T23:47:03Z",
       "source": "api",
       "known_name": "Mason Reigns"
     },
@@ -341,7 +341,7 @@
       "secondary_character": "Miary Zo",
       "tertiary_character": "Jun",
       "last_updated": null,
-      "last_seen": "2026-11-07T08:12:08Z",
+      "last_seen": "2026-11-08T06:55:27Z",
       "source": "api",
       "known_name": "ItsSyrixTT"
     },
@@ -396,12 +396,12 @@
       "platform": "Playstation",
       "main_character": "Raven",
       "rank_name": "God of Destruction IV",
-      "tekken_power": 390301,
+      "tekken_power": 389725,
       "current_character": "Raven",
       "secondary_character": "King",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-03T12:53:20Z",
+      "last_seen": "2026-11-08T03:26:31Z",
       "source": "api"
     },
     {
@@ -487,7 +487,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-06T04:03:56Z",
+      "last_seen": "2026-11-08T04:48:45Z",
       "source": "api"
     },
     {
@@ -526,12 +526,12 @@
       "platform": "Steam",
       "main_character": "Paul",
       "rank_name": "God of Destruction III",
-      "tekken_power": 387901,
+      "tekken_power": 388748,
       "current_character": "Paul",
       "secondary_character": "Feng",
       "tertiary_character": "Hwoarang",
       "last_updated": null,
-      "last_seen": "2026-11-06T16:33:42Z",
+      "last_seen": "2026-11-07T21:54:55Z",
       "source": "api"
     },
     {
@@ -545,7 +545,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-06T03:52:27Z",
+      "last_seen": "2026-11-07T21:56:35Z",
       "source": "api",
       "known_name": "Dojo337Jakarogo"
     },
@@ -618,7 +618,7 @@
       "secondary_character": "Steve",
       "tertiary_character": "Law",
       "last_updated": null,
-      "last_seen": "2026-11-07T07:44:45Z",
+      "last_seen": "2026-11-07T23:53:53Z",
       "source": "api",
       "known_name": "TH|7sev.ens"
     },
@@ -691,7 +691,7 @@
       "secondary_character": "Reina",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-07T06:39:56Z",
+      "last_seen": "2026-11-08T05:07:19Z",
       "source": "api"
     },
     {
@@ -749,7 +749,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-07T04:14:43Z",
+      "last_seen": "2026-11-08T05:42:26Z",
       "source": "api"
     },
     {
@@ -850,7 +850,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-04T01:44:09Z",
+      "last_seen": "2026-11-08T01:28:56Z",
       "source": "api",
       "known_name": "Noremak"
     }
