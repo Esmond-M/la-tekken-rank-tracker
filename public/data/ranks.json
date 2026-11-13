@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12T08:15:32.831Z",
+  "updated_at": "2026-11-13T08:14:44.969Z",
   "stats": {
     "successful": 58,
     "failed": 0,
@@ -19,7 +19,7 @@
       "secondary_character": "Fahkumram",
       "tertiary_character": "Dragunov",
       "last_updated": null,
-      "last_seen": "2026-11-11T02:51:24Z",
+      "last_seen": "2026-11-11T21:31:34Z",
       "source": "api"
     },
     {
@@ -88,10 +88,10 @@
       "rank_name": "God of Destruction VI",
       "tekken_power": 477430,
       "current_character": "Lars",
-      "secondary_character": "Lili",
-      "tertiary_character": null,
+      "secondary_character": "Kunimitsu",
+      "tertiary_character": "Lili",
       "last_updated": null,
-      "last_seen": "2026-11-07T21:30:58Z",
+      "last_seen": "2026-11-12T05:34:12Z",
       "source": "api"
     },
     {
@@ -100,12 +100,12 @@
       "platform": "Steam",
       "main_character": "Law",
       "rank_name": "God of Destruction VI",
-      "tekken_power": 463079,
+      "tekken_power": 462903,
       "current_character": "Law",
-      "secondary_character": "Lee",
-      "tertiary_character": null,
+      "secondary_character": "Fahkumram",
+      "tertiary_character": "Lee",
       "last_updated": null,
-      "last_seen": "2026-11-11T07:19:12Z",
+      "last_seen": "2026-11-11T13:13:15Z",
       "source": "api",
       "known_name": "BewareIIIusion"
     },
@@ -161,10 +161,10 @@
       "rank_name": "God of Destruction VI",
       "tekken_power": 427178,
       "current_character": "Raven",
-      "secondary_character": "Bob",
+      "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-11T02:09:20Z",
+      "last_seen": "2026-11-12T06:55:31Z",
       "source": "api",
       "known_name": "TVDeliriumheart"
     },
@@ -361,6 +361,21 @@
       "known_name": "ILearnStick"
     },
     {
+      "tekken_id": "4TqyijLm2j2j",
+      "player_tag": "Choppa",
+      "platform": "Steam",
+      "main_character": "Reina",
+      "rank_name": "God of Destruction IV",
+      "tekken_power": 398119,
+      "current_character": "Reina",
+      "secondary_character": null,
+      "tertiary_character": null,
+      "last_updated": null,
+      "last_seen": "2026-11-12T06:02:25Z",
+      "source": "api",
+      "known_name": "B.I.A | smak2"
+    },
+    {
       "tekken_id": "2iy8dDFt9eRE",
       "player_tag": "Nyft",
       "platform": "Steam",
@@ -374,21 +389,6 @@
       "last_seen": "2026-11-11T04:35:01Z",
       "source": "api",
       "known_name": "nyft"
-    },
-    {
-      "tekken_id": "4TqyijLm2j2j",
-      "player_tag": "Choppa",
-      "platform": "Steam",
-      "main_character": "Reina",
-      "rank_name": "God of Destruction IV",
-      "tekken_power": 397390,
-      "current_character": "Reina",
-      "secondary_character": null,
-      "tertiary_character": null,
-      "last_updated": null,
-      "last_seen": "2026-11-11T04:35:01Z",
-      "source": "api",
-      "known_name": "B.I.A | smak2"
     },
     {
       "tekken_id": "5fMiHMbtA3Eh",
@@ -691,7 +691,7 @@
       "secondary_character": "Reina",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-11T04:49:28Z",
+      "last_seen": "2026-11-12T07:52:01Z",
       "source": "api"
     },
     {
@@ -749,7 +749,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-11T03:42:19Z",
+      "last_seen": "2026-11-12T05:34:30Z",
       "source": "api"
     },
     {
@@ -820,7 +820,7 @@
       "secondary_character": "Devil Jin",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-10-31T17:10:00Z",
+      "last_seen": "2026-11-11T20:00:42Z",
       "source": "api",
       "known_name": "Jedah"
     },
