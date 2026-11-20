@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-19T08:15:17.170Z",
+  "updated_at": "2026-11-20T08:15:09.926Z",
   "stats": {
     "successful": 58,
     "failed": 0,
@@ -57,12 +57,12 @@
       "platform": "Steam",
       "main_character": "Jin",
       "rank_name": "God of Destruction VII",
-      "tekken_power": 461426,
+      "tekken_power": 461308,
       "current_character": "Jin",
       "secondary_character": "Heihachi",
       "tertiary_character": "Dragunov",
       "last_updated": null,
-      "last_seen": "2026-11-18T05:10:27Z",
+      "last_seen": "2026-11-19T05:26:22Z",
       "source": "api"
     },
     {
@@ -105,7 +105,7 @@
       "secondary_character": "Lee",
       "tertiary_character": "Roger Jr.",
       "last_updated": null,
-      "last_seen": "2026-11-18T08:14:11Z",
+      "last_seen": "2026-11-18T08:39:31Z",
       "source": "api",
       "known_name": "BewareIIIusion"
     },
@@ -129,12 +129,12 @@
       "platform": "Playstation",
       "main_character": "Dragunov",
       "rank_name": "God of Destruction VI",
-      "tekken_power": 446261,
+      "tekken_power": 448918,
       "current_character": "Dragunov",
       "secondary_character": "Roger Jr.",
-      "tertiary_character": null,
+      "tertiary_character": "Zafina",
       "last_updated": null,
-      "last_seen": "2026-11-18T06:27:56Z",
+      "last_seen": "2026-11-18T17:37:01Z",
       "source": "api",
       "known_name": "KOGDRE"
     },
@@ -164,7 +164,7 @@
       "secondary_character": "Bob",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-18T08:13:15Z",
+      "last_seen": "2026-11-18T08:39:33Z",
       "source": "api",
       "known_name": "TVDeliriumheart"
     },
@@ -224,7 +224,7 @@
       "tertiary_character": "Zafina",
       "show_tertiary": true,
       "last_updated": null,
-      "last_seen": "2026-11-18T06:30:09Z",
+      "last_seen": "2026-11-19T06:29:37Z",
       "source": "api",
       "known_name": "Mason Reigns"
     },
@@ -341,7 +341,7 @@
       "secondary_character": "Miary Zo",
       "tertiary_character": "Jun",
       "last_updated": null,
-      "last_seen": "2026-11-16T07:26:29Z",
+      "last_seen": "2026-11-18T23:31:59Z",
       "source": "api",
       "known_name": "ItsSyrixTT"
     },
@@ -371,7 +371,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-18T01:52:28Z",
+      "last_seen": "2026-11-19T05:38:43Z",
       "source": "api",
       "known_name": "nyft"
     },
@@ -386,7 +386,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-18T01:30:35Z",
+      "last_seen": "2026-11-19T01:42:32Z",
       "source": "api",
       "known_name": "B.I.A | smak2"
     },
@@ -415,7 +415,7 @@
       "secondary_character": "Azucena",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-18T05:45:40Z",
+      "last_seen": "2026-11-19T08:11:41Z",
       "source": "api"
     },
     {
@@ -526,12 +526,12 @@
       "platform": "Steam",
       "main_character": "Paul",
       "rank_name": "God of Destruction III",
-      "tekken_power": 389395,
+      "tekken_power": 389401,
       "current_character": "Paul",
       "secondary_character": "Feng",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-18T01:31:03Z",
+      "last_seen": "2026-11-18T13:08:03Z",
       "source": "api"
     },
     {
@@ -540,12 +540,12 @@
       "platform": "Playstation",
       "main_character": "Victor",
       "rank_name": "God of Destruction III",
-      "tekken_power": 384896,
+      "tekken_power": 384825,
       "current_character": "Victor",
       "secondary_character": "Roger Jr.",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-18T05:45:40Z",
+      "last_seen": "2026-11-19T08:11:41Z",
       "source": "api",
       "known_name": "Dojo337Jakarogo"
     },
@@ -706,7 +706,7 @@
       "secondary_character": "Reina",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-18T07:49:15Z",
+      "last_seen": "2026-11-18T21:27:39Z",
       "source": "api"
     },
     {
@@ -764,7 +764,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-18T06:41:00Z",
+      "last_seen": "2026-11-18T15:02:05Z",
       "source": "api"
     },
     {
