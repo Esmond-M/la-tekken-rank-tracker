@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-20T08:15:09.926Z",
+  "updated_at": "2026-11-21T08:13:52.519Z",
   "stats": {
     "successful": 58,
     "failed": 0,
@@ -57,12 +57,12 @@
       "platform": "Steam",
       "main_character": "Jin",
       "rank_name": "God of Destruction VII",
-      "tekken_power": 461308,
+      "tekken_power": 461549,
       "current_character": "Jin",
       "secondary_character": "Heihachi",
-      "tertiary_character": "Dragunov",
+      "tertiary_character": "Devil Jin",
       "last_updated": null,
-      "last_seen": "2026-11-19T05:26:22Z",
+      "last_seen": "2026-11-19T16:05:16Z",
       "source": "api"
     },
     {
@@ -105,7 +105,7 @@
       "secondary_character": "Lee",
       "tertiary_character": "Roger Jr.",
       "last_updated": null,
-      "last_seen": "2026-11-18T08:39:31Z",
+      "last_seen": "2026-11-20T06:22:32Z",
       "source": "api",
       "known_name": "BewareIIIusion"
     },
@@ -386,7 +386,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-19T01:42:32Z",
+      "last_seen": "2026-11-20T05:41:21Z",
       "source": "api",
       "known_name": "B.I.A | smak2"
     },
@@ -415,7 +415,7 @@
       "secondary_character": "Azucena",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-19T08:11:41Z",
+      "last_seen": "2026-11-19T08:14:57Z",
       "source": "api"
     },
     {
@@ -472,7 +472,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-18T00:56:03Z",
+      "last_seen": "2026-11-20T00:48:37Z",
       "source": "api",
       "known_name": "UDG_KING"
     },
@@ -545,7 +545,7 @@
       "secondary_character": "Roger Jr.",
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-19T08:11:41Z",
+      "last_seen": "2026-11-19T22:17:16Z",
       "source": "api",
       "known_name": "Dojo337Jakarogo"
     },
@@ -764,7 +764,7 @@
       "secondary_character": null,
       "tertiary_character": null,
       "last_updated": null,
-      "last_seen": "2026-11-18T15:02:05Z",
+      "last_seen": "2026-11-20T00:20:10Z",
       "source": "api"
     },
     {
